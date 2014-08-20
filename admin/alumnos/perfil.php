@@ -23,332 +23,41 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         <link rel="stylesheet" href="../../estilo/perfil_alumno.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <link rel="stylesheet" href="../../estilo/fixed_form.css" />
+        <link rel="stylesheet" href="../../estilo/perfiles.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-        <style>
-            #prompt_email, #prompt_telefono
-            {
-                width: 300px;
-            }
-
-            #prompt_tutor
-            {
-                width: 400px;
-            }
-
-            #direccionVal
-            {
-                width: 80%;
-            }
-
-            .prompt_column
-            {
-                float: left;
-                width: 180px;
-            }
-
-            .original{ margin-left: 55px; }
-            .copia{ margin-left: 10px; }
-
-            #div_boton_cuentas
-            {
-                width: 300px;
-                border: 1px solid #CCC;
-                margin: 20px 0;
-                padding: 20px;
-            }
-
-            #wrapper_select
-            {
-                width: 100%;
-            }
-
-            #dialogo_cambio
-            {
-                font-size: 12px;
-            }
-        </style>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="../../librerias/jquery.dataTables.min.js" ></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-        <script>
-            var id_alumno = <?php echo $id_alumno; ?>;
-            var id_tipo_tutor;
-
-            $(document).ready(function ()
-            {
-                declararDataTables();
-                $("#prompt_email").draggable({ handle: "#prompt_email_handle" });
-                $("#prompt_telefono").draggable({ handle: "#prompt_telefono_handle" });
-                $("#prompt_tutor").draggable({ handle: "#prompt_tutor_handle" });
-                $("#prompt_tutor_modificar").draggable({ handle: "#prompt_tutor_handle_modificar" });
-                $("#tabs").tabs();
-            });
-
-            function getURLParameter(name)
-            {
-                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
-            }
-
-            function declararDataTables()
-            {
-                $('#tabla_clases').dataTable({
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ clases por página",
-                        "sZeroRecords": "El alumno no se encuentra inscrito en ninguna clase",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ clases",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 clases",
-                        "sInfoFiltered": "(Encontrados de _MAX_ clases)"
-                    },
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    "bPaginate": false,
-                    "bInfo": false
-                });
-
-                $("#tabla_tutores").dataTable({
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ tutores por página",
-                        "sZeroRecords": "El alumno no se cuenta con ningún tutor registrado",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ tutores",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 tutores",
-                        "sInfoFiltered": "(Encontrados de _MAX_ tutores)"
-                    },
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    "bPaginate": false,
-                    "bInfo": false
-                });
-
-                $('#tabla_emails').dataTable({
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ correos por página",
-                        "sZeroRecords": "El alumno no cuenta con ningún correo registrado",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ correos",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 correos",
-                        "sInfoFiltered": "(Encontrados de _MAX_ correos)"
-                    },
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    "bPaginate": false,
-                    "bInfo": false
-                });
-
-                $('#tabla_telefonos').dataTable({
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ telefonos por página",
-                        "sZeroRecords": "El alumno no cuenta con ningún telefono registrado",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ telefonos",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 telefonos",
-                        "sInfoFiltered": "(Encontrados de _MAX_ telefonos)"
-                    },
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    "bPaginate": false,
-                    "bInfo": false
-                });
-
-                $('#tabla_pagos').dataTable({
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ pagos por página",
-                        "sZeroRecords": "El alumno no cuenta con ningún pago registrado",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ pagos",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 pagos",
-                        "sInfoFiltered": "(Encontrados de _MAX_ pagos)"
-                    },
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    "bPaginate": false,
-                    "bInfo": false
-                });
-
-                $("#tabla_becas").dataTable({
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ becas por página",
-                        "sZeroRecords": "El alumno no cuenta con ninguna beca registrada",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ becas",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 becas",
-                        "sInfoFiltered": "(Encontrados de _MAX_ becas)"
-                    },
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    "bPaginate": false,
-                    "bInfo": false
-                });
-
-                $("#tabla_calificaciones").dataTable({
-                    "bPaginate":   false,
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ materias por página",
-                        "sZeroRecords": "No se encontraron materias",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ materias",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 materias",
-                        "sInfoFiltered": "(Encontrados de _MAX_ materias)"
-                    },
-                    "aoColumns": [
-                        {"sWidth":"40%"},{"sWidth":"10%"},{"sWidth":"10%"},
-                        {"sWidth":"10%"},{"sWidth":"10%"},{"sWidth":"10%"},
-                        {"sWidth":"10%"}
-                    ],
-                    "bProcessing": true,
-                    "sAjaxSource": '/includes/acciones/alumnos/get_calificaciones_ciclo.php',
-                    "fnServerParams": function (aoData)
-                    {
-                        var id_ciclo = $("#ciclo_escolarVal").val();
-                        var id_persona = <?php echo $alumno->id_persona; ?>;
-                        aoData.push({ "name": "id_ciclo", "value": id_ciclo });
-                        aoData.push({ "name": "id_persona", "value": id_persona });
-                    }
-                });
-            }
-
-            var id_alumno = getURLParameter("id_alumno");
-
-            function baja(id_persona)
-            {
-                if (confirm("¿Está seguro que desea dar de baja al alumno?"))
-                {
-                    $.ajax({
-                        type: "POST",
-                        url: "/includes/acciones/alumnos/baja.php",
-                        data: "id_persona=" + id_persona,
-                        success: function (data)
-                        {
-                            if (data == 1)
-                            {
-                                window.location.reload(true);
-                            }
-                        }
-                    });
-                }
-            }
-
-            function toggleEmail()
-            {
-                $("#prompt_email").fadeIn();
-            }
-
-            function addEmail()
-            {
-                var email = $("#emailVal").val();
-                var tipo_email = $("#tipo_emailVal").val();
-
-                if (email.length > 0)
-                {
-                    $.ajax({
-                        type: "POST",
-                        url: "/includes/acciones/alumnos/agregar_email.php",
-                        data: "id_alumno=" + id_alumno + "&email=" + email + "&tipo_email=" + tipo_email,
-                        success: function (data)
-                        {
-                            if (data == 1)
-                            {
-                                window.location.reload(true);
-                            }
-                        }
-                    });
-                }
-                else
-                {
-                    alert("No ingresó ningún correo electrónico");
-                }
-            }
-
-            function toggleTelefono()
-            {
-                $("#prompt_telefono").fadeIn();
-            }
-
-            function toggleTutor()
-            {
-                $("#prompt_tutor").fadeIn();
-            }
-
-            function addTelefono()
-            {
-                var telefono = $("#telefonoVal").val();
-                var tipo_telefono = $("#tipo_telefonoVal").val();
-
-                if (telefono.length > 0)
-                {
-                    $.ajax({
-                        type: "POST",
-                        url: "/includes/acciones/alumnos/agregar_telefono.php",
-                        data: "id_alumno=" + id_alumno + "&telefono=" + telefono + "&tipo_telefono=" + tipo_telefono,
-                        success: function (data)
-                        {
-                            if (data == 1)
-                            {
-                                window.location.reload(true);
-                            }
-                        }
-                    });
-                }
-                else
-                {
-                    alert("No ingresó ningún teléfono");
-                }
-            }
-
-            function addTutor()
-            {
-                if(confirm("¿Seguro que desea agregar el tutor?"))
-                {
-                    var tipo_tutor  = $("#tipo_tutorVal").val();
-                    var nombre      = $("#nombreTutorVal").val();
-                    var calle       = $("#calleTutorVal").val();
-                    var numero      = $("#numeroTutorVal").val();
-                    var colonia     = $("#coloniaTutorVal").val();
-                    var CP          = $("#CPTutorVal").val();
-                    var telefonos   = $("#telefonosTutorVal").val();
-                    var celular     = $("#celularTutorVal").val();
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/includes/acciones/alumnos/agregar_tutor.php",
-                        data: "id_persona=" + id_alumno + "&tipo_tutor=" + tipo_tutor + "&nombre=" + nombre +
-                            "&calle=" + calle + "&numero=" + numero + "&colonia=" + colonia
-                            + "&CP=" + CP + "&telefonos=" + telefonos + "&celular=" + celular,
-                        success: function (data)
-                        {
-                            if(data == 1) window.location.reload(true);
-                            else alert("Código de error: " + data);
-                        }
-                    });
-                }
-            }
-        </script>
     </head>
     <body>
         <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
             <div id="content">
 
-                <div id="datos_generales">
-                    <div id="datos_generales_left">
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Nombre(s):</div>
-                            <div class="datos_generales_value"><?php echo $alumno->nombres; ?></div>
+                <!-- Datos del perfil. CSS: perfiles.css -->
+                <div class="datos_perfil" >
+                    <div class="datos_perfil_seccion" >
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Nombre(s):</div>
+                            <div class="perfil_dato_value"><?php echo $alumno->nombres; ?></div>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Apellido paterno:</div>
-                            <div class="datos_generales_value"><?php echo $alumno->apellido_paterno; ?></div>
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Apellido paterno:</div>
+                            <div class="perfil_dato_value"><?php echo $alumno->apellido_paterno; ?></div>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Apellido materno:</div>
-                            <div class="datos_generales_value"><?php echo $alumno->apellido_materno; ?></div>
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Apellido materno:</div>
+                            <div class="perfil_dato_value"><?php echo $alumno->apellido_materno; ?></div>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Matricula:</div>
-                            <div class="datos_generales_value"><?php echo $alumno->matricula; ?></div>
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Matricula:</div>
+                            <div class="perfil_dato_value"><?php echo $alumno->matricula; ?></div>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Registrad@ desde:</div>
-                            <div class="datos_generales_value"><?php echo $alumno->fecha_alta; ?></div>
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Registrad@ desde:</div>
+                            <div class="perfil_dato_value"><?php echo $alumno->fecha_alta; ?></div>
                         </div>
                     </div>
-                    <div id="datos_generales_right">
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Estado:</div>
+                    <div class="datos_perfil_seccion" >
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Estado:</div>
                             <?php
                                 if($alumno->getEstado())
                                 {
@@ -365,9 +74,9 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                                 }
                             ?>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Beca:</div>
-                            <div class="datos_generales_value">
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Beca:</div>
+                            <div class="perfil_dato_value">
                                 <?php
                                 $beca = $alumno->getBecaActual();
                                 if(is_null($beca))
@@ -386,21 +95,21 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                                 ?>
                             </div>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Contraseña:</div>
-                            <div class="datos_generales_value">
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Contraseña:</div>
+                            <div class="perfil_dato_value">
                                 <?php echo $alumno->password; ?>
                             </div>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Nivel:</div>
-                            <div class="datos_generales_value">
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Nivel:</div>
+                            <div class="perfil_dato_value">
                                 <?php echo $grado." de ".$area['area']; ?>
                             </div>
                         </div>
-                        <div class="datos_generales_row">
-                            <div class="datos_generales_label">Grupo:</div>
-                            <div class="datos_generales_value">
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Grupo:</div>
+                            <div class="perfil_dato_value">
                                 <?php echo $grupo; ?>
                                 <img src="/media/iconos/icon_modify.png"
                                      ALT="M" onclick="cambiarGrupoClicked()"
@@ -954,10 +663,23 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         </div>
         <!-- -------Fin del dialogo------- -->
 
-    </body>
-    <script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="../../librerias/jquery.dataTables.min.js" ></script>
+        <script src="../../librerias/fnAjaxReload.js" ></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script>
+        var id_alumno = <?php echo $id_alumno; ?>;
+        var id_tipo_tutor;
+
+        /** Document ready */
         $("#prompt_modificar_direccion").draggable({ handle: "#prompt_modificar_direccion_handle" });
         $("#dialogo_cambio").dialog({ autoOpen: false });
+        declararDataTables();
+        $("#prompt_email").draggable({ handle: "#prompt_email_handle" });
+        $("#prompt_telefono").draggable({ handle: "#prompt_telefono_handle" });
+        $("#prompt_tutor").draggable({ handle: "#prompt_tutor_handle" });
+        $("#prompt_tutor_modificar").draggable({ handle: "#prompt_tutor_handle_modificar" });
+        $("#tabs").tabs();
 
         function updatePapeleria(boton)
         {
@@ -1102,5 +824,239 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                 }
             }
         }
-    </script>
+
+        function getURLParameter(name)
+        {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
+        }
+
+        function declararDataTables()
+        {
+            $('#tabla_clases').dataTable({
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ clases por página",
+                    "sZeroRecords": "El alumno no se encuentra inscrito en ninguna clase",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ clases",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 clases",
+                    "sInfoFiltered": "(Encontrados de _MAX_ clases)"
+                },
+                "bFilter": false,
+                "bLengthChange": false,
+                "bPaginate": false,
+                "bInfo": false
+            });
+
+            $("#tabla_tutores").dataTable({
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ tutores por página",
+                    "sZeroRecords": "El alumno no se cuenta con ningún tutor registrado",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ tutores",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 tutores",
+                    "sInfoFiltered": "(Encontrados de _MAX_ tutores)"
+                },
+                "bFilter": false,
+                "bLengthChange": false,
+                "bPaginate": false,
+                "bInfo": false
+            });
+
+            $('#tabla_emails').dataTable({
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ correos por página",
+                    "sZeroRecords": "El alumno no cuenta con ningún correo registrado",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ correos",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 correos",
+                    "sInfoFiltered": "(Encontrados de _MAX_ correos)"
+                },
+                "bFilter": false,
+                "bLengthChange": false,
+                "bPaginate": false,
+                "bInfo": false
+            });
+
+            $('#tabla_telefonos').dataTable({
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ telefonos por página",
+                    "sZeroRecords": "El alumno no cuenta con ningún telefono registrado",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ telefonos",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 telefonos",
+                    "sInfoFiltered": "(Encontrados de _MAX_ telefonos)"
+                },
+                "bFilter": false,
+                "bLengthChange": false,
+                "bPaginate": false,
+                "bInfo": false
+            });
+
+            $('#tabla_pagos').dataTable({
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ pagos por página",
+                    "sZeroRecords": "El alumno no cuenta con ningún pago registrado",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ pagos",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 pagos",
+                    "sInfoFiltered": "(Encontrados de _MAX_ pagos)"
+                },
+                "bFilter": false,
+                "bLengthChange": false,
+                "bPaginate": false,
+                "bInfo": false
+            });
+
+            $("#tabla_becas").dataTable({
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ becas por página",
+                    "sZeroRecords": "El alumno no cuenta con ninguna beca registrada",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ becas",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 becas",
+                    "sInfoFiltered": "(Encontrados de _MAX_ becas)"
+                },
+                "bFilter": false,
+                "bLengthChange": false,
+                "bPaginate": false,
+                "bInfo": false
+            });
+
+            $("#tabla_calificaciones").dataTable({
+                "bPaginate":   false,
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ materias por página",
+                    "sZeroRecords": "No se encontraron materias",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ materias",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 materias",
+                    "sInfoFiltered": "(Encontrados de _MAX_ materias)"
+                },
+                "aoColumns": [
+                    {"sWidth":"40%"},{"sWidth":"10%"},{"sWidth":"10%"},
+                    {"sWidth":"10%"},{"sWidth":"10%"},{"sWidth":"10%"},
+                    {"sWidth":"10%"}
+                ],
+                "bProcessing": true,
+                "sAjaxSource": '/includes/acciones/alumnos/get_calificaciones_ciclo.php',
+                "fnServerParams": function (aoData)
+                {
+                    var id_ciclo = $("#ciclo_escolarVal").val();
+                    var id_persona = <?php echo $alumno->id_persona; ?>;
+                    aoData.push({ "name": "id_ciclo", "value": id_ciclo });
+                    aoData.push({ "name": "id_persona", "value": id_persona });
+                }
+            });
+        }
+
+        var id_alumno = getURLParameter("id_alumno");
+
+        function baja(id_persona)
+        {
+            if (confirm("¿Está seguro que desea dar de baja al alumno?"))
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/alumnos/baja.php",
+                    data: "id_persona=" + id_persona,
+                    success: function (data)
+                    {
+                        if (data == 1)
+                        {
+                            window.location.reload(true);
+                        }
+                    }
+                });
+            }
+        }
+
+        function toggleEmail()
+        {
+            $("#prompt_email").fadeIn();
+        }
+
+        function addEmail()
+        {
+            var email = $("#emailVal").val();
+            var tipo_email = $("#tipo_emailVal").val();
+
+            if (email.length > 0)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/alumnos/agregar_email.php",
+                    data: "id_alumno=" + id_alumno + "&email=" + email + "&tipo_email=" + tipo_email,
+                    success: function (data)
+                    {
+                        if (data == 1)
+                        {
+                            window.location.reload(true);
+                        }
+                    }
+                });
+            }
+            else
+            {
+                alert("No ingresó ningún correo electrónico");
+            }
+        }
+
+        function toggleTelefono()
+        {
+            $("#prompt_telefono").fadeIn();
+        }
+
+        function toggleTutor()
+        {
+            $("#prompt_tutor").fadeIn();
+        }
+
+        function addTelefono()
+        {
+            var telefono = $("#telefonoVal").val();
+            var tipo_telefono = $("#tipo_telefonoVal").val();
+
+            if (telefono.length > 0)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/alumnos/agregar_telefono.php",
+                    data: "id_alumno=" + id_alumno + "&telefono=" + telefono + "&tipo_telefono=" + tipo_telefono,
+                    success: function (data)
+                    {
+                        if (data == 1)
+                        {
+                            window.location.reload(true);
+                        }
+                    }
+                });
+            }
+            else
+            {
+                alert("No ingresó ningún teléfono");
+            }
+        }
+
+        function addTutor()
+        {
+            if(confirm("¿Seguro que desea agregar el tutor?"))
+            {
+                var tipo_tutor  = $("#tipo_tutorVal").val();
+                var nombre      = $("#nombreTutorVal").val();
+                var calle       = $("#calleTutorVal").val();
+                var numero      = $("#numeroTutorVal").val();
+                var colonia     = $("#coloniaTutorVal").val();
+                var CP          = $("#CPTutorVal").val();
+                var telefonos   = $("#telefonosTutorVal").val();
+                var celular     = $("#celularTutorVal").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/alumnos/agregar_tutor.php",
+                    data: "id_persona=" + id_alumno + "&tipo_tutor=" + tipo_tutor + "&nombre=" + nombre +
+                        "&calle=" + calle + "&numero=" + numero + "&colonia=" + colonia
+                        + "&CP=" + CP + "&telefonos=" + telefonos + "&celular=" + celular,
+                    success: function (data)
+                    {
+                        if(data == 1) window.location.reload(true);
+                        else alert("Código de error: " + data);
+                    }
+                });
+            }
+        }
+        </script>
+    </body>
 </html>

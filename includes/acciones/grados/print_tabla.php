@@ -17,4 +17,3 @@ if(is_array($grados))
         ";
     }
 }
-?>

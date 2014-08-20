@@ -87,7 +87,7 @@ $clases = $grupo->getClases();
                 width: 80%;
             }
 
-            .img_mdy
+            .imagen_icono
             {
                 width: 20px;
             }
@@ -173,12 +173,12 @@ $clases = $grupo->getClases();
                                         <tr>
                                             <td>".$clases['materia']."</td>
                                             <td>
-                                                ".$clases['nombre']."
                                                 <img
-                                                    class='img_mdy'
+                                                    class='imagen_icono'
                                                     src='/media/iconos/icon_modify.png'
                                                     onclick='mostrarCambioMaestro(".$clases['id_clase'].")'
                                                 />
+                                                ".$clases['nombre']."
                                             </td>
                                         </tr>
                                     ";
@@ -196,7 +196,7 @@ $clases = $grupo->getClases();
                                     <th>Apellido paterno</th>
                                     <th>Apellido materno</th>
                                     <th>Nombres</th>
-                                    <th></th>
+                                    <th>Perfil</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -228,6 +228,7 @@ $clases = $grupo->getClases();
                 </div>
             </div>
         </div>
+
         <div id="div_cambio_maestro">
             <div class="barra">
                 <img src='/media/iconos/icon_close.gif' alt="Cerrar" onclick="$(this).parent().parent().fadeOut()" />
@@ -253,6 +254,7 @@ $clases = $grupo->getClases();
                 <input type="button" class="form_submit" value="Aceptar" onclick="cambiarMaestro(this)" />
             </div>
         </div>
+
     </body>
     <script>
         var id_clase_seleccionada = 0;

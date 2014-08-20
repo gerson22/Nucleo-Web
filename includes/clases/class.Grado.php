@@ -42,7 +42,7 @@ class Grado
 
     function getArea()
     {
-        $query = "SELECT * FROM SELECT area FROM DatosMeze.grado
+        $query = "SELECT * FROM grado
             JOIN area ON grado.id_area = area.id_area
             WHERE id_grado = $this->id_grado";
         $res = Database::select($query);
@@ -58,10 +58,38 @@ class Grado
         return Database::select($query);
     }
 
+    function getMateriasCiclo($ciclo)
+    {
+        $query = "SELECT materia.id_materia, materia FROM grado_materia
+            JOIN materia ON grado_materia.id_materia = materia.id_materia
+            WHERE id_ciclo_escolar = $ciclo AND id_grado = $this->id_grado";
+        return Database::select($query);
+    }
+
     function update()
     {
         $query = "UPDATE grado SET grado = '$this->grado' WHERE id_grado = $this->id_grado";
         return Database::update($query);
+    }
+
+    function eliminarMateria($id_materia, $ciclo)
+    {
+        // 1. Eliminar la entrada en grado_materia
+        $query = "DELETE FROM grado_materia WHERE id_materia = $id_materia AND id_ciclo_escolar = $ciclo";
+        if(Database::update($query))
+        {
+            // 2. Eliminar las clases con la materia de la lista de grupos del grado y ciclo
+            $grupos = $this->getGruposCiclo($ciclo); // [{id_grupo, grupo}]
+            if(is_array($grupos))
+            {
+                foreach($grupos as $grupo)
+                {
+                    $query = "DELETE FROM clase WHERE id_grupo = ".$grupo['id_grupo']." AND id_materia = $id_materia";
+                    echo $query;
+                    Database::update($query);
+                }
+            }
+        }
     }
 
     # Métodos estáticos

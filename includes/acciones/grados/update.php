@@ -15,7 +15,5 @@ if($gradoVal == "")
 $grado->grado = $gradoVal;
 if($grado->update())
 {
-    header("Location: ../../../admin/grados/index.php");
+    echo 1;
 }
-
-?>

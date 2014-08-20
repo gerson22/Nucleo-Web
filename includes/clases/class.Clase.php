@@ -56,4 +56,10 @@ class Clase
         $clase = Database::select($query);
         return $clase[0]['id_clase'];
     }
+
+    public static function eliminar($id_clase)
+    {
+        $query = "DELETE FROM clase WHERE id_clase = $id_clase";
+        return Database::update($query);
+    }
 }

@@ -1,0 +1,49 @@
+/** Estilo de secciones superiores de páginas de perfiles como de alumno o grado, se manejan N columnas
+  * con N apartados apilados verticalmente, cada apartado consta de una label con la propiedad y una div
+  * con el valor de dicha propiedad
+  * Ejemplo:
+  *
+  *  -----------------------------------------------------------------------------------
+  * |Propiedad Valor                                             Propiedad Valor         |
+  * |Propiedad Valor                                             Propiedad Valor         |
+  * |Propiedad Valor                                             Propiedad Valor         |
+  * |____________________________________________________________________________________|
+  */
+
+.datos_perfil
+{
+    float: left;
+    font-size: 12px;
+    margin: 20px 0;
+    overflow: auto;
+    padding: 0 10px;
+    width: 815px;
+}
+
+/* Son 2 secciones, izquierda y derecha */
+.datos_perfil_seccion
+{
+    display: inline-block;
+}
+
+/* Cada division que encapsula a una label (propiedad) y una div (valor) */
+.datos_perfil_dato
+{
+    margin: 5px 0;
+    overflow: auto;
+    width: 390px;
+}
+
+/* Label (propiedad) */
+.perfil_dato_label
+{
+    float: left;
+    width: 150px;
+}
+
+/* Div (valor) */
+.perfil_dato_value
+{
+    float: left;
+    font-weight: bold;
+}

@@ -1,5 +1,5 @@
 <?php
-include("../../includes/validar_admin.php");
+include_once("../../includes/validar_admin.php");
 include_once("../../includes/clases/class_lib.php");
 $materias = Materia::getLista();
 ?>

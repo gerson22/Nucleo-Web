@@ -66,36 +66,6 @@
     z-index: 2;
 }
 
-#datos_generales
-{
-    float: left;
-    font-size: 12px;
-    height: 150px;
-    margin: 20px 0;
-    overflow: auto;
-    padding: 0 10px;
-    width: 815px;
-}
-
-.datos_generales_row
-{
-    width: 320px;
-    margin: 5px 0;
-    overflow: auto;
-}
-
-.datos_generales_label
-{
-   width: 150px;
-   float: left;
-}
-
-.datos_generales_value
-{
-    width: 170px;
-    float: left;
-    font-weight: bold;
-}
 
 #qr_code
 {
@@ -119,14 +89,44 @@
     padding: 0px !important;
 }
 
-#datos_generales_left
+#prompt_email, #prompt_telefono
 {
-    float: left;
-    overflow: auto;
+    width: 300px;
 }
 
-#datos_generales_right
+#prompt_tutor
 {
-    float: right;
-    overflow: auto;
+    width: 400px;
+}
+
+#direccionVal
+{
+    width: 80%;
+}
+
+.prompt_column
+{
+    float: left;
+    width: 180px;
+}
+
+.original{ margin-left: 55px; }
+.copia{ margin-left: 10px; }
+
+#div_boton_cuentas
+{
+    width: 300px;
+    border: 1px solid #CCC;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+#wrapper_select
+{
+    width: 100%;
+}
+
+#dialogo_cambio
+{
+    font-size: 12px;
 }
