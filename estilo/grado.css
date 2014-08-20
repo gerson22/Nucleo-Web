@@ -3,3 +3,17 @@
     float: left;
     width: 100%;
 }
+
+/** Select */
+#cicloVal
+{
+    border: 1px solid #152975;
+    height: 40px;
+    padding: 10px;
+    width: 200px;
+}
+
+#formNuevaMateria
+{
+    font-size: 12px;
+}

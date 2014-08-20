@@ -6,6 +6,7 @@ extract($_GET);
 #id_grado
 
 $grado = new Grado($id_grado);
+$ciclo_actual = CicloEscolar::getActual();
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +19,7 @@ $grado = new Grado($id_grado);
         <link rel="stylesheet" href="../../estilo/grado.css" />
         <link rel="stylesheet" href="../../estilo/perfiles.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
+        <link rel="stylesheet" href="../../estilo/jquery-ui.min.css" />
     </head>
     <body>
         <div id="wrapper">
@@ -77,14 +79,44 @@ $grado = new Grado($id_grado);
 
             </div>
         </div>
+
+        <!-- Modal form para asignar una nueva materia -->
+        <div id="formNuevaMateria" title="Asignar nueva materia" >
+            <label style="display: block;" >Materias disponibles para grados de <?php echo $grado->getArea(); ?>:</label>
+            <select id="nuevaMateriaVal" onchange="cargarGrupos();">
+                <?php
+                    $area = $grado->getAreaObj();
+                    $materias = $area->getMaterias();
+                    if(is_array($materias))
+                    {
+                        foreach($materias as $materia)
+                        {
+                            echo "<option value='".$materia['id_materia']."' >".$materia['materia']."</option>";
+                        }
+                    }
+                ?>
+            </select>
+            <hr />
+            <label style="display: block;" >
+                Grupos de <?php echo $grado->grado; ?> de <?php echo $grado->getArea(); ?>
+                en este ciclo escolar (<?php echo $ciclo_actual->ciclo; ?>):
+            </label>
+            <div id="div_asignar_docentes">
+                <!-- AJAX -->
+            </div>
+        </div>
+        <!-- -------------------------------------- -->
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src="/librerias/messages_es.js"></script>
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
         <script src="../../librerias/fnAjaxReload.js" ></script>
+        <script src="../../librerias/jquery-ui.min.js" ></script>
         <script>
             /** Variables */
             var tabla_materias;
+            var form_nueva_materia;
 
             function modificarClicked()
             {
@@ -168,11 +200,43 @@ $grado = new Grado($id_grado);
 
             function nuevaMateria()
             {
-                console.log("nueva materia...");
+                form_nueva_materia.dialog("open");
+                cargarGrupos();
+            }
+
+            function cargarGrupos()
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/grados/getGruposJSON.php",
+                    data: "grado=" + $("#id_gradoVal").val(),
+                    dataType: "json",
+                    success: function (grupos)
+                    {
+                        if(grupos.length > 0)
+                        {
+                            for(i in grupos)
+                            {
+                                $("#div_asignar_docentes").append("<div class='grupo' >" + grupos[i].grupo + "</div>");
+                            }
+                        }
+                    }
+                });
+            }
+
+            function declararFormaModal()
+            {
+                form_nueva_materia = $( "#formNuevaMateria" ).dialog({
+                    autoOpen: false,
+                    height: 300,
+                    width: 600,
+                    modal: true
+                });
             }
 
             /** Document ready */
             declararDataTable();
+            declararFormaModal();
 
         </script>
     </body>

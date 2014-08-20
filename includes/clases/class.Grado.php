@@ -36,7 +36,7 @@ class Grado
     function getGruposCiclo($id_ciclo)
     {
         $query = "SELECT id_grupo, grupo FROM grupo
-        WHERE id_ciclo_escolar = $id_ciclo AND id_grado = $this->id_grado";
+          WHERE id_ciclo_escolar = $id_ciclo AND id_grado = $this->id_grado";
         return Database::select($query);
     }
 
@@ -90,6 +90,15 @@ class Grado
                 }
             }
         }
+    }
+
+    function getAreaObj()
+    {
+        $query = "SELECT * FROM grado
+            JOIN area ON grado.id_area = area.id_area
+            WHERE id_grado = $this->id_grado";
+        $res = Database::select($query);
+        return new Area($res[0]['id_area']);
     }
 
     # Métodos estáticos

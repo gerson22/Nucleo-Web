@@ -25,6 +25,12 @@ class Area
         return Database::select($query);
     }
 
+    function getMaterias()
+    {
+        $query = "SELECT * FROM materia WHERE id_area = $this->id_area";
+        return Database::select($query);
+    }
+
     # Métodos estáticos
     static function getLista()
     {

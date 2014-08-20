@@ -4,14 +4,17 @@ include_once("class.Database.php");
 class CicloEscolar
 {
     public $id_ciclo_escolar;
+    public $ciclo; // No está en la base de datos, se genera al iniciar un objeto contatenando las fechas de inicio y fin
     public $fecha_inicio;
     public $fecha_fin;
 
     function __construct($id_ciclo_escolar)
     {
-        $ciclo_escolar = Database::select("SELECT * FROM ciclo_escolar WHERE id_ciclo_escolar = $id_ciclo_escolar LIMIT 1");
+        $ciclo_escolar = Database::select("SELECT *, CONCAT(YEAR(fecha_inicio), ' - ', YEAR(fecha_fin)) AS ciclo
+            FROM ciclo_escolar WHERE id_ciclo_escolar = $id_ciclo_escolar LIMIT 1");
         $ciclo_escolar = $ciclo_escolar[0];
         $this->id_ciclo_escolar = $ciclo_escolar['id_ciclo_escolar'];
+        $this->ciclo            = $ciclo_escolar['ciclo'];
         $this->fecha_inicio     = $ciclo_escolar['fecha_inicio'];
         $this->fecha_fin        = $ciclo_escolar['fecha_fin'];
     }
