@@ -146,6 +146,12 @@ class Maestro extends Persona
         return Database::select("SELECT * FROM persona WHERE tipo_persona = 2");
     }
 
+    static function getListaVigentes()
+    {
+        return Database::select("SELECT *, CONCAT(nombres, ' ', apellido_paterno, ' ', apellido_materno) AS nombre
+            FROM persona WHERE tipo_persona = 2 AND (ISNULL(fecha_baja) OR fecha_baja > NOW())");
+    }
+
     public static function insert($apellido_paterno, $apellido_materno, $nombres)
     {
         $password = parent::generarPassword(8);

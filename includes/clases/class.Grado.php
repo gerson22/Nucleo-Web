@@ -17,11 +17,12 @@ class Grado
         $this->id_area  = $grado['id_area'];
     }
 
-    function asignarMateria($id_materia)
+    function asignarMateria($id_materia, $id_ciclo)
     {
-        $ciclo_actual = CicloEscolar::getActual();
+        /** IMPORTANTE. Esta función no crea las clases necesarias para la nueva materia, una por cada grupo derivado
+         * Se deben de crear dichas clases independientemente */
         $query = "INSERT INTO grado_materia SET id_grado = $this->id_grado, id_materia = $id_materia,
-            id_ciclo_escolar = $ciclo_actual->id_ciclo_escolar";
+            id_ciclo_escolar = $id_ciclo";
         return Database::insert($query);
     }
 
@@ -107,13 +108,13 @@ class Grado
         return Database::select("SELECT grado.*, area FROM grado JOIN area ON grado.id_area = area.id_area");
     }
 
-    static function insert($area, $grado, $materias)
+    static function insert($ciclo, $area, $grado, $materias)
     {
         $id_grado = Database::insert("INSERT INTO grado SET grado = '$grado', id_area = $area");
         $grado = new Grado($id_grado);
         foreach($materias as $materia)
         {
-            $grado->asignarMateria($materia);
+            $grado->asignarMateria($materia, $ciclo);
         }
         return $id_grado;
     }

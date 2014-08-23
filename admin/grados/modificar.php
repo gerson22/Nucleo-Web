@@ -5,7 +5,10 @@ $materias = Materia::getLista();
 extract($_GET);
 #id_grado
 
-$grado = new Grado($id_grado);
+if(isset($id_grado))
+{
+    $grado = new Grado($id_grado);
+}
 $ciclo_actual = CicloEscolar::getActual();
 ?>
 
@@ -83,7 +86,7 @@ $ciclo_actual = CicloEscolar::getActual();
         <!-- Modal form para asignar una nueva materia -->
         <div id="formNuevaMateria" title="Asignar nueva materia" >
             <label style="display: block;" >Materias disponibles para grados de <?php echo $grado->getArea(); ?>:</label>
-            <select id="nuevaMateriaVal" onchange="cargarGrupos();">
+            <select id="nuevaMateriaVal">
                 <?php
                     $area = $grado->getAreaObj();
                     $materias = $area->getMaterias();
@@ -104,11 +107,12 @@ $ciclo_actual = CicloEscolar::getActual();
             <div id="div_asignar_docentes">
                 <!-- AJAX -->
             </div>
+            <button type="button" onclick="asignarNuevaMateria()" id="boton_agregar_materia">Aceptar</button>
         </div>
         <!-- -------------------------------------- -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+        <script src="/librerias/jquery.min.js"></script>
+        <script src="/librerias/jquery.validate.min.js"></script>
         <script src="/librerias/messages_es.js"></script>
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
         <script src="../../librerias/fnAjaxReload.js" ></script>
@@ -213,13 +217,39 @@ $ciclo_actual = CicloEscolar::getActual();
                     dataType: "json",
                     success: function (grupos)
                     {
-                        if(grupos.length > 0)
-                        {
-                            for(i in grupos)
+                        // Llenamos la variable optionsDocentes con el
+                        // código HTML de los elementos <option> por cada docente.
+                        var optionsDocentes = "";
+                        $.ajax({
+                            type: "POST",
+                            url: "/includes/acciones/maestros/getJSONDocentesVigentes.php",
+                            data: "",
+                            dataType: "json",
+                            success: function (docentes)
                             {
-                                $("#div_asignar_docentes").append("<div class='grupo' >" + grupos[i].grupo + "</div>");
+                                if(docentes.length > 0 && docentes != null)
+                                {
+                                    for(i in docentes)
+                                    {
+                                        optionsDocentes += "<option value='"
+                                            + docentes[i].id_persona + "'>"
+                                            + docentes[i].nombre + "</option>";
+                                    }
+                                }
+
+                                $("#div_asignar_docentes").html("");
+                                if(grupos.length > 0)
+                                {
+                                    for(i in grupos)
+                                    {
+                                        $("#div_asignar_docentes").append("<div class='grupo'" +
+                                            " data-id_grupo='" + grupos[i].id_grupo + "' >" +
+                                            "<div class='grupoNombre' >" + grupos[i].grupo + "</div>" +
+                                            "<select class='docenteVal'>"+optionsDocentes+"</select></div>");
+                                    }
+                                }
                             }
-                        }
+                        });
                     }
                 });
             }
@@ -232,6 +262,38 @@ $ciclo_actual = CicloEscolar::getActual();
                     width: 600,
                     modal: true
                 });
+            }
+
+            // Click a "Aceptar" ya se asignará la nueva materia al grado,
+            // y se crearán las nuevas clases respectivas de cada grupo del grado
+            function asignarNuevaMateria()
+            {
+                if(confirm("¿Están correctos los datos?"))
+                {
+                    $("#boton_agregar_materia").prop('disabled', true);
+
+                    var nuevasClases = [];
+                    $(".grupo").each(function()
+                    {
+                        var clase = {};
+                        clase.id_grupo = $(this).attr('data-id_grupo');
+                        clase.id_docente = $(this).children('.docenteVal').val();
+                        nuevasClases.push(clase);
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/includes/acciones/grados/agregar_materia.php",
+                        data: "id_grado=" + $("#id_gradoVal").val()
+                            + "&id_ciclo=" + $("#cicloVal").val()
+                            + "&id_materia=" + $("#nuevaMateriaVal").val()
+                            + "&nuevasClases=" + JSON.stringify(nuevasClases),
+                        success: function (data)
+                        {
+                            if(data == 1) document.location.reload(true);
+                        }
+                    });
+                }
             }
 
             /** Document ready */

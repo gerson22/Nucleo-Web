@@ -17,3 +17,32 @@
 {
     font-size: 12px;
 }
+
+/** Estilo para el formulario del modal **/
+.grupo
+{
+    overflow: auto;
+    padding: 5px;
+}
+
+.grupoNombre
+{
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#div_asignar_docentes
+{
+    margin: 20px 0;
+}
+
+.docenteVal
+{
+    margin-left: 5px;
+}
+
+#boton_agregar_materia
+{
+    margin-top: 20px;
+}

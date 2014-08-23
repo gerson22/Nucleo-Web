@@ -7,15 +7,16 @@ extract($_POST);
 # materias[]
 
 $materias = json_decode($materias);
+$ciclo_actual = CicloEscolar::getActual();
 
-if($grado == "" || $area == "")
+if(!isset($grado) || !isset($area))
 {
     return 0;
     exit();
 }
 else
 {
-    if(Grado::insert($area, $grado, $materias))
+    if(Grado::insert($ciclo_actual->id_ciclo_escolar, $area, $grado, $materias))
     {
         return 1;
         exit();

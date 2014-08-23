@@ -83,6 +83,12 @@ class Grupo
         return $res[0]['id_clase'];
     }
 
+    function nuevaClase($id_materia, $id_docente)
+    {
+        $query = "INSERT INTO clase VALUES(null, $this->id_grupo, $id_materia, $id_docente);";
+        return Database::insert($query);
+    }
+
     # Métodos estáticos
 
     public static function getLista()

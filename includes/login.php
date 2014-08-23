@@ -24,6 +24,10 @@ if(isset($matriculaVal) && isset($passwordVal))
             header('Location: ../index.php');
         }
     }
+    else
+    {
+        header('Location: ../login.php?error=1');
+    }
 }
 else
 {
