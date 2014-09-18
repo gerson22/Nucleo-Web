@@ -10,16 +10,16 @@ class Acceso
 {
     /**
      * @return string
-     * regresa "Administrador", "Cliente" o NULL según el tipo de usuario que envió las credenciales por Basic Auth
+     * regresa "Administrador", "Docente", "Alumno" o NULL según las credenciales por Basic Auth
      */
     public static function tipoUsuario()
     {
         if(isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW']))
         {
-            $res = Database::select("SELECT tipoUsuario FROM usuario
-                JOIN tipo_usuario ON tipo_usuario.tipoUsuarioID = usuario.tipoUsuarioID
-                WHERE usuarioID = {$_SERVER['PHP_AUTH_USER']} AND password = '{$_SERVER['PHP_AUTH_PW']}'");
-            return $res[0]['tipoUsuario'];
+            $res = Database::select("SELECT tipo_persona.tipo_persona FROM persona
+              JOIN tipo_persona ON tipo_persona.id_tipo_persona = persona.tipo_persona
+              WHERE matricula = {$_SERVER['PHP_AUTH_USER']} AND password = '{$_SERVER['PHP_AUTH_PW']}'");
+            return $res[0]['tipo_persona'];
         }
         return FALSE;
     }
