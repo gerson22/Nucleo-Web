@@ -35,7 +35,7 @@ class Clase
     # Métodos estáticos
     public static function getLista()
     {
-        return Database::select("SELECT id_clase, grado, grupo.grupo, materia.materia, 
+        return Database::select("SELECT id_clase, grado, grupo.grupo, materia.materia,
             CONCAT(apellido_paterno, ' ', apellido_materno, ' ', nombres) AS maestro
             FROM clase
             JOIN grupo ON grupo.id_grupo = clase.id_grupo

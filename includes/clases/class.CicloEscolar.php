@@ -33,7 +33,7 @@ class CicloEscolar
             JOIN grado ON grado.id_grado = grupo.id_grado
             JOIN area ON area.id_area = grado.id_area
             WHERE tipo_persona = 1 AND grupo.id_ciclo_escolar = $this->id_ciclo_escolar";
-        return Database::select($query); 
+        return Database::select($query);
     }
 
     function getAlumnosInscritosPagados()
@@ -295,7 +295,7 @@ class CicloEscolar
 
     static function checkOverlap($fecha_inicioVal)
     {
-        $resultado = Database::select("SELECT IF(CAST('$fecha_inicioVal' AS DATE) < MAX(fecha_fin), 1, 0) AS overlap 
+        $resultado = Database::select("SELECT IF(CAST('$fecha_inicioVal' AS DATE) < MAX(fecha_fin), 1, 0) AS overlap
                     FROM ciclo_escolar");
         if($resultado[0]['overlap'] == "1") return TRUE;
         else return FALSE;

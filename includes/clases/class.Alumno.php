@@ -95,7 +95,7 @@ class Alumno extends Persona
 
     function getCalificacion($id_clase, $parcial)
     {
-        $calificacion = Database::select("SELECT calificacion FROM calificacion 
+        $calificacion = Database::select("SELECT calificacion FROM calificacion
             WHERE id_alumno = $this->id_persona AND id_clase = $id_clase AND parcial = $parcial");
         return $calificacion[0]['calificacion'];
     }
