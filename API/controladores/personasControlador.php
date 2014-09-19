@@ -28,7 +28,7 @@ class personasControlador
     /** Autorización: Todos */
     protected function registrarAsistencia($id_persona)
     {
-        PersonaModelo::registrarAsistencia($id_persona);
-        return [];
+        if(PersonaModelo::registrarAsistencia($id_persona)) return ['Success'];
+        else return 500;
     }
 }
