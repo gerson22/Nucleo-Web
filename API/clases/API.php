@@ -98,7 +98,7 @@ abstract class API
             switch($response)
             {
                 case 401:
-                    header('WWW-Authenticate: Basic realm="API Gimnasio"');
+                    header('WWW-Authenticate: Basic realm="PlataformaMEZE"');
                     return $this->_response([], 401);
                     break;
                 case 404:
