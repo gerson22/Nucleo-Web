@@ -16,9 +16,9 @@ class Acceso
     {
         if(isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW']))
         {
-            $res = Database::select("SELECT tipo_persona.tipo_persona FROM persona
+            $res = APIDatabase::select("SELECT tipo_persona.tipo_persona FROM persona
               JOIN tipo_persona ON tipo_persona.id_tipo_persona = persona.tipo_persona
-              WHERE matricula = {$_SERVER['PHP_AUTH_USER']} AND password = '{$_SERVER['PHP_AUTH_PW']}'");
+              WHERE matricula = '{$_SERVER['PHP_AUTH_USER']}' AND password = '{$_SERVER['PHP_AUTH_PW']}'");
             return $res[0]['tipo_persona'];
         }
         return FALSE;

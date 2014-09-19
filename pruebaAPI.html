@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prueba API</title>
+</head>
+<body>
+<button onclick="probar()">Probar</button>
+
+<script src="/librerias/jquery.min.js"></script>
+<script>
+    function probar()
+    {
+        $.ajax({
+            type: "POST",
+            url: "API/personas/asistencia",
+            data: "id_persona=" + 10,
+            beforeSend: function (xhr)
+            {
+                xhr.setRequestHeader ("Authorization", "Basic " + btoa("ADM13001:shadow"));
+            },
+            success: function (data)
+            {
+
+            }
+        });
+    }
+</script>
+</body>
+</html>

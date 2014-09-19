@@ -145,7 +145,7 @@ $admin = new Administrador($id_administrador);
                         <?php include_once("include_permisos.php"); ?>
                     </div>
                 </form>
-                <?
+                <?php
                 switch($error)
                 {
                     case 1: echo "<div class='error'>Faltaron datos de llenar.</div>"; break;

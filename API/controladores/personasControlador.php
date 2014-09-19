@@ -10,25 +10,42 @@ class personasControlador
 {
     public function procesar($metodo, $verbo, $argumentos)
     {
-        if($metodo == "GET")
+        switch($metodo)
         {
-            switch($verbo)
-            {
-                case "":
-                    return $this->registrarAsistencia($argumentos[0]);      /** API/personas/{id_persona}           */
-                    break;
-                default:
-                    return 404;
-                    break;
-            }
+            case "GET":
+                switch($verbo)
+                {
+                    default:
+                        return 404;
+                        break;
+                }
+                break;
+            case "POST":
+                switch($verbo)
+                {
+                    case "asistencia":
+                        # API/personas/asistencia || {id_persona}
+                        return $this->registrarAsistencia($_POST['id_persona']);
+                        break;
+                    default:
+                        return 404;
+                        break;
+                }
+                break;
+            default:
+                break;
         }
         return 404;
     }
 
-    /** Autorización: Todos */
+    /** Autorización: Administrador */
     protected function registrarAsistencia($id_persona)
     {
-        if(PersonaModelo::registrarAsistencia($id_persona)) return ['Success'];
-        else return 500;
+        if(Acceso::tipoUsuario() == "Administrador")
+        {
+            if(PersonaModelo::registrarAsistencia($id_persona)) return ['Success'];
+            return 500;
+        }
+        return 401;
     }
 }

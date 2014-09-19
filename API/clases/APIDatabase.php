@@ -2,7 +2,7 @@
 
 class APIDatabase
 {
-    private static $db_host        = "localhost";
+    private static $db_host        = "127.0.0.1";
     private static $db_user        = "root";
     private static $db_password    = "root";
     private static $db_database    = "prevenla_meze";
