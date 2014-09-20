@@ -63,7 +63,7 @@
                                 ?>
                             </select>
                         </div>
-                        <?
+                        <?php
                             switch($error)
                             {
                                 case 1: echo "<div id='error_msg'>Error. Contacte al administrador del sistema</div>"; break;

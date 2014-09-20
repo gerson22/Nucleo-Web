@@ -24,6 +24,7 @@
                 <li class="li_submenu" ><a href="/admin/maestros/index.php" >Todos</a></li>
                 <li class="li_submenu" ><a href="/admin/maestros/maestros_actuales.php" >Vigentes</a></li>
                 <li class="li_submenu" ><a href="/admin/maestros/nuevo.php" >Nuevo</a></li>
+                <li class="li_submenu" ><a href="/admin/maestros/asistencia.php" >Asistencias</a></li>
             </ul>
         </li>
         <li class="li_menu" >
