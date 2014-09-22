@@ -16,6 +16,7 @@ include_once("../../includes/clases/class_lib.php");
     <link rel="stylesheet" href="../../estilo/general.css" />
     <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
     <link rel="stylesheet" href="../../estilo/jquery-ui.min.css" />
+    <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
 </head>
 <body>
 <div id="wrapper">
@@ -26,7 +27,12 @@ include_once("../../includes/clases/class_lib.php");
 
             <h1>Asistencias</h1>
 
-            <input type="date" id="fechaVal" onchange="reloadTable()" />
+            <div class="form_row_3">
+                <label class="form_label">Fecha</label>
+                <input type="hidden" id="fechaVal" value="" />
+                <input type="date" id="fechaDisplay" onchange="reloadTable()" class="form_input" />
+            </div>
+
 
             <table id="tabla_asistencias" >
                 <thead>
@@ -59,10 +65,14 @@ include_once("../../includes/clases/class_lib.php");
 
         function declararDatePicker()
         {
-            $("#fechaVal").datepicker({
-                "dateFormat": "yy-mm-dd",
+            $("#fechaDisplay").datepicker({
+                "dateFormat": "DD, d MM, yy",
+                altField: "#fechaVal",
+                altFormat: "yy-mm-dd",
                 "defaultDate": new Date()
             });
+
+            $("#fechaDisplay").datepicker( "setDate", new Date() );
         }
 
         function GetTodayDate() {
