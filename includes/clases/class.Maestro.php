@@ -13,8 +13,6 @@ class Maestro extends Persona
         $this->nombres              = $persona['nombres'];
         $this->apellido_paterno     = $persona['apellido_paterno'];
         $this->apellido_materno     = $persona['apellido_materno'];
-        $this->grado                = $persona['grado'];
-        $this->grupo                = $persona['grupo'];
         $this->password             = $persona['password'];
         $this->tipo_persona         = $persona['tipo_persona'];
         $this->fecha_alta           = $persona['fecha_alta'];
