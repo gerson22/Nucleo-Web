@@ -114,7 +114,8 @@ $ciclos = CicloEscolar::getLista();
                     { "name": "alumno", "value": $("#alumnoVal").val() },
                     { "name": "ciclo", "value": $("#cicloVal").val() }
                 );
-            }
+            },
+            "iDisplayLength": 25
         });
     }
 </script>

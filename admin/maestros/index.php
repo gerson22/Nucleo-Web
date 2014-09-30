@@ -28,7 +28,8 @@
                         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ maestros",
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 maestros",
                         "sInfoFiltered": "(Encontrados de _MAX_ maestros)"
-                    }
+                    },
+                    "iDisplayLength": 25
                 }); 
             }
         </script>

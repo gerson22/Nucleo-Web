@@ -96,7 +96,8 @@ $ciclos = CicloEscolar::getLista();
                     aoData.push(
                         { "name": "ciclo", "value": $("#cicloVal").val() }
                     );
-                }
+                },
+                "iDisplayLength": 25
             });
         }
 

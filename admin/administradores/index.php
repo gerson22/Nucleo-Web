@@ -30,7 +30,8 @@ $administradores = Administrador::getLista();
                         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ administradores",
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 administradores",
                         "sInfoFiltered": "(Encontrados de _MAX_ administradores)"
-                    }
+                    },
+                    "iDisplayLength": 25
                 });
             }
 

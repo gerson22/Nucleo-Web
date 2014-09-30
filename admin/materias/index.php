@@ -28,7 +28,8 @@ $materias = Materia::getLista();
                         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ materias",
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 materias",
                         "sInfoFiltered": "(Encontrados de _MAX_ materias)"
-                    }
+                    },
+                    "iDisplayLength": 25
                 }); 
             }
         </script>

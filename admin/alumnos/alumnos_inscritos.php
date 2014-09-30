@@ -101,7 +101,8 @@ include_once("../../includes/clases/class_lib.php");
                 "sAjaxSource": '../../includes/acciones/alumnos/loadInscritos.php',
                 "fnServerParams": function ( aoData ) {
                     aoData.push( { "name": "id_ciclo_escolar", "value": $("#ciclo_escolarVal").val() } );
-                }
+                },
+                "iDisplayLength": 25
             });
         }
 

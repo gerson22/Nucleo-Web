@@ -104,7 +104,8 @@ include_once("../../includes/clases/class_lib.php");
                 {
                     var fecha = $('#fechaVal').val();
                     aoData.push({ "name": "fecha", "value": fecha });
-                }
+                },
+                "iDisplayLength": 25
             });
         }
 

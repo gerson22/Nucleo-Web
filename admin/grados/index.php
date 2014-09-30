@@ -44,7 +44,8 @@ $grados = Grado::getLista();
                         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ grados",
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 grados",
                         "sInfoFiltered": "(Encontrados de _MAX_ grados)"
-                    }
+                    },
+                    "iDisplayLength": 25
                 });
             }
         </script>

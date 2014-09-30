@@ -31,7 +31,8 @@ $becas = $ciclo_actual->getBecas();
                         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ alumnos becados",
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 alumnos becados",
                         "sInfoFiltered": "(Encontrados de _MAX_ alumnos becados)"
-                    }
+                    },
+                    "iDisplayLength": 25
                 });
             }
         </script>

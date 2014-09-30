@@ -57,7 +57,8 @@ $ciclos_escolares = CicloEscolar::getLista();
                     {
                         var id_ciclo_escolar = $('#select_ciclo').val();
                         aoData.push({ "name": "id_ciclo_escolar", "value": id_ciclo_escolar });
-                    }
+                    },
+                    "iDisplayLength": 25
                 });
             }
 

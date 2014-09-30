@@ -32,7 +32,8 @@ $ciclos_escolares = CicloEscolar::getLista();
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 ciclos",
                         "sInfoFiltered": "(Encontrados de _MAX_ ciclos)"
                     },
-                    aaSorting: [[2, 'desc']]
+                    aaSorting: [[2, 'desc']],
+                    "iDisplayLength": 25
                 }); 
             }
         </script>

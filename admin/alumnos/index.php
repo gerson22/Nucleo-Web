@@ -28,7 +28,8 @@ $alumnos = Alumno::getLista();
                         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ alumnos",
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 alumnos",
                         "sInfoFiltered": "(Encontrados de _MAX_ alumnos)"
-                    }
+                    },
+                    "iDisplayLength": 25
                 }); 
             }
         </script>
