@@ -144,12 +144,15 @@ include_once("../../includes/validar_admin.php");
                             <?php include_once("include_permisos.php"); ?>
                         </div>
                     </form>
-                    <?
-                    switch($error)
+                    <?php
+                    if(isset($error))
                     {
-                        case 1: echo "<div class='error'>Faltaron datos de llenar.</div>"; break;
-                        case 2: echo "<div class='error'>Error de base de datos.</div>"; break;
-                        default: break;
+                        switch($error)
+                        {
+                            case 1: echo "<div class='error'>Faltaron datos de llenar.</div>"; break;
+                            case 2: echo "<div class='error'>Error de base de datos.</div>"; break;
+                            default: break;
+                        }
                     }
                     ?>
                     <div class="form_row">
