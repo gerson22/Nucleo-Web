@@ -600,6 +600,7 @@ class Alumno extends Persona
                  '$apellido_paterno', '$apellido_materno', '$nombres',
                 1, '$password', NOW(), null, 'photo_NA.jpg')";
             return Database::insert($query);
+
         }
         else return 0;
     }
@@ -614,8 +615,8 @@ class Alumno extends Persona
 
     static function getSiguienteDelCiclo($ano)
     {
-        $query = "SELECT LPAD(MAX(SUBSTRING(matricula, 8, 4)) + 1, 4, '0') AS siguiente
-        FROM persona WHERE tipo_persona = 1";
+        $query = "SELECT LPAD(COALESCE(MAX(SUBSTRING(matricula, 8, 4)), '0000') + 1, 4, '0') AS siguiente
+          FROM persona WHERE tipo_persona = 1";
         $res = Database::select($query);
         return $res[0]['siguiente'];
     }
