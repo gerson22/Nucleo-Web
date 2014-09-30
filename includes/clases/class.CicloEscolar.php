@@ -259,6 +259,12 @@ class CicloEscolar
         return Database::select($query);
     }
 
+    public function getAnoInicio()
+    {
+        $fecha = DateTime::createFromFormat("Y-m-d", $this->fecha_inicio);
+        return $fecha->format("Y");
+    }
+
     # Métodos estáticos
     static function getLista()
     {

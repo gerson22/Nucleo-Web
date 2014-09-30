@@ -587,29 +587,37 @@ class Alumno extends Persona
             WHERE tipo_persona = 1");
     }
 
-    public static function insert($apellido_paterno, $apellido_materno, $nombres, $area)
+    public static function insert($apellido_paterno, $apellido_materno, $nombres, $id_ciclo_escolar)
     {
         if(!self::existe($nombres, $apellido_paterno, $apellido_materno))
         {
-            $pre = "";
-            switch($area)
-            {
-                case '1': $pre = "KIN"; break;
-                case '2': $pre = "PRI"; break;
-                case '3': $pre = "SEC"; break;
-                case '4': $pre = "BCH"; break;
-                case '5': $pre = "ING"; break;
-            }
+            $ciclo = new CicloEscolar($id_ciclo_escolar);
             $password = parent::generarPassword(8);
-            $query = "INSERT INTO persona
-            (SELECT null, CONCAT('$pre', DATE_FORMAT(NOW(), '%y'), LPAD(CAST(COALESCE(MAX(SUBSTRING(matricula, 6, 3)), '0') + 1 AS CHAR(3)), 3, '0')),
-            '$apellido_paterno', '$apellido_materno', '$nombres',
-            1, '$password', NOW(), null, 'photo_NA.jpg'
-            FROM persona
-            WHERE tipo_persona = 1 AND SUBSTRING(matricula, 4, 2) = DATE_FORMAT(NOW(), '%y'))";
+            $matricula = self::nuevaMatricula($ciclo->getAnoInicio());
+
+            $query = "INSERT INTO persona VALUES
+                (null, '$matricula',
+                 '$apellido_paterno', '$apellido_materno', '$nombres',
+                1, '$password', NOW(), null, 'photo_NA.jpg')";
             return Database::insert($query);
         }
         else return 0;
+    }
+
+    static function nuevaMatricula($ano)
+    {
+        //{A}{2 dígitos del código del colegio}{4 dígitos año}{4 dígitos contador}
+        $colegio = '01'; // HARDCODED. Colegio Meze = 01
+        $contador = Alumno::getSiguienteDelCiclo($ano);
+        return 'A'.$colegio.$ano.$contador;
+    }
+
+    static function getSiguienteDelCiclo($ano)
+    {
+        $query = "SELECT LPAD(MAX(SUBSTRING(matricula, 8, 4)) + 1, 4, '0') AS siguiente
+        FROM persona WHERE tipo_persona = 1";
+        $res = Database::select($query);
+        return $res[0]['siguiente'];
     }
     
     public static function login($matricula, $password)
