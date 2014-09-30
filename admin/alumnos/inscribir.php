@@ -159,8 +159,8 @@ $tipos_tutor = Tutor::getTipos();
                 var colonia = $("#coloniaVal").val();
                 var CP      = $("#CPVal").val();
 
-                var club = $("#clubVal").val();
-                var CURP = $("#curpVal").val();
+                var club    = $("#clubVal").val();
+                var CURP    = $("#curpVal").val();
 
                 /** Beca */
                 var beca_tipo = $("#becaTipoVal").val();
@@ -327,15 +327,37 @@ $tipos_tutor = Tutor::getTipos();
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="coloniaVal">Colonia</label>
-                                <input type="text" class="form_input" name="coloniaVal" id="coloniaVal" />
+                                <select class="form_input" name="coloniaVal" id="coloniaVal">
+                                    <?php
+                                    $colonias = Colonia::getColonias();
+                                    if(is_array($colonias))
+                                    {
+                                        foreach($colonias as $colonia)
+                                        {
+                                            echo "<option value='".$colonia['id_colonia']."'>".$colonia['nombre']."</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="CPVal">C.P</label>
                                 <input type="text" class="form_input" name="CPVal" id="CPVal" />
                             </div>
                             <div class="form_row_3">
-                                <label class="form_label" for="clubVal">Club deportivo</label>
-                                <input class="form_input" type="text" name="clubVal" id="clubVal" />
+                                <label class="form_label" for="clubVal">Club</label>
+                                <select class="form_input" name="clubVal" id="clubVal">
+                                    <?php
+                                    $clubs = Club::getClubs();
+                                    if(is_array($clubs))
+                                    {
+                                        foreach($clubs as $club)
+                                        {
+                                            echo "<option value='".$club['id_club']."'>".$club['nombre']."</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="curpVal">CURP</label>

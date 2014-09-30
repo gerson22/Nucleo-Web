@@ -72,5 +72,12 @@
                 <li class="li_submenu" ><a href="/admin/cuentas/recibos.php" >Recibos</a></li>
             </ul>
         </li>
+        <li class="li_menu" >
+            Config.
+            <ul class="submenu" >
+                <li class="li_submenu" ><a href="/admin/configuracion/clubs/index.php" >Clubs</a></li>
+                <li class="li_submenu" ><a href="/admin/configuracion/colonias/index.php" >Colonias</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>

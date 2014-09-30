@@ -231,13 +231,15 @@ class Alumno extends Persona
 
     function setClubDeportivo($club)
     {
-        $query = "INSERT INTO persona_extra VALUES($this->id_persona, '$club')";
+        $query = "INSERT INTO persona_extra VALUES($this->id_persona, $club)";
         return Database::insert($query);
     }
 
     function getClubDeportivo()
     {
-        $query = "SELECT club_deportivo FROM persona_extra WHERE id_persona = $this->id_persona";
+        $query = "SELECT club.nombre AS club_deportivo FROM persona_extra
+            JOIN club ON club.id_club = persona_extra.club_deportivo
+            WHERE id_persona = $this->id_persona";
         $rs = Database::select($query);
         return $rs[0]['club_deportivo'];
     }

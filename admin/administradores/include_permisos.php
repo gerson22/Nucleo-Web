@@ -77,3 +77,8 @@ include_once("../../includes/validar_admin.php");
     <div class="permiso"><input type="checkbox" value="33" />Ver lista</div>
     <div class="permiso"><input type="checkbox" value="34" />Nueva</div>
 </div>
+<div class="grupo_permisos">
+    <div class="grupo_permisos_titulo">Configuración</div>
+    <div class="permiso"><input type="checkbox" value="44" />Clubs</div>
+    <div class="permiso"><input type="checkbox" value="45" />Colonias</div>
+</div>

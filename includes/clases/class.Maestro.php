@@ -94,13 +94,15 @@ class Maestro extends Persona
     function setDireccion($calle, $numero, $colonia, $CP)
     {
         $query = "REPLACE INTO persona_direccion SET id_persona = $this->id_persona, calle = '$calle',
-          numero = '$numero', colonia = '$colonia', CP = '$CP'";
+          numero = '$numero', id_colonia = $colonia, CP = '$CP'";
         return Database::insert($query);
     }
 
     function getDireccion()
     {
-        $query = "SELECT * FROM persona_direccion WHERE id_persona = $this->id_persona";
+        $query = "SELECT *, colonia.nombre AS colonia FROM persona_direccion
+          JOIN colonia ON colonia.id_colonia = persona_direccion.id_colonia
+          WHERE id_persona = $this->id_persona";
         $rs = Database::select($query);
         return $rs[0];
     }

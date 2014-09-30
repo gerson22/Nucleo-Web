@@ -32,7 +32,7 @@ else
         {
             $maestro->setDireccion($calle, $numero, $colonia, $CP);
         }
-        if(!is_null($titulo) && !is_null($egresadode) && !is_null($ano))
+        if(!is_null($titulo) && !is_null($egresado) && !is_null($ano))
         {
             if(!$maestro->setEscolaridad($titulo, $egresado, $ano)) echo 4; // Error al asignarle escolaridad
         }

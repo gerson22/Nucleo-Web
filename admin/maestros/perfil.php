@@ -470,15 +470,15 @@ $escolaridad = $maestro->getEscolaridad();
                         <?php $direccion = $maestro->getDireccion(); ?>
                         <div class="form_row_4">
                             <label>Calle</label>
-                            <input type="text" value="<?php echo $direccion['calle']; ?>" class="form_input" />
+                            <input type="text" value="<?php echo $direccion['calle']; ?>" class="form_input" readonly />
                         </div>
                         <div class="form_row_4">
                             <label>Número</label>
-                            <input type="text" value="<?php echo $direccion['numero']; ?>" class="form_input" />
+                            <input type="text" value="<?php echo $direccion['numero']; ?>" class="form_input" readonly />
                         </div>
                         <div class="form_row_4">
                             <label>Colonia</label>
-                            <input type="text" value="<?php echo $direccion['colonia']; ?>" class="form_input" />
+                            <input type="text" value="<?php echo $direccion['colonia']; ?>" class="form_input" readonly />
                         </div>
                         <div class="form_row_4">
                             <label>CP</label>

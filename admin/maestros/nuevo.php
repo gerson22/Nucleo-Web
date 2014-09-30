@@ -205,7 +205,15 @@ extract($_GET);
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="coloniaVal">Colonia</label>
-                                <input class="form_input" type="text" name="coloniaVal" id="coloniaVal" />
+                                <select class="form_input" name="coloniaVal" id="coloniaVal" required >
+                                    <?php
+                                    $colonias = Colonia::getColonias();
+                                    foreach($colonias as $colonia)
+                                    {
+                                        echo "<option value='".$colonia['id_colonia']."' >".$colonia['nombre']."</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="CPVal">CP</label>

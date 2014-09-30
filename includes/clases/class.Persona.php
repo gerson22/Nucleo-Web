@@ -60,7 +60,8 @@ class Persona
 
     function getDireccion()
     {
-        $query = "SELECT calle, numero, colonia, CP FROM persona_direccion WHERE id_persona = $this->id_persona";
+        $query = "SELECT calle, numero, colonia.nombre AS colonia, CP FROM persona_direccion
+            JOIN colonia ON colonia.id_colonia = persona_direccion.id_colonia WHERE id_persona = $this->id_persona";
         $res = Database::select($query);
         return $res[0];
     }
@@ -68,7 +69,7 @@ class Persona
     function setDireccion($calle, $numero, $colonia, $CP)
     {
         $query = "REPLACE INTO persona_direccion SET id_persona = $this->id_persona,
-            numero = '$numero', calle = '$calle', colonia = '$colonia', CP = '$CP'";
+            numero = '$numero', calle = '$calle', id_colonia = $colonia, CP = '$CP'";
 
         return Database::insert($query);
     }

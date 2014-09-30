@@ -319,10 +319,10 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             <input type="text" class="form_input" id="CPVal" value="<?php echo $direccion['CP']; ?>" readonly />
                             <img src="/media/iconos/icon_modify.png" width="15" ALT="M" onclick="mostrarMdyDireccion()" />
                         </div>
-                        <label>Club deportivo</label>
-                        <input type="text" class="form_input" value="<?php echo $alumno->getClubDeportivo(); ?>" />
+                        <label>Club</label>
+                        <input type="text" class="form_input" value="<?php echo $alumno->getClubDeportivo(); ?>" readonly />
                         <label>CURP</label>
-                        <input type="text" class="form_input" value="<?php echo $alumno->getCURP(); ?>" />
+                        <input type="text" class="form_input" value="<?php echo $alumno->getCURP(); ?>" readonly />
                     </div>
                     <div id="tabs-7">
                         <table id="tabla_becas">

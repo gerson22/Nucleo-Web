@@ -30,3 +30,5 @@ include_once("class.Cuenta.php");
 include_once("class.Parametros.php");
 include_once("class.Documento.php");
 include_once("class.Asistencia.php");
+include_once("class.Club.php");
+include_once("class.Colonia.php");
