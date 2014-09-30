@@ -140,6 +140,7 @@ $admin = new Administrador($id_administrador);
                             <label class="form_label" for="nombresVal">Nombres</label>
                             <input class="form_input" type="text" value="<?php echo $admin->nombres; ?>" id="nombresVal" required />
                         </div>
+                        <button onclick="mostrarContrasena()" type="button">Contraseña</button>
                     </div>
                     <div id="tab2-permisos" >
                         <?php include_once("include_permisos.php"); ?>
@@ -172,6 +173,19 @@ $admin = new Administrador($id_administrador);
                 $(this).prop('checked', checked);
             });
 
+        }
+
+        function mostrarContrasena()
+        {
+            $.ajax({
+                type: "POST",
+                url: "/includes/acciones/administradores/getPassword.php",
+                data: "id_administrador=" + id_administrador,
+                success: function (data)
+                {
+                    alert(data);
+                }
+            });
         }
     </script>
 </html>
