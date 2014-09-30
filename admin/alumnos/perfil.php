@@ -623,7 +623,18 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         </div>
                         <div class="fixed_form_row">
                             <label>Colonia:</label>
-                            <input id="coloniaValMdy" type="text" class="fixed_form_value"  />
+                            <select class="fixed_form_value" name="coloniaValMdy" id="coloniaValMdy" >
+                                <?php
+                                $colonias = Colonia::getColonias();
+                                if(is_array($colonias))
+                                {
+                                    foreach($colonias as $colonia)
+                                    {
+                                        echo "<option value='".$colonia['id_colonia']."'>".$colonia['nombre']."</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="fixed_form_row">
                             <label>CP:</label>

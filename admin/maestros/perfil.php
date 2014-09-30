@@ -156,13 +156,15 @@ $escolaridad = $maestro->getEscolaridad();
                 $("#prompt_email").fadeIn();
             }
 
-            function addEmail()
+            function addEmail(caller)
             {
                 var email = $("#emailVal").val();
                 var tipo_email = $("#tipo_emailVal").val();
 
                 if (email.length > 0)
                 {
+                    $(caller).attr('disabled', 'disabled');
+
                     $.ajax({
                         type: "POST",
                         url: "/includes/acciones/maestros/agregar_email.php",
@@ -179,6 +181,7 @@ $escolaridad = $maestro->getEscolaridad();
                 else
                 {
                     alert("No ingresó ningún correo electrónico");
+                    $(caller).removeAttr('disabled');
                 }
             }
 
@@ -420,7 +423,7 @@ $escolaridad = $maestro->getEscolaridad();
                                             <td>".$email['tipo_email']."</td>
                                             <td>".$email['email']."</td>
                                             <td>
-                                                <a href='../../includes/acciones/alumnos/eliminar_email.php?id_email=".$email['id_email']."' >
+                                                <a href='../../includes/acciones/maestros/eliminar_email.php?id_email=".$email['id_email']."' >
                                                     <img src='../../media/iconos/icon_close.gif' alt='borrar' />
                                                 </a>
                                             </td>
@@ -518,7 +521,7 @@ $escolaridad = $maestro->getEscolaridad();
                     }
                     ?>
                     </select>
-                    <input type="button" value="Aceptar" style="float: left; width: 40%; margin: 10px;" onclick="addEmail()" />
+                    <input type="button" value="Aceptar" style="float: left; width: 40%; margin: 10px;" onclick="addEmail(this)" />
                     <input type="button" value="Cancelar" style="float: right; width: 40%; margin: 10px;" onclick="$(this).parent().fadeOut();"/>
                 </div>
 
@@ -557,7 +560,15 @@ $escolaridad = $maestro->getEscolaridad();
                         </div>
                         <div class="fixed_form_row">
                             <label>Colonia:</label>
-                            <input id="coloniaValMdy" type="text" class="fixed_form_value"  />
+                            <select class="form_input" name="coloniaValMdy" id="coloniaValMdy" required >
+                                <?php
+                                $colonias = Colonia::getColonias();
+                                foreach($colonias as $colonia)
+                                {
+                                    echo "<option value='".$colonia['id_colonia']."' >".$colonia['nombre']."</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="fixed_form_row">
                             <label>CP:</label>
