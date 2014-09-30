@@ -42,7 +42,7 @@ $escolaridad = $maestro->getEscolaridad();
                 width: 90%;
             }
 
-            #prompt_modificar_direccion
+            #prompt_modificar_direccion, #prompt_modificar_escolaridad
             {
                 width: 400px;
             }
@@ -502,6 +502,7 @@ $escolaridad = $maestro->getEscolaridad();
                             <label class="form_label">Año</label>
                             <input type="text" class="form_input" value="<?php echo $escolaridad['ano']; ?>" readonly />
                         </div>
+                        <img src="/media/iconos/icon_modify.png" style="width: 15px; float: right;" alt="M" onclick="mostrarModificarEscolaridad()" />
                     </div>
                 </div>
 
@@ -580,6 +581,34 @@ $escolaridad = $maestro->getEscolaridad();
                     </div>
                 </div>
 
+                <!-- MODIFICAR ESCOLARIDAD -->
+
+                <div id="prompt_modificar_escolaridad" class="fixed_form" >
+                    <div id="prompt_modificar_direccion_handle" class="fixed_form_handle">
+                        <img src="/media/iconos/icon_close.gif" alt="Cerrar" onclick="$(this).parent().parent().fadeOut();" />
+                    </div>
+                    <div class="fixed_form_content">
+                        <div class="fixed_form_row">
+                            <label>Título:</label>
+                            <input id="tituloValMdy" type="text" class="fixed_form_value"  />
+                        </div>
+                        <div class="fixed_form_row">
+                            <label>Egresado de:</label>
+                            <input id="egresadoDeValMdy" type="text" class="fixed_form_value"  />
+                        </div>
+                        <div class="fixed_form_row">
+                            <label>Año:</label>
+                            <input id="anoValMdy" type="text" class="fixed_form_value"  />
+                        </div>
+
+                        <div class="fixed_form_row">
+                            <input type="button" id="boton_update" value="Aceptar" class="fixed_form_button" onclick="updateEscolaridad(this)" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --------------------- -->
+
             </div>
         </div>
 
@@ -597,6 +626,15 @@ $escolaridad = $maestro->getEscolaridad();
             $("#prompt_modificar_direccion").fadeIn();
         }
 
+        function mostrarModificarEscolaridad()
+        {
+            $("#tituloValMdy").val('<?php echo $escolaridad['titulo']; ?>');
+            $("#egresadoDeValMdy").val('<?php echo $escolaridad['egresadode']; ?>');
+            $("#anoValMdy").val('<?php echo $escolaridad['ano']; ?>');
+
+            $("#prompt_modificar_escolaridad").fadeIn();
+        }
+
         function updateDireccion(boton)
         {
             $(boton).attr('disabled','disabled');
@@ -611,6 +649,25 @@ $escolaridad = $maestro->getEscolaridad();
                 url: "/includes/acciones/maestros/updateDireccionAJAX.php",
                 data: "id_maestro=" + id_maestro + "&calle=" + calle
                     + "&numero=" + numero + "&colonia=" + colonia + "&CP=" + CP,
+                success: function (data)
+                {
+                    document.location.reload(true);
+                }
+            });
+        }
+
+        function updateEscolaridad(boton)
+        {
+            $(boton).attr('disabled','disabled');
+
+            var titulo      = $("#tituloValMdy").val();
+            var egresadoDe  = $("#egresadoDeValMdy").val();
+            var ano         = $("#anoValMdy").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/includes/acciones/maestros/updateEscolaridadAJAX.php",
+                data: "id_maestro=" + id_maestro + "&titulo=" + titulo + "&egresadoDe=" + egresadoDe + "&ano=" + ano,
                 success: function (data)
                 {
                     document.location.reload(true);
