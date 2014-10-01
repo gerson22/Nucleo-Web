@@ -29,7 +29,7 @@ $papeleria_entregada = json_decode($papeleria_entregada);
 
 # exit();
 
-if(!isset($apellido_paterno) || !isset($apellido_materno) || !isset($nombres))
+if(!isset($apellido_paterno) || !isset($apellido_materno) || !isset($nombres) || !isset($grupo) || !isset($grado))
 {
     header('Location: /admin/alumnos/nuevo.php?error=1');
     exit();
