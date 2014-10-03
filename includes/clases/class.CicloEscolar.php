@@ -38,7 +38,7 @@ class CicloEscolar
 
     function getAlumnosInscritosPagados()
     {
-        $query = "SELECT persona.id_persona, apellido_paterno, apellido_materno, nombres, area, grado, grupo
+        $query = "SELECT persona.id_persona, matricula, apellido_paterno, apellido_materno, nombres, area, grado, grupo
             FROM cuentas_cuenta
             JOIN persona ON persona.id_persona = cuentas_cuenta.id_persona
             JOIN alumno_grupo ON alumno_grupo.id_alumno = persona.id_persona

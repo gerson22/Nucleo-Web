@@ -23,7 +23,7 @@ if(is_array($alumnos))
     foreach($alumnos as $alumno)
     {
         $temp = array();
-        array_push($temp, $alumno['id_persona']);
+        array_push($temp, $alumno['matricula']);
         array_push($temp, $alumno['apellido_paterno']);
         array_push($temp, $alumno['apellido_materno']);
         array_push($temp, $alumno['nombres']);

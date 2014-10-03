@@ -36,7 +36,7 @@ include_once("../../includes/clases/class_lib.php");
                 <table id="tabla_alumnos" >
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Matrícula</th>
                             <th>Apellido paterno</th>
                             <th>Apellido materno</th>
                             <th>Nombres</th>
