@@ -44,7 +44,7 @@ $alumnos = Alumno::getLista();
                     <table id="tabla_alumnos" >
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Matrícula</th>
                                 <th>Apellido paterno</th>
                                 <th>Apellido materno</th>
                                 <th>Nombres</th>
@@ -62,7 +62,7 @@ $alumnos = Alumno::getLista();
                                 {
                                     echo "
                                         <tr>
-                                            <td>".$alumno['id_persona']."</td>
+                                            <td>".$alumno['matricula']."</td>
                                             <td>".$alumno['apellido_paterno']."</td>
                                             <td>".$alumno['apellido_materno']."</td>
                                             <td>".$alumno['nombres']."</td>

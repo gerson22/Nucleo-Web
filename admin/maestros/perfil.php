@@ -285,9 +285,21 @@ $escolaridad = $maestro->getEscolaridad();
 
                 <div id="wrapper_top" >
                     <div id="profile_picture">
+
                         <div id="profile_picture_inner">
                             <img src="../../media/fotos/<?php echo $maestro->foto; ?>" alt="N/A" id="foto_maestro" />
                         </div>
+
+                        <!-- loader.gif -->
+                        <img style="display:none" id="loader" src="/media/imagenes/loader.gif" alt="Cargando...." title="Cargando...." />
+                        <!-- simple file uploading form -->
+                        <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data">
+                            <input id="uploadImage" type="file" accept="image/*" name="image" />
+                            <input id="button" type="submit" value="Upload">
+                        </form>
+                        <!-- preview action or error msgs -->
+                        <div id="preview" style="display:none"></div>
+
                     </div>
 
                     <div id="datos_generales">
@@ -564,9 +576,12 @@ $escolaridad = $maestro->getEscolaridad();
                             <select class="form_input" name="coloniaValMdy" id="coloniaValMdy" required >
                                 <?php
                                 $colonias = Colonia::getColonias();
-                                foreach($colonias as $colonia)
+                                if(is_array($colonias))
                                 {
-                                    echo "<option value='".$colonia['id_colonia']."' >".$colonia['nombre']."</option>";
+                                    foreach($colonias as $colonia)
+                                    {
+                                        echo "<option value='".$colonia['id_colonia']."' >".$colonia['nombre']."</option>";
+                                    }
                                 }
                                 ?>
                             </select>

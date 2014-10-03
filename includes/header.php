@@ -1,7 +1,7 @@
 <div id="header">
     <a href="/index.php" ><img id="logo_meze" src="/media/logos/mezeblanco.png" alt="MEZE" /></a>
     <div id="nombre_sesion">
-        <a id="link_perfil" href="/perfil.php">Bievenid@ <?php echo $_SESSION['nombres']; ?></a>
+        <a id="link_perfil" href="/perfil.php">Bievenid@ <?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?></a>
         <br>
         <a id="link_logout" href="/includes/logout.php">Salir</a>
     </div>
