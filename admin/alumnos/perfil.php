@@ -641,6 +641,25 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             <input id="CPValMdy" type="text" class="fixed_form_value"  />
                         </div>
                         <div class="fixed_form_row">
+                            <label>Club:</label>
+                            <select class="fixed_form_value" name="ClubValMdy" id="ClubValMdy" >
+                                <?php
+                                $clubs = Club::getClubs();
+                                if(is_array($clubs))
+                                {
+                                    foreach($clubs as $club)
+                                    {
+                                        echo "<option value='".$club['id_club']."'>".$club['nombre']."</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="fixed_form_row">
+                            <label>CURP:</label>
+                            <input id="CURPValMdy" type="text" class="fixed_form_value"  />
+                        </div>
+                        <div class="fixed_form_row">
                             <input type="button" id="boton_update" value="Aceptar" class="fixed_form_button" onclick="updateDireccion(this)" />
                         </div>
                     </div>
@@ -771,8 +790,15 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         {
             $("#calleValMdy").val('<?php echo $direccion['calle']; ?>');
             $("#numeroValMdy").val('<?php echo $direccion['numero']; ?>');
-            $("#coloniaValMdy").val('<?php echo $direccion['colonia']; ?>');
+            $("#coloniaValMdy option").filter(function(){
+                return $(this).text() == "<?php echo $direccion['colonia']; ?>";
+            }).prop('selected', true);
             $("#CPValMdy").val('<?php echo $direccion['CP']; ?>');
+
+            $("#ClubValMdy option").filter(function(){
+                return $(this).text() == "<?php echo $alumno->getClubDeportivo(); ?>";
+            }).prop('selected', true);
+            $("#CURPValMdy").val('<?php echo $alumno->getCURP(); ?>');
 
             $("#prompt_modificar_direccion").fadeIn();
         }
@@ -786,6 +812,9 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
             var colonia = $("#coloniaValMdy").val();
             var CP      = $("#CPValMdy").val();
 
+            var club    = $("#ClubValMdy").val();
+            var CURP    = $("#CURPValMdy").val();
+
             $.ajax({
                 type: "POST",
                 url: "../../includes/acciones/personas/update_direccion.php",
@@ -793,9 +822,19 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     + "&numero=" + numero + "&colonia=" + colonia + "&CP=" + CP,
                 success: function (data)
                 {
-                    document.location.reload(true);
+                    $.ajax({
+                        type: "POST",
+                        url: "../../includes/acciones/alumnos/update_club_curp.php",
+                        data: "id_persona=" + id_alumno + "&club=" + club + "&CURP=" + CURP,
+                        success: function (data)
+                        {
+                            document.location.reload(true);
+                        }
+                    });
                 }
             });
+
+
         }
 
         function perfilCuentas()

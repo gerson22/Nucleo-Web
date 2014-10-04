@@ -231,7 +231,7 @@ class Alumno extends Persona
 
     function setClubDeportivo($club)
     {
-        $query = "INSERT INTO persona_extra VALUES($this->id_persona, $club)";
+        $query = "REPLACE INTO persona_extra VALUES($this->id_persona, $club)";
         return Database::insert($query);
     }
 
@@ -246,7 +246,7 @@ class Alumno extends Persona
 
     function setCURP($CURP)
     {
-        $query = "INSERT INTO CURP VALUES($this->id_persona, '$CURP');";
+        $query = "REPLACE INTO CURP VALUES($this->id_persona, '$CURP');";
         return Database::insert($query);
     }
 
