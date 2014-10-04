@@ -21,4 +21,10 @@ class Tutor
         $query = "SELECT * FROM tutor_ocupacion";
         return Database::select($query);
     }
+
+    static function insertOcupacion($nombre)
+    {
+        $query = "INSERT INTO tutor_ocupacion VALUES(null, '$nombre')";
+        return Database::insert($query);
+    }
 } 
