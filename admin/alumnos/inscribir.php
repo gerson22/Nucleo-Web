@@ -249,7 +249,6 @@ $tipos_tutor = Tutor::getTipos();
                         <ul>
                             <li><a href="#tab-datos_alumno">Datos del alumno</a></li>
                             <li><a href="#tab-datos_tutores">Familia / Tutores</a></li>
-                            <li><a href="#tab-datos_direccion">Dirección</a></li>
                             <li><a href="#tab-otra_informacion">Otra información</a></li>
                             <li><a href="#tab-beca">Beca</a></li>
                             <li><a href="#tab-papeleria">Papeleria</a></li>
@@ -268,6 +267,40 @@ $tipos_tutor = Tutor::getTipos();
                                 <input class="form_input" type="text" name="apellido_maternoVal" id="apellido_maternoVal" />
                             </div>
 
+                            <div class="form_row_4">
+                                <label class="form_label" for="calleVal">Calle</label>
+                                <input type="text" class="form_input" name="calleVal" id="calleVal" />
+                            </div>
+                            <div class="form_row_4">
+                                <label class="form_label" for="numeroVal">Número</label>
+                                <input type="text" class="form_input" name="numeroVal" id="numeroVal" />
+                            </div>
+                            <div class="form_row_4">
+                                <label class="form_label" for="coloniaVal">Colonia</label>
+                                <select class="form_input" name="coloniaVal" id="coloniaVal">
+                                    <?php
+                                    $colonias = Colonia::getColonias();
+                                    if(is_array($colonias))
+                                    {
+                                        foreach($colonias as $colonia)
+                                        {
+                                            echo "<option value='".$colonia['id_colonia']."'>".$colonia['nombre']."</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form_row_4">
+                                <label class="form_label" for="CPVal">C.P</label>
+                                <input type="text" class="form_input" name="CPVal" id="CPVal" />
+                            </div>
+
+                            <div class="form_row_3">
+                                <label class="form_label" for="curpVal">CURP</label>
+                                <input class="form_input" type="text" name="curpVal" id="curpVal" />
+                            </div>
+
+                            <hr style="width: 100%; float: left"/>
                             <!----------------------------------------------------------------------------------------->
 
                             <div class="form_row_4">
@@ -320,35 +353,6 @@ $tipos_tutor = Tutor::getTipos();
                                 <div style="margin: 7px 0; overflow: auto;">Agregar</div>
                             </div>
                         </div>
-                        <div id="tab-datos_direccion" class="aTab" >
-                            <div class="form_row_4">
-                                <label class="form_label" for="calleVal">Calle</label>
-                                <input type="text" class="form_input" name="calleVal" id="calleVal" />
-                            </div>
-                            <div class="form_row_4">
-                                <label class="form_label" for="numeroVal">Número</label>
-                                <input type="text" class="form_input" name="numeroVal" id="numeroVal" />
-                            </div>
-                            <div class="form_row_4">
-                                <label class="form_label" for="coloniaVal">Colonia</label>
-                                <select class="form_input" name="coloniaVal" id="coloniaVal">
-                                    <?php
-                                    $colonias = Colonia::getColonias();
-                                    if(is_array($colonias))
-                                    {
-                                        foreach($colonias as $colonia)
-                                        {
-                                            echo "<option value='".$colonia['id_colonia']."'>".$colonia['nombre']."</option>";
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="form_row_4">
-                                <label class="form_label" for="CPVal">C.P</label>
-                                <input type="text" class="form_input" name="CPVal" id="CPVal" />
-                            </div>
-                        </div>
                         <div id="tab-otra_informacion" class="aTab">
                             <div class="form_row_3">
                                 <label class="form_label" for="clubVal">Club</label>
@@ -365,10 +369,6 @@ $tipos_tutor = Tutor::getTipos();
                                     }
                                     ?>
                                 </select>
-                            </div>
-                            <div class="form_row_3">
-                                <label class="form_label" for="curpVal">CURP</label>
-                                <input class="form_input" type="text" name="curpVal" id="curpVal" />
                             </div>
                         </div>
                         <div id="tab-beca" class="aTab">
