@@ -249,6 +249,7 @@ $tipos_tutor = Tutor::getTipos();
                         <ul>
                             <li><a href="#tab-datos_alumno">Datos del alumno</a></li>
                             <li><a href="#tab-datos_tutores">Familia / Tutores</a></li>
+                            <li><a href="#tab-datos_direccion">Dirección</a></li>
                             <li><a href="#tab-otra_informacion">Otra información</a></li>
                             <li><a href="#tab-beca">Beca</a></li>
                             <li><a href="#tab-papeleria">Papeleria</a></li>
@@ -319,7 +320,7 @@ $tipos_tutor = Tutor::getTipos();
                                 <div style="margin: 7px 0; overflow: auto;">Agregar</div>
                             </div>
                         </div>
-                        <div id="tab-otra_informacion" class="aTab">
+                        <div id="tab-datos_direccion" class="aTab" >
                             <div class="form_row_4">
                                 <label class="form_label" for="calleVal">Calle</label>
                                 <input type="text" class="form_input" name="calleVal" id="calleVal" />
@@ -347,6 +348,8 @@ $tipos_tutor = Tutor::getTipos();
                                 <label class="form_label" for="CPVal">C.P</label>
                                 <input type="text" class="form_input" name="CPVal" id="CPVal" />
                             </div>
+                        </div>
+                        <div id="tab-otra_informacion" class="aTab">
                             <div class="form_row_3">
                                 <label class="form_label" for="clubVal">Club</label>
                                 <select class="form_input" name="clubVal" id="clubVal">
