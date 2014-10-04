@@ -77,6 +77,7 @@
             <ul class="submenu" >
                 <li class="li_submenu" ><a href="/admin/configuracion/clubs/index.php" >Clubs</a></li>
                 <li class="li_submenu" ><a href="/admin/configuracion/colonias/index.php" >Colonias</a></li>
+                <li class="li_submenu" ><a href="/admin/configuracion/papeleria/index.php" >Papeleria</a></li>
             </ul>
         </li>
     </ul>

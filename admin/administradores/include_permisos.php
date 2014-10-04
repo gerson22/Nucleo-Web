@@ -81,4 +81,5 @@ include_once("../../includes/validar_admin.php");
     <div class="grupo_permisos_titulo">Configuración</div>
     <div class="permiso"><input type="checkbox" value="44" />Clubs</div>
     <div class="permiso"><input type="checkbox" value="45" />Colonias</div>
+    <div class="permiso"><input type="checkbox" value="46" />Papeleria</div>
 </div>

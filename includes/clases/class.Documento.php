@@ -25,4 +25,10 @@ class Documento
         $query = "SELECT * FROM documento";
         return Database::select($query);
     }
+
+    static function insert($nombre)
+    {
+        $query = "INSERT INTO documento VALUES(null, '$nombre')";
+        return Database::insert($query);
+    }
 } 

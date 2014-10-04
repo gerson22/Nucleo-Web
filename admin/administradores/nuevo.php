@@ -23,6 +23,7 @@ include_once("../../includes/validar_admin.php");
                 margin: 10px;
                 padding: 5px;
                 width: 150px;
+                height: 120px;
             }
 
             .grupo_permisos_titulo
