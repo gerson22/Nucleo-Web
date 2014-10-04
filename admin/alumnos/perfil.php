@@ -643,6 +643,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         <div class="fixed_form_row">
                             <label>Club:</label>
                             <select class="fixed_form_value" name="ClubValMdy" id="ClubValMdy" >
+                                <option></option>
                                 <?php
                                 $clubs = Club::getClubs();
                                 if(is_array($clubs))

@@ -95,6 +95,7 @@ $tipos_tutor = Tutor::getTipos();
             function asignarReglasValidacion()
             {
                 $('#forma_nuevo_alumno').validate({
+                    ignore: "",
                     rules:
                     {
                         "apellido_paternoVal": { required: true },
@@ -127,7 +128,6 @@ $tipos_tutor = Tutor::getTipos();
 
             function enviarFormulario()
             {
-                $("#boton_aceptar").attr('disabled','disabled');
                 var forma = $("#forma_nuevo_alumno");
 
                  /** Datos del usuario */
@@ -185,6 +185,8 @@ $tipos_tutor = Tutor::getTipos();
 
                 if(forma.valid())
                 {
+                    $("#boton_aceptar").attr('disabled','disabled');
+
                     var parametros = "nombres=" + nombres + "&apellido_paterno=" + paterno + "&apellido_materno=" + materno
                         + "&area=" + area + "&grado=" + grado + "&grupo=" + grupo + "&calle=" + calle
                         + "&numero=" + numero + "&colonia=" + colonia + "&CP=" + CP
@@ -348,6 +350,7 @@ $tipos_tutor = Tutor::getTipos();
                             <div class="form_row_3">
                                 <label class="form_label" for="clubVal">Club</label>
                                 <select class="form_input" name="clubVal" id="clubVal">
+                                    <option></option>
                                     <?php
                                     $clubs = Club::getClubs();
                                     if(is_array($clubs))
