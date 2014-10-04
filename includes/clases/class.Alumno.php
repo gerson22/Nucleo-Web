@@ -222,10 +222,10 @@ class Alumno extends Persona
         return Database::select($query);
     }
 
-    function asignarTutor($tipo, $nombre, $calle, $numero, $colonia, $CP, $telefono, $celular)
+    function asignarTutor($tipo, $nombre, $calle, $numero, $colonia, $CP, $telefono, $celular, $ocupacion, $lugarTrabajo)
     {
         $query = "INSERT INTO persona_tutor VALUES(
-            null, $this->id_persona, $tipo, '$nombre', '$calle', '$numero', '$colonia', '$CP', '$telefono', '$celular')";
+            null, $this->id_persona, $tipo, '$nombre', '$calle', '$numero', '$colonia', '$CP', '$telefono', '$celular', '$ocupacion', '$lugarTrabajo')";
         return Database::insert($query);
     }
 

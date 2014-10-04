@@ -1,0 +1,66 @@
+.tutor
+{
+    border-bottom: 1px solid #eee;
+    height: 200px;
+    overflow: auto;
+}
+
+.imagen_tutor
+{
+    float: left;
+    height: 100px;
+    padding: 45px 25px 45px 0;
+}
+
+.tutor label
+{
+    width: 100%;
+    float: left;
+}
+
+.tutor input, .tutor select
+{
+    width: 90%;
+    float: left;
+    border: 1px solid #A4C7E1;
+    height: 26px;
+    padding-left: 5px;
+}
+
+.tutor_info_div_sm, .tutor_info_div_md, .tutor_info_div_lg
+{
+    float: left;
+    overflow: auto;
+    padding-top: 10px;
+}
+
+.tutor_info_div_sm
+{
+    width: 130px;
+}
+
+.tutor_info_div_md
+{
+    width: 190px;
+}
+
+.tutor_info_div_lg
+{
+    width: 260px;
+}
+
+.img_eliminar_tutor
+{
+    float: right;
+    height: 30px;
+    padding-top: 25px;
+    width: 30px;
+}
+
+
+#boton_nuevo_tutor{ border: 1px solid #CCCCCC; height: 30px; width: 90px; }
+#boton_nuevo_tutor:hover{ border: 1px solid #BBBBBB; background-color: #EEEEEE; }
+#boton_nuevo_tutor img{ float: left; margin: 5px; }
+.aTab{ min-height: 200px; }
+.original{ margin-left: 55px; }
+.copia{ margin-left: 10px; }

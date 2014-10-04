@@ -5,6 +5,7 @@ include_once("../../includes/clases/class_lib.php");
 include_once("../../includes/validar_acceso.php");
 
 $tipos_tutor = Tutor::getTipos();
+$ocupaciones = Tutor::getOcupaciones();
 ?>
 
 <!DOCTYPE html>
@@ -15,23 +16,7 @@ $tipos_tutor = Tutor::getTipos();
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-        <style>
-            #boton_nuevo_tutor{ border: 1px solid #CCCCCC; height: 30px; width: 90px; }
-            #boton_nuevo_tutor:hover{ border: 1px solid #BBBBBB; background-color: #EEEEEE; }
-            #boton_nuevo_tutor img{ float: left; margin: 5px; }
-            .aTab{ min-height: 200px; }
-            .tutor{ overflow: auto; height: 60px; }
-            .tipo_tutor{ border: 1px solid #A4C7E1; height: 30px; padding: 5px 0 0 5px; width: 100px; }
-            .nombreTutor{ border: 1px solid #A4C7E1; height: 26px; width: 160px; }
-            .calleTutor{ border: 1px solid #A4C7E1; height: 26px; width: 70px; }
-            .numeroTutor{ border: 1px solid #A4C7E1; height: 26px; width: 40px; }
-            .coloniaTutor{ border: 1px solid #A4C7E1; height: 26px; width: 110px; }
-            .CPTutor{ border: 1px solid #A4C7E1; height: 26px; width: 40px; }
-            .telefonosTutor, .celularTutor{ border: 1px solid #A4C7E1; height: 26px; width: 90px; }
-            .img_eliminar_tutor{ width: 30px; height: 30px; float: left; margin: 15px 0; }
-            .original{ margin-left: 55px; }
-            .copia{ margin-left: 10px; }
-        </style>
+        <link rel="stylesheet" href="../../estilo/inscribir_alumno.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -39,8 +24,9 @@ $tipos_tutor = Tutor::getTipos();
         <script>
             var tutor_string = "" +
                 "<div class='tutor' >" +
-                    "<div class='tutor_apartado' style='overflow: auto; width: 120px; float: left'>" +
-                        "<label>Tipo</label>" +
+                    "<img src='/media/imagenes/tutor.gif' class='imagen_tutor' />" +
+                    "<div class='tutor_info_div_sm' >" +
+                        "<label>Tipo de tutor</label>" +
                         "<?php
                         echo "<select class='tipo_tutor'>";
                         if(is_array($tipos_tutor))
@@ -51,37 +37,55 @@ $tipos_tutor = Tutor::getTipos();
                             }
                         }
                         echo "</select>";
-                        ?>"
-                         +
+                        ?>" +
                     "</div>" +
-                    "<div style='float: left; width: 170px; overflow: auto'>" +
+                    "<div class='tutor_info_div_lg' >" +
                         "<label>Nombre</label>" +
                         "<input type='text' class='nombreTutor' />" +
                     "</div>" +
-                    "<div style='float: left; width: 80px; overflow: auto'>" +
-                        "<label>Calle</label>" +
-                        "<input type='text' class='calleTutor' />" +
-                    "</div>" +
-                    "<div style='float: left; width: 50px; overflow: auto'>" +
-                        "<label>Num</label>" +
-                        "<input type='text' class='numeroTutor' />" +
-                    "</div>" +
-                    "<div style='float: left; width: 120px; overflow: auto'>" +
-                        "<label>Colonia</label>" +
-                        "<input type='text' class='coloniaTutor' />" +
-                    "</div>" +
-                    "<div style='float: left; width: 50px; overflow: auto'>" +
-                        "<label>CP</label>" +
-                        "<input type='text' class='CPTutor' />" +
-                    "</div>" +
-                    "<div style='float: left; width: 100px; overflow: auto'>" +
+                    "<div class='tutor_info_div_md' >" +
                         "<label>Teléfonos</label>" +
                         "<input type='text' class='telefonosTutor' />" +
                     "</div>" +
-                    "<div style='float: left; width: 100px; overflow: auto'>" +
+                    "<div class='tutor_info_div_md' >" +
                         "<label>Celular</label>" +
                         "<input type='text' class='celularTutor' />" +
                     "</div>" +
+                    "<div class='tutor_info_div_md' >" +
+                        "<label>Calle</label>" +
+                        "<input type='text' class='calleTutor' />" +
+                    "</div>" +
+                    "<div class='tutor_info_div_sm' >" +
+                        "<label>Número</label>" +
+                        "<input type='text' class='numeroTutor' />" +
+                    "</div>" +
+                    "<div class='tutor_info_div_lg' >" +
+                        "<label>Colonia</label>" +
+                        "<input type='text' class='coloniaTutor' />" +
+                    "</div>" +
+                    "<div class='tutor_info_div_sm' >" +
+                        "<label>CP</label>" +
+                        "<input type='text' class='CPTutor' />" +
+                    "</div>" +
+                    "<div class='tutor_info_div_lg' >" +
+                        "<label>Ocupación</label>" +
+                        "<?php
+                            echo "<select class='ocupacionTutor'>";
+                            if(is_array($ocupaciones))
+                            {
+                                foreach($ocupaciones as $ocupacion)
+                                {
+                                    echo "<option value='".$ocupacion['id_tutor_ocupacion']."' >".$ocupacion['ocupacion']."</option>";
+                                }
+                            }
+                            echo "</select>";
+                        ?>" +
+                    "</div>" +
+                    "<div class='tutor_info_div_lg' >" +
+                        "<label>Lugar de trabajo</label>" +
+                        "<input type='text' class='lugarTrabajoTutor' />" +
+                    "</div>" +
+
                     "<img src='/media/iconos/close.png' alt='X' class='img_eliminar_tutor' onclick='$(this).parent().remove();'/>" +
                 "</div>";
 
@@ -151,6 +155,8 @@ $tipos_tutor = Tutor::getTipos();
                     tutor.CP            = $(this).find('.CPTutor').val();
                     tutor.telefonos     = $(this).find('.telefonosTutor').val();
                     tutor.celular       = $(this).find('.celularTutor').val();
+                    tutor.ocupacion     = $(this).find('.ocupacionTutor').val();
+                    tutor.lugarTrabajo  = $(this).find('.lugarTrabajoTutor').val();
                     tutores.push(tutor);
                 });
 
@@ -344,6 +350,8 @@ $tipos_tutor = Tutor::getTipos();
                                 </select>
                             </div>
                         </div>
+
+                        <!-- TUTORES -->
                         <div id="tab-datos_tutores" class="aTab" >
                             <div id="div_tutores">
                                 <!-- Dinámico -->
@@ -353,6 +361,8 @@ $tipos_tutor = Tutor::getTipos();
                                 <div style="margin: 7px 0; overflow: auto;">Agregar</div>
                             </div>
                         </div>
+                        <!------------>
+
                         <div id="tab-otra_informacion" class="aTab">
                             <div class="form_row_3">
                                 <label class="form_label" for="clubVal">Club</label>

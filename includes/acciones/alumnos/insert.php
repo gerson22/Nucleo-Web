@@ -54,7 +54,8 @@ else
             foreach($tutores as $tutor)
             {
                 $alumno->asignarTutor($tutor->id_tipo_tutor, $tutor->nombres, $tutor->calle,
-                    $tutor->numero, $tutor->colonia, $tutor->CP, $tutor->telefonos, $tutor->celular);
+                    $tutor->numero, $tutor->colonia, $tutor->CP, $tutor->telefonos, $tutor->celular,
+                    $tutor->ocupacion, $tutor->lugarTrabajo);
             }
         }
 

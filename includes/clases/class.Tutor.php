@@ -15,4 +15,10 @@ class Tutor
         $query = "SELECT * FROM tipo_tutor";
         return Database::select($query);
     }
+
+    static function getOcupaciones()
+    {
+        $query = "SELECT * FROM tutor_ocupacion";
+        return Database::select($query);
+    }
 } 
