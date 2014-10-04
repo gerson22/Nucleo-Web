@@ -127,6 +127,7 @@ $tipos_tutor = Tutor::getTipos();
 
             function enviarFormulario()
             {
+                $("#boton_aceptar").attr('disabled','disabled');
                 var forma = $("#forma_nuevo_alumno");
 
                  /** Datos del usuario */

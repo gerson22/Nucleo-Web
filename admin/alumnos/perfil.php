@@ -214,7 +214,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                                 <tr>
                                     <th>Tipo de correo electrónico</th>
                                     <th>Correo electrónico</th>
-                                    <th></th>
+                                    <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -247,7 +247,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                                 <tr>
                                     <th>Tipo de teléfono</th>
                                     <th>Teléfono</th>
-                                    <th></th>
+                                    <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
