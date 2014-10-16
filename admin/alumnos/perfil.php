@@ -672,9 +672,28 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         <!-- Dialogo para cambiar de grupo -->
         <div id="dialogo_cambio" title="Cambio de grupo" >
             <label>¿A que grupo desea cambiar al alumno?</label>
+            <hr />
+            <label>Area</label>
+            <select id="areaVal" onchange="loadGrados();">
+                <?php
+                    $areas = Area::getLista();
+                    if(is_array($areas))
+                    {
+                        foreach($areas as $area)
+                        {
+                            echo "<option value='".$area['id_area']."' >".$area['area']."</option>";
+                        }
+                    }
+                ?>
+            </select>
+            <label>Grado</label>
+            <select id="gradoVal" onchange="loadGrupos();">
+                <!-- AJAX -->
+            </select>
+            <label>Grupo</label>
             <select id="nuevoGrupoVal">
                 <?php
-                    $grupoOBJ = $alumno->getGrupoObj($ciclo['id_ciclo_escolar']);
+                    /*$grupoOBJ = $alumno->getGrupoObj($ciclo['id_ciclo_escolar']);
                     $grado2 = $alumno->getGradoObj($ciclo['id_ciclo_escolar']);
                     $grupos = $grado2->getGruposCiclo($ciclo['id_ciclo_escolar']);
 
@@ -687,10 +706,11 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                                 echo "<option value='".$grupo2['id_grupo']."' >".$grupo2['grupo']."</option>";
                             }
                         }
-                    }
+                    }*/
                 ?>
             </select>
-            <input type="button" value="Aceptar" onclick="aceptarCambioClicked(this)" />
+            <button onclick="aceptarCambioClicked(this)">Aceptar</button>
+            <!--<input type="button" value="Aceptar" onclick="aceptarCambioClicked(this)" />-->
         </div>
         <!-- -------Fin del dialogo------- -->
 
@@ -700,6 +720,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script>
         var id_alumno = <?php echo $id_alumno; ?>;
+        var id_ciclo = <?php echo $ciclo['id_ciclo_escolar']; ?>;
         var id_tipo_tutor;
 
         /** Document ready */
@@ -711,6 +732,26 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         $("#prompt_tutor").draggable({ handle: "#prompt_tutor_handle" });
         $("#prompt_tutor_modificar").draggable({ handle: "#prompt_tutor_handle_modificar" });
         $("#tabs").tabs();
+
+        function loadGrados()
+        {
+            var id_area = $("#areaVal").val();
+            $.post("/includes/acciones/grados/print_select_grados.php", { id_area: id_area }, function (data)
+            {
+                $("#gradoVal").html(data);
+                loadGrupos();
+            });
+        }
+
+        function loadGrupos()
+        {
+            var id_grado = $("#gradoVal").val();
+
+            $.post("/includes/acciones/grupos/print_select_grupos.php", { id_ciclo:id_ciclo, id_grado: id_grado }, function (data)
+            {
+                $("#nuevoGrupoVal").html(data);
+            });
+        }
 
         function updatePapeleria(boton)
         {

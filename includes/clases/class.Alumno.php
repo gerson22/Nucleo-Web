@@ -557,16 +557,33 @@ class Alumno extends Persona
         $grupoA = new Grupo($this->id_grupo);
         $grupoB = new Grupo($id_grupo);
 
-        $clases = $grupoA->getClases();
-        foreach($clases as $claseA)
-        {
-            $id_materia = $claseA['id_materia'];
-            $id_clase = $claseA['id_clase'];
-            $id_claseB = $grupoB->getClase($id_materia);
+        $gradoA = $grupoA->getGrado();
+        $gradoB = $grupoB->getGrado();
 
-            $query = "UPDATE calificacion SET id_clase = $id_claseB
+        if($gradoA->id_grado == $gradoB->id_grado) // Si el grado es igual, transferir calificaciones al nuevo grupo
+        {
+            $clases = $grupoA->getClases();
+            foreach($clases as $claseA)
+            {
+                $id_materia = $claseA['id_materia'];
+                $id_clase = $claseA['id_clase'];
+                $id_claseB = $grupoB->getClase($id_materia);
+
+                $query = "UPDATE calificacion SET id_clase = $id_claseB
               WHERE id_clase = $id_clase AND id_alumno = $this->id_persona";
-            Database::update($query);
+                Database::update($query);
+            }
+        }
+        else // Si el grado es diferente, borrer las calificaciones del grupo actual.
+        {
+            $clases = $grupoA->getClases();
+            foreach($clases as $claseA)
+            {
+                $id_clase = $claseA['id_clase'];
+
+                $query = "DELETE FROM calificacion WHERE id_clase = $id_clase AND id_alumno = $this->id_persona";
+                Database::update($query);
+            }
         }
 
         /**
