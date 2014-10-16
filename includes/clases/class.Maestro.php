@@ -58,7 +58,7 @@ class Maestro extends Persona
             JOIN grado ON grado.id_grado = grupo.id_grado
             JOIN area ON area.id_area = grado.id_area
             WHERE id_ciclo_escolar = $ciclo_actual->id_ciclo_escolar AND id_maestro = $this->id_persona
-            AND area.id_area <= 2 GROUP BY id_grupo";
+            GROUP BY id_grupo";
         return Database::select($query);
     }
 
