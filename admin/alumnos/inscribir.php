@@ -67,6 +67,7 @@ $ocupaciones = Tutor::getOcupaciones();
                         "<label>CP</label>" +
                         "<input type='text' class='CPTutor' />" +
                     "</div>" +
+                    "<img src='/media/iconos/copy.png' alt='X' class='img_eliminar_tutor' onclick='copiarDireccion($(this).parent());'/>" +
                     "<div class='tutor_info_div_lg' >" +
                         "<label>Ocupación</label>" +
                         "<?php
@@ -95,6 +96,19 @@ $ocupaciones = Tutor::getOcupaciones();
                 $("#forma_nuevo_alumno").tabs();
                 cargarSubtipos();
             });
+
+            function copiarDireccion(tutor)
+            {
+                var calle   = $("#calleVal").val();
+                var numero  = $("#numeroVal").val();
+                var colonia = $("#coloniaVal option:selected").text();
+                var CP      = $("#CPVal").val();
+
+                $(tutor).find('.calleTutor').val(calle);
+                $(tutor).find('.numeroTutor').val(numero);
+                $(tutor).find('.coloniaTutor').val(colonia);
+                $(tutor).find('.CPTutor').val(CP);
+            }
 
             function asignarReglasValidacion()
             {
