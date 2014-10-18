@@ -49,7 +49,7 @@ $ciclos_escolares = CicloEscolar::getLista();
                         "sInfoFiltered": "(Encontrados de _MAX_ grupos)"
                     },
                     "aoColumns": [
-                        {"sWidth":"10%"},{"sWidth":"20%"},{"sWidth":"20%"},{"sWidth":"20%"},{"sWidth":"20%"},{"sWidth":"10%"}
+                        {"sWidth":"25%"},{"sWidth":"25%"},{"sWidth":"20%"},{"sWidth":"20%"},{"sWidth":"10%"}
                     ],
                     "bProcessing": true,
                     "sAjaxSource": '../../includes/acciones/grupos/print_tabla.php',
@@ -100,7 +100,6 @@ $ciclos_escolares = CicloEscolar::getLista();
                     <table id="tabla_grupos" >
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Grupo</th>
                                 <th>Grado</th>
                                 <th>Area</th>

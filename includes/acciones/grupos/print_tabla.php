@@ -12,7 +12,6 @@ if(is_array($grupos))
     foreach($grupos as $grupo)
     {
         $temp = array();
-        array_push($temp, $grupo['id_grupo']);
         array_push($temp, $grupo['grupo']);
         array_push($temp, $grupo['grado']);
         array_push($temp, $grupo['area']);
