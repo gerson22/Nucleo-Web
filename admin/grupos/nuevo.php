@@ -167,6 +167,15 @@ include_once("../../includes/clases/class_lib.php");
                     gradoCambiado();
                 });
             }
+
+            function copiarDocentes()
+            {
+                var docente = $(".maestroVal").first().val();
+
+                $(".maestroVal").each(function(){
+                    $(this).val(docente);
+                })
+            }
         </script>
     </head>
     <body>
@@ -234,6 +243,7 @@ include_once("../../includes/clases/class_lib.php");
 
                 <div class="form_row">
                     <input type="button" class="form_submit" value="Aceptar" onclick="agregarGrupo()" id="boton_nuevo" />
+                    <input type="button" class="form_submit" value="Copiar docente" onclick="copiarDocentes()" />
                 </div>
 
             </div>
