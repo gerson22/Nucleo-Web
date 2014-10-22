@@ -11,6 +11,9 @@ $materias = Materia::getLista();
         <title>Sistema Integral Meze - Materias</title>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
+        <style>
+            .icono_mdy{ width: 15px; }
+        </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
         <script>
@@ -32,6 +35,20 @@ $materias = Materia::getLista();
                     "iDisplayLength": 25
                 }); 
             }
+
+            function cambiarNombreClicked(id_materia, nombreViejo)
+            {
+                var nombreNuevo = prompt("Nuevo nombre", nombreViejo);
+
+                if(confirm("El cambio del nombre afectará a todos los grupos pasados y presentes en los que se imparte esta materia. " +
+                    "¿Desea continuar con el cambio de " + nombreViejo + " a " + nombreNuevo + "?"))
+                {
+                    $.post("/includes/acciones/materias/updateNombre.php", {id_materia:id_materia, nombre:nombreNuevo}, function (data)
+                    {
+                        if(data == 1){ document.location.reload(true); }
+                    });
+                }
+            }
         </script>
     </head>
     <body>
@@ -51,6 +68,7 @@ $materias = Materia::getLista();
                                 <th>ID</th>
                                 <th>Materia</th>
                                 <th>Area</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,6 +82,9 @@ $materias = Materia::getLista();
                                             <td>".$materia['id_materia']."</td>
                                             <td>".$materia['materia']."</td>
                                             <td>".$materia['area']."</td>
+                                            <td onclick='cambiarNombreClicked(".$materia['id_materia'].", \"".$materia['materia']."\")'>
+                                                <img src='/media/iconos/icon_modify.png' class='icono_mdy' />
+                                            </td>
                                         </tr>
                                     ";
                                 }

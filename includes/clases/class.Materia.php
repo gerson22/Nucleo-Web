@@ -6,6 +6,21 @@ class Materia
     public $id_materia;
     public $materia;
 
+    function __construct($id_materia)
+    {
+        $query = "SELECT * FROM materia WHERE id_materia = $id_materia";
+        $materia = Database::select($query);
+        $materia = $materia[0];
+        $this->id_materia   = $materia['id_materia'];
+        $this->materia      = $materia['materia'];
+    }
+
+    function update()
+    {
+        $query = "UPDATE materia SET materia = '$this->materia' WHERE id_materia = $this->id_materia";
+        return Database::update($query);
+    }
+
     # Métodos estáticos
     static function getLista()
     {
