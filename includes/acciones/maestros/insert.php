@@ -5,6 +5,7 @@ extract($_POST);
 # apellido_paterno
 # apellido_materno
 # nombres
+# sexo
 # calle
 # numero
 # colonia
@@ -24,7 +25,7 @@ if(!isset($apellido_paterno) || !isset($apellido_materno) || !isset($nombres))
 } 
 else
 {
-    $id_maestro = Maestro::insert($apellido_paterno, $apellido_materno, $nombres);
+    $id_maestro = Maestro::insert($apellido_paterno, $apellido_materno, $nombres, $sexo);
     if(!is_null($id_maestro))
     {
         $maestro = new Maestro($id_maestro);

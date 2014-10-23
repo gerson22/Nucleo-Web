@@ -5,6 +5,7 @@ extract($_POST);
 # apellido_materno
 # apellido_paterno
 # nombres
+# sexo
 # area
 # grado
 # grupo
@@ -37,7 +38,7 @@ if(!isset($apellido_paterno) || !isset($apellido_materno) || !isset($nombres) ||
 else
 {
     /** Paso 1. Inscribir al alumno */
-    $id_alumno = Alumno::insert($apellido_paterno, $apellido_materno, $nombres, $id_ciclo_escolar);
+    $id_alumno = Alumno::insert($apellido_paterno, $apellido_materno, $nombres, $sexo, $id_ciclo_escolar);
 
     if($id_alumno != 0)
     {

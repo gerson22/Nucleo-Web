@@ -34,14 +34,13 @@ class Administrador extends Persona
         return Database::select("SELECT * FROM persona WHERE tipo_persona = 3");
     }
 
-    public static function insert($apellido_paterno, $apellido_materno, $nombres)
+    public static function insert($apellido_paterno, $apellido_materno, $nombres, $sexo = 'N/A')
     {
         $password = parent::generarPassword(8);
         $query = "INSERT INTO persona 
             (SELECT null, CONCAT('ADM', DATE_FORMAT(NOW(), '%y'), LPAD(CAST(COALESCE(MAX(SUBSTRING(matricula, 6, 3)), '0') + 1 AS CHAR(3)), 3, '0')),
             '$apellido_paterno', '$apellido_materno', '$nombres',
-            3, '$password', NOW(), null, 'photo_NA.jpg'
-            FROM persona
+            3, '$password', NOW(), null, 'photo_NA.jpg', '$sexo' FROM persona
             WHERE tipo_persona = 3 AND SUBSTRING(matricula, 4, 2) = DATE_FORMAT(NOW(), '%y'))";
         return Database::insert($query);
     }

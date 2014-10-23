@@ -27,6 +27,7 @@ class Alumno extends Persona
         $this->id_persona           = $persona['id_persona'];
         $this->matricula            = $persona['matricula'];
         $this->nombres              = $persona['nombres'];
+        $this->sexo                 = $persona['sexo'];
         $this->apellido_paterno     = $persona['apellido_paterno'];
         $this->apellido_materno     = $persona['apellido_materno'];
         $this->id_grado             = $persona['id_grado'];
@@ -606,7 +607,7 @@ class Alumno extends Persona
             WHERE tipo_persona = 1");
     }
 
-    public static function insert($apellido_paterno, $apellido_materno, $nombres, $id_ciclo_escolar)
+    public static function insert($apellido_paterno, $apellido_materno, $nombres, $sexo = 'N/A', $id_ciclo_escolar)
     {
         if(!self::existe($nombres, $apellido_paterno, $apellido_materno))
         {
@@ -617,7 +618,7 @@ class Alumno extends Persona
             $query = "INSERT INTO persona VALUES
                 (null, '$matricula',
                  '$apellido_paterno', '$apellido_materno', '$nombres',
-                1, '$password', NOW(), null, 'photo_NA.jpg')";
+                1, '$password', NOW(), null, 'photo_NA.jpg', '$sexo')";
             return Database::insert($query);
 
         }

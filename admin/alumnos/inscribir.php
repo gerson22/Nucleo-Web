@@ -152,6 +152,7 @@ $ocupaciones = Tutor::getOcupaciones();
                 var nombres     = $("#nombresVal").val();
                 var paterno     = $("#apellido_paternoVal").val();
                 var materno     = $("#apellido_maternoVal").val();
+                var sexo        = $("#sexoVal").val();
                 var ciclo       = $("#cicloVal").val();
                 var area        = $("#areaVal").val();
                 var grado       = $("#gradoVal").val();
@@ -208,7 +209,7 @@ $ocupaciones = Tutor::getOcupaciones();
                     $("#boton_aceptar").attr('disabled','disabled');
 
                     var parametros = "nombres=" + nombres + "&apellido_paterno=" + paterno + "&apellido_materno=" + materno
-                        + "&area=" + area + "&grado=" + grado + "&grupo=" + grupo + "&calle=" + calle
+                        + "&area=" + area + "&sexo=" + sexo + "&grado=" + grado + "&grupo=" + grupo + "&calle=" + calle
                         + "&numero=" + numero + "&colonia=" + colonia + "&CP=" + CP
                         + "&tutores=" + JSON.stringify(tutores) + "&club=" + club + "&CURP=" + CURP + "&beca_tipo="
                         + beca_tipo + "&beca_subtipo=" + beca_subtipo + "&beca_porcentaje=" + beca_porcentaje
@@ -318,6 +319,14 @@ $ocupaciones = Tutor::getOcupaciones();
                             <div class="form_row_3">
                                 <label class="form_label" for="curpVal">CURP</label>
                                 <input class="form_input" type="text" name="curpVal" id="curpVal" />
+                            </div>
+                            <div class="form_row_3">
+                                <label class="form_label" for="sexoVal">Sexo</label>
+                                <select id="sexoVal" name="sexoVal" class="form_input" >
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                    <option value="N/A">N/A</option>
+                                </select>
                             </div>
 
                             <hr style="width: 100%; float: left"/>

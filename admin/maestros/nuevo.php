@@ -120,6 +120,7 @@ extract($_GET);
                         var apellido_paterno    = $("#apellido_paternoVal").val();
                         var apellido_materno    = $("#apellido_maternoVal").val();
                         var nombres             = $("#nombresVal").val();
+                        var sexo                = $("#sexoVal").val();
                         var calle               = $("#calleVal").val();
                         var numero              = $("#numeroVal").val();
                         var colonia             = $("#coloniaVal").val();
@@ -143,7 +144,7 @@ extract($_GET);
                             type: "POST",
                             url: "../../includes/acciones/maestros/insert.php",
                             data: "apellido_paterno=" + apellido_paterno + "&apellido_materno=" + apellido_materno
-                                + "&nombres=" + nombres + "&calle=" + calle + "&numero=" + numero
+                                + "&nombres=" + nombres + "&sexo=" + sexo + "&calle=" + calle + "&numero=" + numero
                                 + "&colonia=" + colonia + "&CP=" + CP + "&titulo=" + titulo
                                 + "&egresado=" + egresado + "&ano=" + ano + "&telefonos=" + JSON.stringify(telefonos),
                             success: function (data)
@@ -189,9 +190,17 @@ extract($_GET);
                                 <label class="form_label" for="apellido_maternoVal">Apellido materno</label>
                                 <input class="form_input" type="text" name="apellido_maternoVal" id="apellido_maternoVal" />
                             </div>
-                            <div class="form_row">
+                            <div class="form_row_2">
                                 <label class="form_label" for="nombresVal">Nombres</label>
                                 <input class="form_input" type="text" name="nombresVal" id="nombresVal" required />
+                            </div>
+                            <div class="form_row_2">
+                                <label class="form_label" for="sexoVal">Sexo</label>
+                                <select id="sexoVal" name="sexoVal" class="form_input" >
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                    <option value="N/A">N/A</option>
+                                </select>
                             </div>
 
                             <!-- Dirección -->

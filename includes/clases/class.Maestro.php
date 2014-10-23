@@ -18,6 +18,7 @@ class Maestro extends Persona
         $this->fecha_alta           = $persona['fecha_alta'];
         $this->fecha_baja           = $persona['fecha_baja'];
         $this->foto                 = $persona['foto'];
+        $this->sexo                 = $persona['sexo'];
     }
 
     function getTipoPersona()
@@ -152,14 +153,13 @@ class Maestro extends Persona
             FROM persona WHERE tipo_persona = 2 AND (ISNULL(fecha_baja) OR fecha_baja > NOW())");
     }
 
-    public static function insert($apellido_paterno, $apellido_materno, $nombres)
+    public static function insert($apellido_paterno, $apellido_materno, $nombres, $sexo = 'N/A')
     {
         $password = parent::generarPassword(8);
         $query = "INSERT INTO persona
             (SELECT null, CONCAT('DOC', DATE_FORMAT(NOW(), '%y'), LPAD(CAST(COALESCE(MAX(SUBSTRING(matricula, 6, 3)), '0') + 1 AS CHAR(3)), 3, '0')),
             '$apellido_paterno', '$apellido_materno', '$nombres',
-            2, '$password', NOW(), null, 'photo_NA.jpg'
-            FROM persona
+            2, '$password', NOW(), null, 'photo_NA.jpg', '$sexo' FROM persona
             WHERE tipo_persona = 2 AND SUBSTRING(matricula, 4, 2) = DATE_FORMAT(NOW(), '%y'))";
         return Database::insert($query);
     }

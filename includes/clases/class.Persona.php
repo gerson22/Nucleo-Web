@@ -13,6 +13,7 @@ class Persona
     public $fecha_alta;
     public $fecha_baja;
     public $foto;
+    public $sexo;
 
     function __construct($id_persona)
     {
@@ -28,6 +29,7 @@ class Persona
         $this->fecha_alta           = $persona['fecha_alta'];
         $this->fecha_baja           = $persona['fecha_baja'];
         $this->foto                 = $persona['foto'];
+        $this->sexo                 = $persona['sexo'];
     }
 
     function getEmails()
@@ -163,5 +165,3 @@ class Persona
         return $result;
     }
 }
-
-?>

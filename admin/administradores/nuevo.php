@@ -75,14 +75,16 @@ include_once("../../includes/validar_admin.php");
                             if($(this).is(':checked')) permisos.push($(this).val());
                         });
 
-                        var nombres = $("#nombresVal").val();
-                        var apellido_paterno = $("#apellido_paternoVal").val();
-                        var apellido_materno = $("#apellido_maternoVal").val();
+                        var nombres             = $("#nombresVal").val();
+                        var apellido_paterno    = $("#apellido_paternoVal").val();
+                        var apellido_materno    = $("#apellido_maternoVal").val();
+                        var sexo                = $("#sexoVal").val();
 
                         $.ajax({
                             type: "POST",
                             url: "../../includes/acciones/administradores/insert.php",
-                            data: "nombres=" + nombres + "&apellido_paterno=" + apellido_paterno + "&apellido_materno=" + apellido_materno,
+                            data: "nombres=" + nombres + "&apellido_paterno=" + apellido_paterno
+                                + "&apellido_materno=" + apellido_materno + "&sexo=" + sexo,
                             async: false,
                             success: function (data)
                             {
@@ -136,9 +138,17 @@ include_once("../../includes/validar_admin.php");
                                 <label class="form_label" for="apellido_maternoVal">Apellido materno</label>
                                 <input class="form_input" type="text" name="apellido_maternoVal" id="apellido_maternoVal" />
                             </div>
-                            <div class="form_row">
+                            <div class="form_row_2">
                                 <label class="form_label" for="nombresVal">Nombres</label>
                                 <input class="form_input" type="text" name="nombresVal" id="nombresVal" required />
+                            </div>
+                            <div class="form_row_3">
+                                <label class="form_label" for="nombresVal">Sexo</label>
+                                <select id="sexoVal" name="sexoVal" class="form_input" >
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                    <option value="N/A">N/A</option>
+                                </select>
                             </div>
                         </div>
                         <div id="tab2-permisos" >
