@@ -163,6 +163,21 @@ $id_subtipo = $beca['id_subtipo'];
                     <input class="form_input" type="text" name="becaVal" required value="<?php echo $beca; ?>" />
                 </div>
                 <div class="form_row_2">
+                    <label class="form_label" for="cicloVal">Ciclo escolar</label>
+                    <select class="form_input" name="cicloVal" id="cicloVal">
+                        <?php
+                        $ciclos = CicloEscolar::getListaProximos();
+                        if(is_array($ciclos))
+                        {
+                            foreach($ciclos as $ciclo)
+                            {
+                                echo "<option value='".$ciclo['id_ciclo_escolar']."'>".$ciclo['ciclo']."</option>";
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form_row_2">
                     <label class="form_label" for="tipoVal">Tipo</label>
                     <select class="form_input" name="tipoVal" id="tipoVal" required onchange="loadSubtipos();" >
                         <?php

@@ -9,9 +9,10 @@ extract($_POST);
 # becaVal
 # tipoVal
 # subtipoVal
+# cicloVal
 
 $alumno = new Alumno($id_alumnoVal);
-if($alumno->asignarBeca($becaVal, $subtipoVal))
+if($alumno->asignarBeca($becaVal, $subtipoVal, $cicloVal))
 {
     header('Location: /admin/becas/lista.php');
 }

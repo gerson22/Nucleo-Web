@@ -14,13 +14,14 @@ extract($_POST);
 # id_subtipoVal // Viejo
 # subtipoVal // Nuevo
 # becaVal
+# cicloVal
 
 print_r($_POST);
 
 $alumno = new Alumno($id_alumnoVal);
 if($alumno->quitarBeca($id_ciclo_escolar, $id_subtipoVal))
 {
-    if($alumno->asignarBeca($becaVal, $subtipoVal))
+    if($alumno->asignarBeca($becaVal, $subtipoVal, $cicloVal))
     {
         header('Location: /admin/becas/lista.php');
     }
