@@ -99,6 +99,9 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             <div class="perfil_dato_label">Contraseña:</div>
                             <div class="perfil_dato_value">
                                 <?php echo $alumno->password; ?>
+                                <img src="/media/iconos/icon_modify.png"
+                                     ALT="M" onclick="cambiarPasswordClicked()"
+                                     style="width: 15px" title="Cambiar contraseña" />
                             </div>
                         </div>
                         <div class="datos_perfil_dato">
@@ -673,9 +676,10 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         <div id="dialogo_cambio" title="Cambio de grupo" >
             <label>¿A que grupo desea cambiar al alumno?</label>
             <hr />
-            <label>Area</label>
-            <select id="areaVal" onchange="loadGrados();">
-                <?php
+            <div class="dialogo_row">
+                <label>Area</label>
+                <select id="areaVal" onchange="loadGrados();">
+                    <?php
                     $areas = Area::getLista();
                     if(is_array($areas))
                     {
@@ -684,31 +688,22 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             echo "<option value='".$area['id_area']."' >".$area['area']."</option>";
                         }
                     }
-                ?>
-            </select>
-            <label>Grado</label>
-            <select id="gradoVal" onchange="loadGrupos();">
-                <!-- AJAX -->
-            </select>
-            <label>Grupo</label>
-            <select id="nuevoGrupoVal">
-                <?php
-                    /*$grupoOBJ = $alumno->getGrupoObj($ciclo['id_ciclo_escolar']);
-                    $grado2 = $alumno->getGradoObj($ciclo['id_ciclo_escolar']);
-                    $grupos = $grado2->getGruposCiclo($ciclo['id_ciclo_escolar']);
+                    ?>
+                </select>
+            </div>
+            <div class="dialogo_row">
+                <label>Grado</label>
+                <select id="gradoVal" onchange="loadGrupos();">
+                    <!-- AJAX -->
+                </select>
+            </div>
+            <div class="dialogo_row">
+                <label>Grupo</label>
+                <select id="nuevoGrupoVal">
+                    <!-- AJAX -->
+                </select>
+            </div>
 
-                    if(is_array($grupos))
-                    {
-                        foreach($grupos as $grupo2)
-                        {
-                            if($grupo2['id_grupo'] != $grupoOBJ->id_grupo)
-                            {
-                                echo "<option value='".$grupo2['id_grupo']."' >".$grupo2['grupo']."</option>";
-                            }
-                        }
-                    }*/
-                ?>
-            </select>
             <button onclick="aceptarCambioClicked(this)">Aceptar</button>
             <!--<input type="button" value="Aceptar" onclick="aceptarCambioClicked(this)" />-->
         </div>
@@ -889,6 +884,28 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         function cambiarGrupoClicked()
         {
             $("#dialogo_cambio").dialog( "open" );
+        }
+
+        function cambiarPasswordClicked()
+        {
+            var pass_nuevo = prompt("Contraseña nueva: ");
+            if(pass_nuevo !== null)
+            {
+                if(pass_nuevo.length > 3)
+                {
+                    if(confirm("¿Desea cambiar la contraseña a '" + pass_nuevo + "'?"))
+                    {
+                        $.post("/includes/acciones/personas/cambiar_password.php", {id_persona:id_alumno, passwordVal:pass_nuevo, password2Val:pass_nuevo}, function (data)
+                        {
+                            document.location.reload(true);
+                        });
+                    }
+                }
+                else
+                {
+                    alert("El nuevo password debe de contener al menos 4 caracteres");
+                }
+            }
         }
 
         function aceptarCambioClicked(caller)
