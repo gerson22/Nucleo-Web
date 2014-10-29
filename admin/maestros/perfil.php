@@ -52,6 +52,7 @@ $escolaridad = $maestro->getEscolaridad();
         <script src="/librerias/htmlbarcode.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
+        <script src="/librerias/jquery.form.js"></script>
         <script>
             var id_maestro;
 
@@ -290,16 +291,6 @@ $escolaridad = $maestro->getEscolaridad();
                             <img src="../../media/fotos/<?php echo $maestro->foto; ?>" alt="N/A" id="foto_maestro" />
                         </div>
 
-                        <!-- loader.gif -->
-                        <img style="display:none" id="loader" src="/media/imagenes/loader.gif" alt="Cargando...." title="Cargando...." />
-                        <!-- simple file uploading form -->
-                        <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data">
-                            <input id="uploadImage" type="file" accept="image/*" name="image" />
-                            <input id="button" type="submit" value="Upload">
-                        </form>
-                        <!-- preview action or error msgs -->
-                        <div id="preview" style="display:none"></div>
-
                     </div>
 
                     <div id="datos_generales">
@@ -375,9 +366,17 @@ $escolaridad = $maestro->getEscolaridad();
                         src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=<?php echo $maestro->matricula; ?>&chld=L|0"  
                     />
 
-                </div>
+                    <div id="panel_imagen">
+                        <!-- loader.gif -->
+                        <img style="display:none" id="loader" src="/media/imagenes/loader.gif" alt="Cargando...." title="Cargando...." />
+                        <!-- simple file uploading form -->
+                        <form id="form_imagen" action="/includes/ajaxupload.php" method="post" enctype="multipart/form-data">
+                            <input id="uploadImage" type="file" accept="image/*" name="image" value="Seleccionar foto"/>
+                            <input id="button" type="submit" value="Subir">
+                        </form>
+                    </div>
 
-                <img src="/media/iconos/icon_photo.png" alt="Cambiar" id="icono_foto" />
+                </div>
 
                 <div id="tabs">
                     <ul>
@@ -629,7 +628,47 @@ $escolaridad = $maestro->getEscolaridad();
 
     </body>
     <script>
+        /** Cosas del Ajax image loader */
+        var f = $('#form_imagen');
+        var l = $('#loader'); // loder.gif image
+        var b = $('#button'); // upload button
+        var imagen;
+
+        b.click(function(){
+            // implement with ajaxForm Plugin
+            f.ajaxForm({
+                beforeSend: function(){
+                    l.show();
+                    b.attr('disabled', 'disabled');
+                },
+                success: function(img){
+                    l.hide();
+                    f.resetForm();
+                    b.removeAttr('disabled');
+
+                    asignarFoto(img);
+                },
+                error: function(e){
+                    b.removeAttr('disabled');
+                }
+            });
+        });
+
         $("#prompt_modificar_direccion").draggable({ handle: "#prompt_modificar_direccion_handle" });
+
+        function asignarFoto(img)
+        {
+            if(img == "photo_NA.jpg") alert("La foto debe de tener un tamaño no mayor a 400kb y tener una terminación .jpg, .jpeg, .gif o .png");
+            $.ajax({
+                type: "POST",
+                url: "/includes/acciones/personas/asignar_foto.php",
+                data: "id_persona=" + id_maestro + "&imagen=" + img,
+                success: function (data)
+                {
+                    document.location.reload(true);
+                }
+            });
+        }
 
         function mostrarModificarDireccion()
         {
