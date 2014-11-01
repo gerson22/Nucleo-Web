@@ -96,6 +96,10 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
         var ctx_clubs_pie;
         var chart_clubs_pie;
 
+        /** Colonias */
+        var ctx_colonias_pie;
+        var chart_colonias_pie;
+
         $(document).ready(function ()
         {
 
@@ -242,6 +246,25 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
             });
         }
 
+        function crearChartsColonias()
+        {
+            ctx_colonias_pie = $("#canvas_colonias_pie").get(0).getContext("2d");
+            chart_colonias_pie = new Chart(ctx_colonias_pie);
+
+            $.getJSON('/includes/acciones/stats/colonias/pie.php', function(jsonData)
+            {
+                var colonias_pie_data = [];
+
+                $.each(jsonData, function(i, colonia)
+                {
+                    colonias_pie_data.push({value: colonia.value * 1.0, color: colonia.color, label: colonia.label});
+                });
+
+                var options_pie = {animationSteps  : 50};
+                new Chart(ctx_colonias_pie).Pie(colonias_pie_data, options_pie);
+            });
+        }
+
         function selectedDiv(opt, caller)
         {
             $(".charts_div").hide();
@@ -252,6 +275,7 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 case 1: $("#charts_alumnos").show(0 , function(){ crearChartsAlumnos(); }); break;
                 case 2: $("#charts_maestros").show(0, function(){ crearChartsMaestros(); }); break;
                 case 3: $("#charts_clubs").show(0, function(){ crearChartsClubs(); }); break;
+                case 4: $("#charts_colonias").show(0, function(){ crearChartsColonias(); }); break;
             }
         }
     </script>
@@ -269,6 +293,7 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 <li onclick="selectedDiv(1, this);" >Alumnos</li>
                 <li onclick="selectedDiv(2, this);" >Maestros</li>
                 <li onclick="selectedDiv(3, this);" >Clubs</li>
+                <li onclick="selectedDiv(4, this);" >Colonias</li>
             </ul>
 
             <div class="charts_div" id="charts_alumnos">
@@ -328,6 +353,13 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 <div class="chart_inner_div">
                     <div class="chart_inner_div_title">Clubs</div>
                     <canvas id="canvas_clubs_pie" width="480" height="400"></canvas>
+                </div>
+            </div>
+
+            <div class="charts_div" id="charts_colonias">
+                <div class="chart_inner_div">
+                    <div class="chart_inner_div_title">Colonias</div>
+                    <canvas id="canvas_colonias_pie" width="480" height="400"></canvas>
                 </div>
             </div>
 

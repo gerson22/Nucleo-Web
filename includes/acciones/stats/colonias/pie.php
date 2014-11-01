@@ -3,23 +3,23 @@
  * Created by PhpStorm.
  * User: Yozki
  * Date: 10/31/14
- * Time: 6:03 PM
+ * Time: 7:53 PM
  */
 
 include_once("../../../validar_admin.php");
 include_once("../../../clases/class_lib.php");
 
-$dist = Club::getDistribucion();
+$dist = Colonia::getDistribucion();
 
 $arr = array();
 if(is_array($dist))
 {
-    foreach($dist as $club)
+    foreach($dist as $colonia)
     {
         array_push($arr, array(
-            "value" => $club['alumnos'],
+            "value" => $colonia['alumnos'],
             "color" => "#".random_color(),
-            "label" => $club['club']
+            "label" => $colonia['nombre']
         ));
     }
     echo json_encode($arr);
