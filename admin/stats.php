@@ -28,6 +28,7 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
             width: 100%;
             list-style: none;
         }
+
         #charts_options li.selected, #charts_options li:hover
         {
             background-color: #E1E1FF;
@@ -90,6 +91,10 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
         /** Maestros */
         var ctx_maestros_bar;
         var chart_maestros_bar;
+
+        /** Clubs */
+        var ctx_clubs_pie;
+        var chart_clubs_pie;
 
         $(document).ready(function ()
         {
@@ -218,6 +223,25 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
             });
         }
 
+        function crearChartsClubs()
+        {
+            ctx_clubs_pie = $("#canvas_clubs_pie").get(0).getContext("2d");
+            chart_clubs_pie = new Chart(ctx_clubs_pie);
+
+            $.getJSON('/includes/acciones/stats/clubs/pie.php', function(jsonData)
+            {
+                var clubs_pie_data = [];
+
+                $.each(jsonData, function(i, club)
+                {
+                    clubs_pie_data.push({value: club.value * 1.0, color: club.color, label: club.label});
+                });
+
+                var options_pie = {animationSteps  : 50};
+                new Chart(ctx_clubs_pie).Pie(clubs_pie_data, options_pie);
+            });
+        }
+
         function selectedDiv(opt, caller)
         {
             $(".charts_div").hide();
@@ -227,6 +251,7 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
             {
                 case 1: $("#charts_alumnos").show(0 , function(){ crearChartsAlumnos(); }); break;
                 case 2: $("#charts_maestros").show(0, function(){ crearChartsMaestros(); }); break;
+                case 3: $("#charts_clubs").show(0, function(){ crearChartsClubs(); }); break;
             }
         }
     </script>
@@ -243,6 +268,7 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
             <ul id="charts_options" >
                 <li onclick="selectedDiv(1, this);" >Alumnos</li>
                 <li onclick="selectedDiv(2, this);" >Maestros</li>
+                <li onclick="selectedDiv(3, this);" >Clubs</li>
             </ul>
 
             <div class="charts_div" id="charts_alumnos">
@@ -298,10 +324,10 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 </div>
             </div>
 
-            <div class="charts_div" id="charts_becas">
+            <div class="charts_div" id="charts_clubs">
                 <div class="chart_inner_div">
-                    <div class="chart_inner_div_title">Becas...</div>
-                    <canvas id="canvas_becas_bar" width="480" height="400"></canvas>
+                    <div class="chart_inner_div_title">Clubs</div>
+                    <canvas id="canvas_clubs_pie" width="480" height="400"></canvas>
                 </div>
             </div>
 

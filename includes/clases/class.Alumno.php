@@ -238,11 +238,11 @@ class Alumno extends Persona
 
     function getClubDeportivo()
     {
-        $query = "SELECT club.nombre AS club_deportivo FROM persona_extra
-            JOIN club ON club.id_club = persona_extra.club_deportivo
+        $query = "SELECT club.nombre AS club FROM persona_extra
+            JOIN club ON club.id_club = persona_extra.id_club
             WHERE id_persona = $this->id_persona";
         $rs = Database::select($query);
-        return $rs[0]['club_deportivo'];
+        return $rs[0]['club'];
     }
 
     function setCURP($CURP)
