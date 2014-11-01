@@ -59,16 +59,6 @@ $escolaridad = $maestro->getEscolaridad();
             $(document).ready(function ()
             {
                 id_maestro = $("#id_maestroVal").val();
-                var boton_upload = $("#icono_foto").upload({
-                    name: 'fotoVal',
-                    action: '../../includes/acciones/maestros/subir_foto.php',
-                    enctype: 'multipart/form-data',
-                    params: { id_maestroVal: id_maestro },
-                    autoSubmit: true,
-                    onSubmit: function () { },
-                    onComplete: function (data) { $("#foto_maestro").attr('src', '../../media/fotos/' + data); },
-                    onSelect: function () { }
-                });
 
                 declararDataTables();
 

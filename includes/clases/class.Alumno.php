@@ -39,6 +39,7 @@ class Alumno extends Persona
         $this->fecha_alta           = $persona['fecha_alta'];
         $this->fecha_baja           = $persona['fecha_baja'];
         $this->beca                 = $persona['beca'];
+        $this->foto                 = $persona['foto'];
     }
 
     function getTipoPersona()

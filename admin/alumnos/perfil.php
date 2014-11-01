@@ -31,6 +31,14 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
             <?php include("../../includes/header.php"); ?>
             <div id="content">
 
+                <div id="profile_picture">
+
+                    <div id="profile_picture_inner">
+                        <img src="../../media/fotos/<?php echo $alumno->foto; ?>" alt="N/A" id="foto_maestro" />
+                    </div>
+
+                </div>
+
                 <!-- Datos del perfil. CSS: perfiles.css -->
                 <div class="datos_perfil" >
                     <div class="datos_perfil_seccion" >
@@ -127,6 +135,16 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     alt ="<?php echo $alumno->matricula; ?>" 
                     src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<?php echo $alumno->matricula; ?>&chld=L|0"  
                 />
+
+                <div id="panel_imagen">
+                    <!-- loader.gif -->
+                    <img style="display:none" id="loader" src="/media/imagenes/loader.gif" alt="Cargando...." title="Cargando...." />
+                    <!-- simple file uploading form -->
+                    <form id="form_imagen" action="/includes/ajaxuploadAlumnos.php" method="post" enctype="multipart/form-data">
+                        <input id="uploadImage" type="file" accept="image/*" name="image" value="Seleccionar foto"/>
+                        <input id="button" type="submit" value="Subir">
+                    </form>
+                </div>
 
                 <div id="tabs">
                     <ul>
@@ -713,6 +731,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
         <script src="../../librerias/fnAjaxReload.js" ></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src="/librerias/jquery.form.js"></script>
         <script>
         var id_alumno = <?php echo $id_alumno; ?>;
         var id_ciclo = <?php echo $ciclo['id_ciclo_escolar']; ?>;
@@ -727,6 +746,46 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         $("#prompt_tutor").draggable({ handle: "#prompt_tutor_handle" });
         $("#prompt_tutor_modificar").draggable({ handle: "#prompt_tutor_handle_modificar" });
         $("#tabs").tabs();
+
+        /** Cosas del Ajax image loader */
+        var f = $('#form_imagen');
+        var l = $('#loader'); // loder.gif image
+        var b = $('#button'); // upload button
+        var imagen;
+
+        b.click(function(){
+            // implement with ajaxForm Plugin
+            f.ajaxForm({
+                beforeSend: function(){
+                    l.show();
+                    b.attr('disabled', 'disabled');
+                },
+                success: function(img){
+                    l.hide();
+                    f.resetForm();
+                    b.removeAttr('disabled');
+
+                    asignarFoto(img);
+                },
+                error: function(e){
+                    b.removeAttr('disabled');
+                }
+            });
+        });
+
+        function asignarFoto(img)
+        {
+            if(img == "photo_NA.jpg") alert("La foto debe de tener un tamaño no mayor a 400kb y tener una terminación .jpg, .jpeg, .gif o .png");
+            $.ajax({
+                type: "POST",
+                url: "/includes/acciones/personas/asignar_foto.php",
+                data: "id_persona=" + id_alumno + "&imagen=" + img,
+                success: function (data)
+                {
+                    document.location.reload(true);
+                }
+            });
+        }
 
         function loadGrados()
         {

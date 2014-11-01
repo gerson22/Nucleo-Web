@@ -17,13 +17,13 @@
     margin: 20px 0;
     overflow: auto;
     padding: 0 10px;
-    width: 815px;
 }
 
 /* Son 2 secciones, izquierda y derecha */
 .datos_perfil_seccion
 {
     display: inline-block;
+    width: 275px;
 }
 
 /* Cada division que encapsula a una label (propiedad) y una div (valor) */
@@ -31,7 +31,6 @@
 {
     margin: 5px 0;
     overflow: auto;
-    width: 390px;
 }
 
 /* Label (propiedad) */
