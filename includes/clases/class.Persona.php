@@ -122,6 +122,24 @@ class Persona
         return $arr;
     }
 
+    function updateNombres($nombres)
+    {
+        $query = "UPDATE persona SET nombres = '$nombres' WHERE id_persona = $this->id_persona";
+        return Database::update($query);
+    }
+
+    function updateApellidoPaterno($apellidoP)
+    {
+        $query = "UPDATE persona SET apellido_paterno = '$apellidoP' WHERE id_persona = $this->id_persona";
+        return Database::update($query);
+    }
+
+    function updateApellidoMaterno($apellidoM)
+    {
+        $query = "UPDATE persona SET apellido_materno = '$apellidoM' WHERE id_persona = $this->id_persona";
+        return Database::update($query);
+    }
+
     # Métodos estáticos
     public static function login($matricula, $password)
     {

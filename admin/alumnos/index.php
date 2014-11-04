@@ -21,7 +21,7 @@ $alumnos = Alumno::getLista();
 
             function declararDataTable()
             {
-                $('#tabla_alumnos').dataTable({
+                var DT = $('#tabla_alumnos').dataTable({
                     "oLanguage": {
                         "sLengthMenu": "Mostrar _MENU_ alumnos por página",
                         "sZeroRecords": "No existen alumnos",
@@ -30,7 +30,9 @@ $alumnos = Alumno::getLista();
                         "sInfoFiltered": "(Encontrados de _MAX_ alumnos)"
                     },
                     "iDisplayLength": 25
-                }); 
+                });
+
+                DT.fnSort( [ [1,'asc']  ]);
             }
         </script>
     </head>

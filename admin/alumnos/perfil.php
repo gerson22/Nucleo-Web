@@ -45,14 +45,23 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         <div class="datos_perfil_dato">
                             <div class="perfil_dato_label">Nombre(s):</div>
                             <div class="perfil_dato_value"><?php echo $alumno->nombres; ?></div>
+                            <img src="/media/iconos/icon_modify.png"
+                                 ALT="M" onclick="cambiarNombresClicked()"
+                                 style="width: 15px" title="Cambiar nombre" />
                         </div>
                         <div class="datos_perfil_dato">
                             <div class="perfil_dato_label">Apellido paterno:</div>
                             <div class="perfil_dato_value"><?php echo $alumno->apellido_paterno; ?></div>
+                            <img src="/media/iconos/icon_modify.png"
+                                 ALT="M" onclick="cambiarApellidoPaternoClicked()"
+                                 style="width: 15px" title="Cambiar apellido paterno" />
                         </div>
                         <div class="datos_perfil_dato">
                             <div class="perfil_dato_label">Apellido materno:</div>
                             <div class="perfil_dato_value"><?php echo $alumno->apellido_materno; ?></div>
+                            <img src="/media/iconos/icon_modify.png"
+                                 ALT="M" onclick="cambiarApellidoMaternoClicked()"
+                                 style="width: 15px" title="Cambiar apellido materno" />
                         </div>
                         <div class="datos_perfil_dato">
                             <div class="perfil_dato_label">Matricula:</div>
@@ -785,6 +794,60 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     document.location.reload(true);
                 }
             });
+        }
+
+        function cambiarNombresClicked()
+        {
+            var nuevosNombres = prompt("Nombres ", "<?php echo $alumno->nombres; ?>");
+            if(nuevosNombres !== null)
+            {
+                if(nuevosNombres.length > 2)
+                {
+                    if(confirm("¿Seguro que desea cambiar el nombre del alumno a: " + nuevosNombres))
+                    {
+                        $.post("/includes/acciones/personas/cambiar_nombres.php", {id_persona:id_alumno, nombres:nuevosNombres}, function (data)
+                        {
+                            document.location.reload(true);
+                        });
+                    }
+                }
+            }
+        }
+
+        function cambiarApellidoPaternoClicked()
+        {
+            var nuevoApellidoPaternoNuevo = prompt("Apellido paterno ", "<?php echo $alumno->apellido_paterno; ?>");
+            if(nuevoApellidoPaternoNuevo !== null)
+            {
+                if(nuevoApellidoPaternoNuevo.length > 2)
+                {
+                    if(confirm("¿Seguro que desea cambiar el apellido paterno del alumno a: " + nuevoApellidoPaternoNuevo))
+                    {
+                        $.post("/includes/acciones/personas/cambiar_apellido_paterno.php", {id_persona:id_alumno, apellido:nuevoApellidoPaternoNuevo}, function (data)
+                        {
+                            document.location.reload(true);
+                        });
+                    }
+                }
+            }
+        }
+
+        function cambiarApellidoMaternoClicked()
+        {
+            var nuevaApellidoMaternoNuevo = prompt("Apellido materno ", "<?php echo $alumno->apellido_materno; ?>");
+            if(nuevaApellidoMaternoNuevo !== null)
+            {
+                if(nuevaApellidoMaternoNuevo.length > 2)
+                {
+                    if(confirm("¿Seguro que desea cambiar el apellido materno del alumno a: " + nuevaApellidoMaternoNuevo))
+                    {
+                        $.post("/includes/acciones/personas/cambiar_apellido_materno.php", {id_persona:id_alumno, apellido:nuevaApellidoMaternoNuevo}, function (data)
+                        {
+                            document.location.reload(true);
+                        });
+                    }
+                }
+            }
         }
 
         function loadGrados()
