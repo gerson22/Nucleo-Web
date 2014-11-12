@@ -236,9 +236,14 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
             {
                 var clubs_pie_data = [];
 
+                $("#datos_clubs").html("");
                 $.each(jsonData, function(i, club)
                 {
                     clubs_pie_data.push({value: club.value * 1.0, color: club.color, label: club.label});
+                    $("#datos_clubs").append('<div class="data_row" style="color: '+club.color+'; font-weight: bold">' +
+                        '<div class="data_row_label">'+club.label+'</div>' +
+                        '<div class="data_row_value" id="total_alumnos" >'+club.value+'</div>' +
+                    '</div>');
                 });
 
                 var options_pie = {animationSteps  : 50};
@@ -353,6 +358,9 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 <div class="chart_inner_div">
                     <div class="chart_inner_div_title">Clubs</div>
                     <canvas id="canvas_clubs_pie" width="480" height="400"></canvas>
+                </div>
+                <div class="chart_inner_div" style="margin: 125px 0;" id="datos_clubs">
+
                 </div>
             </div>
 
