@@ -1,117 +1,89 @@
-#informacion_ciclo
+*
 {
+    font-family: "Open Sans", tahoma, helvetica, arial;
+    background-color: #B9D3FA;
+}
+
+#panel_izquierdo
+{
+    padding-top: 300px;
+    background-image: url("/media/imagenes/logo50.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.index_opcion
+{
+    width: 30%;
+    margin: 20px 10%;
+    border: 3px solid #eee;
+    border-radius: 5px;
     float: left;
-    margin: 20px 20px 20px 0;
-    min-width: 400px;
-    overflow: auto;
-    padding: 10px;
-    width: 45%;
-}
-
-.data_row
-{
-    float: left;
-    margin: 10px 0;
-    width: 90%;
-}
-
-.label
-{
-    float: left;
-    width: 50%;
-}
-
-.value
-{
-    font-weight: bold;
-    float: left;
-    width: 50%;
-}
-
-#panel_opciones
-{
-    float: right;
-    margin: 20px 0 20px 20px;
-    overflow: auto;
-    padding: 10px;
-    width: 10%;
-}
-
-#panel_opciones a
-{
-    float: left;
-    color: black;
-    display: block;
-    width: 100px;
-    height: 120px;
-    text-align: center;
-    text-decoration: none;
-    margin-right: 30px;
-}
-
-#panel_opciones a img
-{
-    width: 100px;
-    height: 100px;
-    float: right;
-}
-
-#link_nuevo_ciclo
-{
-    border: 1px solid #CCCCCC;
-    color: black;
-    float: left;
-    font-size: 24px;
-    margin: 20px 40px;
     padding: 20px;
-    text-decoration: none;
 }
 
-#link_nuevo_ciclo:hover
+.index_opcion:hover
 {
-    background-color: #b9c5ff;
+
 }
 
-.index_section
+.index_opcion img
 {
-    border: 1px solid #CCCCCC;
-    height: 150px;
-    margin: 20px 0 0;
-    overflow: auto;
-    width: 998px;
+    width: 100%;
+    min-height: 116px;
 }
 
-.index_section_title
+.index_opcion footer
 {
-    width: 98%;
-    background-color: #15186D;
-    padding: 0 10px;
-    color: #FFF;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
 }
 
-.section_option
+.index_opcion_large
 {
-    color: #000000;
-    display: block;
+    width: 80%;
+    margin: 20px 10%;
+    border: 3px solid #eee;
+    border-radius: 5px;
     float: left;
-    height: 110px;
-    margin: 10px 15px;
-    overflow: auto;
-    text-align: center;
-    text-decoration: none;
-    width: 100px;
+    padding: 20px;
 }
 
-.section_option img
+.index_opcion_large img
 {
-    width: 80px;
-    height: 80px;
+    float: left;
 }
 
-#tabla_clases
+.index_opcion_large footer
 {
-    border: 1px solid #CCCCCC;
-    margin: 10px auto;
+    font-weight: 600;
+    font-size: 18px;
     text-align: center;
-    width: 700px;
+}
+
+#panel_derecho
+{
+    padding-top: 100px;
+}
+
+#foto
+{
+    text-align: center;
+}
+
+#foto footer
+{
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#carousel_noticias
+{
+    width: 100%;
+    padding: 10px 30px;
+    height: 300px;
+    border: 1px solid black;
+    background: #fff;
 }
