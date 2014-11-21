@@ -24,7 +24,7 @@ $usuario = new Persona($_SESSION['id_persona']);
             <?php /*include("includes/header.php");*/ ?>
             <div class="container">
 
-                <div id="top">
+                <div id="top" class="container">
                     <!-- Panel izquierdo -->
                     <div class="col-md-6 col-sm-12" id="panel_izquierdo" >
 
@@ -78,8 +78,37 @@ $usuario = new Persona($_SESSION['id_persona']);
                     </div>
                 </div>
 
-                <div id="bot">
-
+                <div id="bot" class="container">
+                    <a href="admin/configuracion/clubs/index.php">
+                        <div class="index_opcion_secundaria">
+                            <img class="img-responsive" src="/media/iconos/icon_clubs.png" alt="Clubs" />
+                            <footer>Clubs</footer>
+                        </div>
+                    </a>
+                    <a href="admin/configuracion/colonias/index.php">
+                        <div class="index_opcion_secundaria">
+                            <img class="img-responsive" src="/media/iconos/icon_colonia.png" alt="Colonias" />
+                            <footer>Colonias</footer>
+                        </div>
+                    </a>
+                    <a href="admin/configuracion/ocupaciones/index.php">
+                        <div class="index_opcion_secundaria">
+                            <img class="img-responsive" src="/media/iconos/icon_work.jpg" alt="Ocupaciones" />
+                            <footer>Ocupaciones</footer>
+                        </div>
+                    </a>
+                    <a href="admin/configuracion/papeleria/index.php">
+                        <div class="index_opcion_secundaria">
+                            <img class="img-responsive" src="/media/iconos/icon_papeleria.jpg" alt="Papeleria" />
+                            <footer>Papeleria</footer>
+                        </div>
+                    </a>
+                    <a href="admin/configuracion/niveles/index.php">
+                        <div class="index_opcion_secundaria">
+                            <img class="img-responsive" src="/media/iconos/icon_niveles.png" alt="Niveles" />
+                            <footer>Niveles</footer>
+                        </div>
+                    </a>
                 </div>
 
             </div>
