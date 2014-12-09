@@ -15,6 +15,8 @@ class PersonaModelo
 
     public static function registrarAsistencia($id_persona)
     {
-        return \APIDatabase::update("INSERT INTO asistencia VALUES($id_persona, NOW())");
+        $query = "INSERT INTO asistencia VALUES($id_persona, NOW())";
+        echo $query;
+        return APIDatabase::update($query);
     }
 }

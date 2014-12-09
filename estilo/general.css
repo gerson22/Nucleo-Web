@@ -9,9 +9,7 @@ body
     font-family: sans-serif;
     padding: 0px;
     margin: 0px;
-    background-image: url("../media/imagenes/fondo.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #B9D3FA;
 }
 
 h2
