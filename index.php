@@ -68,7 +68,7 @@ $usuario = new Persona($_SESSION['id_persona']);
                     <!-- Panel derecho -->
                     <div class="col-md-6 col-sm-12" id="panel_derecho">
                         <div id="foto">
-                            <img src="/media/yo.jpg" />
+                            <img src="/media/fotos/<?php echo $usuario->foto; ?>" />
                             <footer>Bienvenido <?php echo $usuario->nombres; ?></footer>
                         </div>
 
