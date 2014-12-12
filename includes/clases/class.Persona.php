@@ -140,6 +140,37 @@ class Persona
         return Database::update($query);
     }
 
+    function nuevoRegistroNutricion($peso, $talla, $IMC)
+    {
+        $query = "INSERT INTO nut_checkin SET fecha = NOW(), id_persona = $this->id_persona, id_concepto = 1, valor = $peso";
+        Database::insert($query);
+        $query = "INSERT INTO nut_checkin SET fecha = NOW(), id_persona = $this->id_persona, id_concepto = 2, valor = $talla";
+        Database::insert($query);
+        $query = "INSERT INTO nut_checkin SET fecha = NOW(), id_persona = $this->id_persona, id_concepto = 3, valor = $IMC";
+        return Database::insert($query);
+    }
+
+    function getPeso()
+    {
+        $query = "SELECT valor FROM nut_checkin WHERE id_persona = $this->id_persona AND id_concepto = 1 ORDER BY fecha DESC LIMIT 1";
+        $res = Database::select($query);
+        return $res[0]['valor'];
+    }
+
+    function getTalla()
+    {
+        $query = "SELECT valor FROM nut_checkin WHERE id_persona = $this->id_persona AND id_concepto = 2 ORDER BY fecha DESC LIMIT 1";
+        $res = Database::select($query);
+        return $res[0]['valor'];
+    }
+
+    function getIMC()
+    {
+        $query = "SELECT valor FROM nut_checkin WHERE id_persona = $this->id_persona AND id_concepto = 3 ORDER BY fecha DESC LIMIT 1";
+        $res = Database::select($query);
+        return $res[0]['valor'];
+    }
+
     # Métodos estáticos
     public static function login($matricula, $password)
     {

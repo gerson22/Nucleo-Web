@@ -166,6 +166,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         <li><a href="#tabs-7">Becas</a></li>
                         <li><a href="#tabs-8">Calificaciones</a></li>
                         <li><a href="#tabs-9">Papeleria</a></li>
+                        <li><a href="#tabs-10">Nutrición</a></li>
                     </ul>
                     <div id="tabs-1">
                         <table id="tabla_clases">
@@ -456,6 +457,18 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         </table>
                         <input type="button" value="Actualizar" onclick="updatePapeleria(this)" />
                     </div>
+                    <div id="tabs-10">
+                        <label class="form_label" for="pesoVal" >Peso</label>
+                        <input type="text" class="form_input" id="pesoVal" value="<?php echo $alumno->getPeso(); ?>" readonly />
+                        <br />
+                        <label class="form_label" for="tallaVal" >Talla</label>
+                        <input type="text" class="form_input" id="tallaVal" value="<?php echo $alumno->getTalla(); ?>" readonly />
+                        <br />
+                        <label class="form_label" for="IMCVal" >IMC</label>
+                        <input type="text" class="form_input" id="IMCVal" value="<?php echo $alumno->getIMC() ?>" readonly />
+                        <br />
+                        <button type="button" onclick="$('#nuevo_registro_nut').dialog('open');">Nuevo registro</button>
+                    </div>
                 </div>
 
                 <div id="div_boton_cuentas">
@@ -736,6 +749,25 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         </div>
         <!-- -------Fin del dialogo------- -->
 
+        <!-- Dialogo nutrición -->
+        <div id="nuevo_registro_nut">
+            <div class="dialogo_row">
+                <label>Peso</label>
+                <input type="text" id="nuevoPesoVal" />
+            </div>
+            <div class="dialogo_row">
+                <label>Talla</label>
+                <input type="text" id="nuevaTallaVal" />
+            </div>
+            <div class="dialogo_row">
+                <label>IMC</label>
+                <input type="text" id="nuevoIMCVal" />
+            </div>
+            <span>NOTA. Puedes dejar los campos vacios y no se hará cambio al valor actual</span>
+            <button type="button" onclick="nuevoRegistroNut()">Aceptar</button>
+        </div>
+        <!-- Fin dialogo nutrición -->
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
         <script src="../../librerias/fnAjaxReload.js" ></script>
@@ -749,6 +781,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         /** Document ready */
         $("#prompt_modificar_direccion").draggable({ handle: "#prompt_modificar_direccion_handle" });
         $("#dialogo_cambio").dialog({ autoOpen: false });
+        $("#nuevo_registro_nut").dialog({ autoOpen: false });
         declararDataTables();
         $("#prompt_email").draggable({ handle: "#prompt_email_handle" });
         $("#prompt_telefono").draggable({ handle: "#prompt_telefono_handle" });
@@ -1284,6 +1317,27 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     {
                         if(data == 1) window.location.reload(true);
                         else alert("Código de error: " + data);
+                    }
+                });
+            }
+        }
+
+        function nuevoRegistroNut()
+        {
+            var peso = $("#nuevoPesoVal").val();
+            var talla = $("#nuevaTallaVal").val();
+            var IMC = $("#nuevoIMCVal").val();
+
+            if(confirm("¿Desea agregar el nuevo registro de nutrición?"))
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/personas/nuevo_registro_nutricion.php",
+                    data: "id_persona=" + id_alumno + "&peso=" + peso + "&talla=" + talla + "&IMC=" + IMC,
+                    success: function (data)
+                    {
+                        $('#nuevo_registro_nut').dialog('close');
+                        document.location.reload(true);
                     }
                 });
             }
