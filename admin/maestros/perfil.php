@@ -37,6 +37,11 @@ $escolaridad = $maestro->getEscolaridad();
                 display: none;
             }
 
+            #nuevo_registro_nut
+            {
+                font-size: 12px;
+            }
+
             .form_row_4 input
             {
                 width: 90%;
@@ -346,6 +351,27 @@ $escolaridad = $maestro->getEscolaridad();
                             ';
                         }
                         ?>
+                        <div class="datos_generales_row">
+                            <div class="datos_generales_label">Peso:</div>
+                            <div class="datos_generales_value">
+                                <?php echo $maestro->getPeso(); ?>
+                                <img src="/media/iconos/icon_modify.png"
+                                     ALT="M" onclick="$('#nuevo_registro_nut').dialog('open');"
+                                     style="width: 15px" title="Cambiar grupo" />
+                            </div>
+                        </div>
+                        <div class="datos_generales_row">
+                            <div class="datos_generales_label">Talla:</div>
+                            <div class="datos_generales_value">
+                                <?php echo $maestro->getTalla(); ?>
+                            </div>
+                        </div>
+                        <div class="datos_generales_row">
+                            <div class="datos_generales_label">IMC:</div>
+                            <div class="datos_generales_value">
+                                <?php echo $maestro->getIMC(); ?>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="barcode"></div>
@@ -616,6 +642,25 @@ $escolaridad = $maestro->getEscolaridad();
             </div>
         </div>
 
+        <!-- Dialogo nutrición -->
+        <div id="nuevo_registro_nut">
+            <div class="dialogo_row">
+                <label>Peso</label>
+                <input type="text" id="nuevoPesoVal" />
+            </div>
+            <div class="dialogo_row">
+                <label>Talla</label>
+                <input type="text" id="nuevaTallaVal" />
+            </div>
+            <div class="dialogo_row">
+                <label>IMC</label>
+                <input type="text" id="nuevoIMCVal" />
+            </div>
+            <span>NOTA. Puedes dejar los campos vacios y no se hará cambio al valor actual</span>
+            <button type="button" onclick="nuevoRegistroNut()">Aceptar</button>
+        </div>
+        <!-- Fin dialogo nutrición -->
+
     </body>
     <script>
         /** Cosas del Ajax image loader */
@@ -643,6 +688,8 @@ $escolaridad = $maestro->getEscolaridad();
                 }
             });
         });
+
+        $("#nuevo_registro_nut").dialog({ autoOpen: false });
 
         $("#prompt_modificar_direccion").draggable({ handle: "#prompt_modificar_direccion_handle" });
 
@@ -717,6 +764,27 @@ $escolaridad = $maestro->getEscolaridad();
                     document.location.reload(true);
                 }
             });
+        }
+
+        function nuevoRegistroNut()
+        {
+            var peso = $("#nuevoPesoVal").val();
+            var talla = $("#nuevaTallaVal").val();
+            var IMC = $("#nuevoIMCVal").val();
+
+            if(confirm("¿Desea agregar el nuevo registro de nutrición?"))
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/personas/nuevo_registro_nutricion.php",
+                    data: "id_persona=" + id_maestro + "&peso=" + peso + "&talla=" + talla + "&IMC=" + IMC,
+                    success: function (data)
+                    {
+                        $('#nuevo_registro_nut').dialog('close');
+                        document.location.reload(true);
+                    }
+                });
+            }
         }
     </script>
 </html>

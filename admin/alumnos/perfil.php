@@ -71,6 +71,27 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             <div class="perfil_dato_label">Registrad@ desde:</div>
                             <div class="perfil_dato_value"><?php echo $alumno->fecha_alta; ?></div>
                         </div>
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Peso:</div>
+                            <div class="perfil_dato_value">
+                                <?php echo $alumno->getPeso(); ?>
+                                <img src="/media/iconos/icon_modify.png"
+                                     ALT="M" onclick="$('#nuevo_registro_nut').dialog('open');"
+                                     style="width: 15px" title="Cambiar grupo" />
+                            </div>
+                        </div>
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">Talla:</div>
+                            <div class="perfil_dato_value">
+                                <?php echo $alumno->getTalla(); ?>
+                            </div>
+                        </div>
+                        <div class="datos_perfil_dato">
+                            <div class="perfil_dato_label">IMC:</div>
+                            <div class="perfil_dato_value">
+                                <?php echo $alumno->getIMC(); ?>
+                            </div>
+                        </div>
                     </div>
                     <div class="datos_perfil_seccion" >
                         <div class="datos_perfil_dato">
@@ -458,16 +479,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         <input type="button" value="Actualizar" onclick="updatePapeleria(this)" />
                     </div>
                     <div id="tabs-10">
-                        <label class="form_label" for="pesoVal" >Peso</label>
-                        <input type="text" class="form_input" id="pesoVal" value="<?php echo $alumno->getPeso(); ?>" readonly />
-                        <br />
-                        <label class="form_label" for="tallaVal" >Talla</label>
-                        <input type="text" class="form_input" id="tallaVal" value="<?php echo $alumno->getTalla(); ?>" readonly />
-                        <br />
-                        <label class="form_label" for="IMCVal" >IMC</label>
-                        <input type="text" class="form_input" id="IMCVal" value="<?php echo $alumno->getIMC() ?>" readonly />
-                        <br />
-                        <button type="button" onclick="$('#nuevo_registro_nut').dialog('open');">Nuevo registro</button>
+
                     </div>
                 </div>
 
