@@ -27,14 +27,16 @@ if(is_array($materias))
         $materiaARR[] = $materia['materia'];
 
         $promedio = 0;
+        $periodos_calificados = 0;
         for($p = 1; $p <= $parciales; $p++)
         {
             $calificacion = $alumno->getCalificacion($materia['id_clase'], $p);
+            if($calificacion) $periodos_calificados = $periodos_calificados + 1;
             $promedio += $calificacion;
             $materiaARR[] = $calificacion;
         }
 
-        $materiaARR[] = $promedio / $parciales;
+        $materiaARR[] = $promedio / $periodos_calificados;
         $json[] = $materiaARR;
     }
     echo json_encode(array("aaData" => $json));
