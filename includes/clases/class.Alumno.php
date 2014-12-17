@@ -597,6 +597,13 @@ class Alumno extends Persona
         $this->id_grupo = $grupoB->id_grupo;
     }
 
+    function getPromedioParcial($parcial)
+    {
+        $query = "SELECT AVG(calificacion) AS prom FROM calificacion WHERE id_alumno = $this->id_persona AND parcial = $parcial";
+        $prom = Database::select($query);
+        return $prom[0]['prom'];
+    }
+
     # Métodos estáticos
     static function getLista()
     {

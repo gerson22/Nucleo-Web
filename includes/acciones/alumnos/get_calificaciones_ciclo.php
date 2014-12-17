@@ -38,7 +38,19 @@ if(is_array($materias))
 
         if($periodos_calificados == 0) $periodos_calificados = 1;
         $materiaARR[] = $promedio / $periodos_calificados;
+
+
         $json[] = $materiaARR;
     }
+
+    $promedios = array();
+    $promedios[] = "Promedios";
+    $promedios[] = $alumno->getPromedioParcial(1);
+    $promedios[] = $alumno->getPromedioParcial(2);
+    $promedios[] = $alumno->getPromedioParcial(3);
+    $promedios[] = $alumno->getPromedioParcial(4);
+    $promedios[] = $alumno->getPromedioParcial(5);
+    $promedios[] = " ";
+    $json[] = $promedios;
     echo json_encode(array("aaData" => $json));
 }
