@@ -36,6 +36,7 @@ if(is_array($materias))
             $materiaARR[] = $calificacion;
         }
 
+        if($periodos_calificados == 0) $periodos_calificados = 1;
         $materiaARR[] = $promedio / $periodos_calificados;
         $json[] = $materiaARR;
     }
