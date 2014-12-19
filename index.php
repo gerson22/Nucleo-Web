@@ -109,6 +109,12 @@ $usuario = new Persona($_SESSION['id_persona']);
                             <footer>Niveles</footer>
                         </div>
                     </a>
+                    <a href="/includes/logout.php">
+                        <div class="index_opcion_secundaria">
+                            <img class="img-responsive" src="/media/iconos/salir.png" alt="Salir" />
+                            <footer>Salir</footer>
+                        </div>
+                    </a>
                 </div>
 
             </div>
