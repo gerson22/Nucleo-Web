@@ -362,6 +362,12 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 <div class="chart_inner_div" style="margin: 125px 0;" id="datos_clubs">
 
                 </div>
+
+                <!-- DATATABLE -->
+                <table id="tabla_clubs">
+
+                </table>
+                <!--------------->
             </div>
 
             <div class="charts_div" id="charts_colonias">
