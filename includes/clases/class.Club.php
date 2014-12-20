@@ -38,7 +38,7 @@ class Club
         $query = "SELECT COUNT(*) AS alumnos, persona_extra.id_club, nombre AS club
             FROM persona_extra
             JOIN club ON club.id_club = persona_extra.id_club
-            GROUP BY persona_extra.id_club";
+            GROUP BY persona_extra.id_club ORDER BY alumnos DESC";
         return Database::select($query);
     }
 } 
