@@ -34,7 +34,7 @@ $admin = new Administrador($id_administrador);
                 float: left;
                 margin: 10px;
                 padding: 5px;
-                height: 120px;
+                height: 130px;
                 width: 150px;
             }
 

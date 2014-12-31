@@ -84,4 +84,5 @@ include_once("../../includes/validar_admin.php");
     <div class="permiso"><input type="checkbox" value="46" />Papeleria</div>
     <div class="permiso"><input type="checkbox" value="47" />Ocupaciones</div>
     <div class="permiso"><input type="checkbox" value="48" />Niveles</div>
+    <div class="permiso"><input type="checkbox" value="49" />Cuentas dinámicas</div>
 </div>
