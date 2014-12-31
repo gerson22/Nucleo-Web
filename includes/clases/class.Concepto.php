@@ -29,8 +29,18 @@ class Concepto
         return Database::select("SELECT * FROM cuentas_concepto");
     }
 
-    static function insert($concepto, $monto_sugeridoVal)
+    static function insert($concepto, $montos)
     {
-        return Database::insert("INSERT INTO cuentas_concepto SET concepto = '$concepto', monto_sugerido = $monto_sugeridoVal");
+        print_r($montos);
+        $id_concepto = Database::insert("INSERT INTO cuentas_concepto SET concepto = '$concepto', genera_recargos = 0, recargo_diario = 0");
+
+        foreach($montos as $id_area => $monto)
+        {
+            $query = "INSERT INTO cuentas_monto VALUES($id_concepto, $id_area, $monto)";
+            echo $query;
+            Database::insert($query);
+        }
+
+        return true;
     }
 }

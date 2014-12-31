@@ -188,6 +188,12 @@ class Cuenta
         return $res[0]['descuento'];
     }
 
+    static function getConceptos()
+    {
+        $query = "SELECT * FROM cuentas_concepto";
+        return Database::select($query);
+    }
+
     static function getDescuentosCiclo($ciclo)
     {
         /** PENDIENTE. FALTA FILTRAR POR CICLO Y PROBAR */

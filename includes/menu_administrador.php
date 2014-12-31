@@ -79,6 +79,7 @@
                 <li class="li_submenu" ><a href="/admin/configuracion/colonias/index.php" >Colonias</a></li>
                 <li class="li_submenu" ><a href="/admin/configuracion/papeleria/index.php" >Papeleria</a></li>
                 <li class="li_submenu" ><a href="/admin/configuracion/ocupaciones/index.php" >Ocupaciones</a></li>
+                <li class="li_submenu" ><a href="/admin/configuracion/cuentas_dinamicas/index.php" >Cuentas dinámicas</a></li>
             </ul>
         </li>
     </ul>
