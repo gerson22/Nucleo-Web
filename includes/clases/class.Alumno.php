@@ -604,6 +604,20 @@ class Alumno extends Persona
         return $prom[0]['prom'];
     }
 
+    function getCuentasOtras($id_ciclo_escolar)
+    {
+        $query = "SELECT cuentas_monto.id_concepto, cuentas_concepto.concepto, cuentas_monto.monto, COALESCE(pagado, 0) AS pagado FROM alumno_grupo
+            JOIN grupo ON grupo.id_grupo = alumno_grupo.id_grupo
+            JOIN grado ON grado.id_grado = grupo.id_grado
+            JOIN area ON area.id_area = grado.id_area
+            RIGHT JOIN cuentas_monto ON cuentas_monto.id_area = area.id_area
+            JOIN cuentas_concepto ON cuentas_concepto.id_concepto = cuentas_monto.id_concepto
+            LEFT JOIN cuentas_cuenta ON cuentas_cuenta.id_concepto = cuentas_monto.id_concepto
+                AND cuentas_cuenta.id_persona = $this->id_persona AND cuentas_cuenta.id_ciclo_escolar = $id_ciclo_escolar
+            WHERE id_alumno = $this->id_persona AND cuentas_monto.id_concepto > 2";
+        return Database::select($query);
+    }
+
     # Métodos estáticos
     static function getLista()
     {
