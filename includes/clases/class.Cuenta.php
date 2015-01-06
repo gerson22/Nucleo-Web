@@ -219,6 +219,33 @@ class Cuenta
         /** PENDIENTE. FALTA FILTRAR POR CICLO Y PROBAR */
     }
 
+    static function insertarPago($id_persona, $id_concepto, $abono, $id_ciclo_escolar)
+    {
+        $id_cuenta = self::getCuenta($id_persona, $id_concepto, $id_ciclo_escolar);
+        if(is_null($id_cuenta))
+        {
+            // Crear una nueva cuenta (Para $id_concepto)
+            $concepto = new Concepto($id_concepto);
+            $persona = new Alumno($id_persona);
+            $id_cuenta = self::crear($id_persona, $id_concepto, $id_ciclo_escolar, $concepto->getMontoSugerido($persona->getArea()['id_area']));
+        }
+        $cuenta = new Cuenta($id_cuenta);
+        $cuenta->agregarPago($abono, 1, 0, "");
+    }
+
+    static function crear($id_persona, $id_concepto, $id_ciclo_escolar, $monto)
+    {
+        $query = "INSERT INTO cuentas_cuenta SET id_persona = $id_persona, id_concepto = $id_concepto, id_ciclo_escolar = $id_ciclo_escolar, monto = $monto";
+        return Database::insert($query);
+    }
+
+    static function getCuenta($id_persona, $id_concepto, $id_ciclo_escolar)
+    {
+        $query = "SELECT id_cuenta FROM cuentas_cuenta WHERE id_persona = $id_persona AND id_concepto = $id_concepto AND id_ciclo_escolar = $id_ciclo_escolar";
+        $res = Database::select($query);
+        return $res[0]['id_cuenta'];
+    }
+
     static function numtoletras($xcifra)
     {
         $xarray = array(0 => "Cero",

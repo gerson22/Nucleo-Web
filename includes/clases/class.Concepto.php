@@ -23,6 +23,13 @@ class Concepto
         return Database::update($query);
     }
 
+    function getMontoSugerido($id_area)
+    {
+        $query = "SELECT monto FROM cuentas_monto WHERE id_concepto = $this->id_concepto AND id_area = $id_area";
+        $res = Database::select($query);
+        return $res[0]['monto'];
+    }
+
     # Métodos estáticos
     static function getLista()
     {

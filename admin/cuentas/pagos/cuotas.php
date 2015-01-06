@@ -72,41 +72,32 @@ include_once("../../../includes/clases/class_lib.php");
 
         function pagar()
         {
-            if(estadoCuenta.adeudo > 0)
+            if(confirm("¿Desea realizar los pagos determinados?"))
             {
-                var id_cuenta = $("#cuentaVal").val();
+                var pagos = [];
 
-                if(confirm("¿Seguro que los datos están correctos?"))
-                {
-                    $("#boton_pagar").prop('disabled', true);
-                    $.ajax({
-                        type: "POST",
-                        url: "/includes/acciones/cuentas/pagos/pagar_inscripcion.php",
-                        data: "id_cuenta=" + id_cuenta + "&monto=" + $("#abonoVal").val() + "&id_forma_pago=" + 1
-                            + "&comentario=" + " ",
-                        success: function (data)
-                        {
-                            if(data)
-                            {
-                                if(confirm("¿Imprimir el recibo de pago?"))
-                                {
-                                    window.location.href = "/admin/cuentas/pagos/imprimir_recibo.php?id_pago=" + data;
-                                }
-                                else
-                                {
-                                    window.location.reload(true);
-                                }
-                            }
-                            else{ alert("Error."); $("#boton_pagar").prop('disabled', false); }
-                        }
-                    });
-                }
-                else
-                {
-                    $("#boton_pagar").prop('disabled', false);
-                }
+                // Cada concepto
+                $(".abonoVal").each(function(){
+
+                    if($(this).val() !== "" )
+                    {
+                        var pago = {};
+                        pago.id_concepto = $(this).data("idconcepto");
+                        pago.abono = $(this).val();
+                        pagos.push(pago);
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "/includes/acciones/cuentas/nuevos_pago.php",
+                    data: "id_alumno=" + alumno.id_persona + "&pagos=" + JSON.stringify(pagos) + "&id_ciclo_escolar=" + $("#cicloVal").val(),
+                    success: function (data)
+                    {
+                        if(data == 1) document.location.reload(true);
+                    }
+                });
             }
-            else alert("La inscripción ya está pagada");
         }
 
         function llenarCuentas()
@@ -114,10 +105,23 @@ include_once("../../../includes/clases/class_lib.php");
             $.ajax({
                 type: "POST",
                 url: "/includes/acciones/alumnos/get_cuentas_otras.php",
+                dataType: "json",
                 data: "id_alumno=" + alumno.id_persona + "&id_ciclo_escolar=" + $("#cicloVal").val(),
                 success: function (data)
                 {
+                    $.each(data, function(i, obj)
+                    {
+                        var html_string = "<tr>";
+                        html_string += "<td><input type='hidden' class='id_concepto' value='"+data[i].id_concepto+"' /></td>";
+                        html_string += "<td>"+data[i].concepto+"</td>";
+                        html_string += "<td>"+data[i].monto+"</td>";
+                        html_string += "<td>"+data[i].pagado+"</td>";
+                        html_string += "<td>"+(data[i].monto - data[i].pagado)+"</td>";
+                        html_string += "<td><input type='text' class='abonoVal' data-idConcepto='"+data[i].id_concepto+"' /></td>";
 
+                        $("#tabla_pagos").children('tbody').append(html_string);
+                        //use obj.id and obj.name here, for example:
+                    });
                 }
             });
         }
@@ -155,20 +159,6 @@ include_once("../../../includes/clases/class_lib.php");
                     </thead>
                     <tbody>
                         <!-- AJAX -->
-
-                        <!--<tr>
-                            <td><input type="hidden" id="cuentaVal" /></td>
-                            <td id="inscripcionVal">Inscripción</td>
-                            <td id="subtotalVal" ></td>
-                            <td id="descuentoVal" ></td>
-                            <td id="totalVal" ></td>
-                            <td id="pagadoVal" ></td>
-                            <td id="adeudoVal" ></td>
-                            <td>
-                                $<input type="text" id="abonoVal" disabled="disabled" />
-                            </td>
-                            <td id="fechaVal" ></td>
-                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -178,7 +168,7 @@ include_once("../../../includes/clases/class_lib.php");
                 <div id="monto_a_pagar" style="float: left; margin-left: 4px;"></div>
             </div>
 
-            <input type="button" class="form_submit" value="Aceptar" id="boton_pagar" onclick="pagar();" disabled />
+            <input type="button" class="form_submit" value="Aceptar" id="boton_pagar" onclick="pagar();"  />
 
         </div>
 
