@@ -42,10 +42,10 @@ class Maestro extends Persona
     function getGradosActuales()
     {
         $ciclo_actual = CicloEscolar::getActual();
-        $query = "SELECT grado.id_grado, CONCAT(grado.grado, ' de ', area) AS grado FROM clase 
-            JOIN grupo ON grupo.id_grupo = clase.id_grupo 
+        $query = "SELECT grado.id_grado, CONCAT(grado.grado, ' de ', area) AS grado FROM clase
+            JOIN grupo ON grupo.id_grupo = clase.id_grupo
             JOIN grado ON grado.id_grado = grupo.id_grado
-            JOIN area ON grado.id_area = area.id_area 
+            JOIN area ON grado.id_area = area.id_area
             WHERE id_maestro = $this->id_persona AND id_ciclo_escolar = $ciclo_actual->id_ciclo_escolar
             GROUP BY grado.id_grado";
         return Database::select($query);
@@ -54,12 +54,13 @@ class Maestro extends Persona
     function getGrupos()
     {
         $ciclo_actual = CicloEscolar::getActual();
-        $query = "SELECT grupo.id_grupo, CONCAT(grado, ' ', grupo) AS grupo, area FROM clase
+        $query = "SELECT grupo.id_grupo, CONCAT(grado, ' ', grupo) AS grupo, area , COUNT(id_alumno) FROM clase
             JOIN grupo ON grupo.id_grupo = clase.id_grupo
             JOIN grado ON grado.id_grado = grupo.id_grado
             JOIN area ON area.id_area = grado.id_area
+			JOIN alumno_grupo ON grupo.id_grupo = alumno_grupo.id_grupo
             WHERE id_ciclo_escolar = $ciclo_actual->id_ciclo_escolar AND id_maestro = $this->id_persona
-            GROUP BY id_grupo";
+            GROUP BY grupo.id_grupo";
         return Database::select($query);
     }
 
