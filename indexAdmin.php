@@ -11,7 +11,7 @@
     <!-- Panel izquierdo -->
     <div class="col-md-6 col-sm-12" id="panel_izquierdo" >
 
-        <a href="admin/stats.php">
+        <a href="admin/estadisticas/stats.php">
             <div class="index_opcion">
                 <img class="img-responsive" src="/media/iconos/stats.png" alt="Estadísticas" />
                 <footer>Estadísticas</footer>

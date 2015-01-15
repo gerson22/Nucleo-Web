@@ -1,7 +1,13 @@
 <nav class="menu_strip" id="menu_administrador">
     <ul id="menu_strip_lista">
         <li class="li_menu" ><a href="/index.php" >Inicio</a></li>
-        <li class="li_menu" ><a href="/admin/stats.php" >Estadísticas</a></li>
+        <li class="li_menu" >
+            Estadísticas
+            <ul class="submenu" >
+                <li class="li_submenu" ><a href="/admin/estadisticas/stats.php" >Personal</a></li>
+                <li class="li_submenu" ><a href="/admin/estadisticas/cuentas.php" >Cuentas</a></li>
+            </ul>
+        </li>
         <li class="li_menu" >
             Ciclos
             <ul class="submenu" >

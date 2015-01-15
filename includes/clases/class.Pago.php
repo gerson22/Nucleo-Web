@@ -82,4 +82,23 @@ class Pago
             $filtros";
         return Database::select($query);
     }
+
+    public static function getPagos($id_nivel, $id_concepto, $fecha_inicio, $fecha_fin)
+    {
+        $query = "SELECT fecha, cuentas_cuenta.id_cuenta, cuentas_pago.id_pago, id_usuario,
+            CONCAT(persona.nombres, ' ', persona.apellido_paterno, ' ', persona.apellido_materno) AS nombre,
+            CONCAT(usuario.nombres, ' ', usuario.apellido_paterno, ' ', usuario.apellido_materno) AS usuario,
+            cuentas_pago.monto, concepto FROM cuentas_pago
+            JOIN cuentas_cuenta ON cuentas_cuenta.id_cuenta = cuentas_pago.id_cuenta
+            JOIN cuentas_concepto ON cuentas_concepto.id_concepto = cuentas_cuenta.id_concepto
+            JOIN persona ON persona.id_persona = cuentas_cuenta.id_persona
+            JOIN persona AS usuario ON usuario.id_persona = cuentas_pago.id_usuario
+            JOIN alumno_grupo ON alumno_grupo.id_alumno = persona.id_persona
+            JOIN grupo ON grupo.id_grupo = alumno_grupo.id_grupo
+            JOIN grado ON grado.id_grado = grupo.id_grado
+            WHERE fecha >= '$fecha_inicio' AND fecha <= '$fecha_fin'";
+        if ($id_nivel != 0) $query .= " AND id_area = $id_nivel";
+        if ($id_concepto != 0) $query .= " AND cuentas_cuenta.id_concepto = $id_concepto";
+        return Database::select($query);
+    }
 }

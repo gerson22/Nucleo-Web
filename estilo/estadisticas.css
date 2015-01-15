@@ -1,0 +1,43 @@
+#div_parametros
+{
+    border: 1px solid #15186D;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.div_parametro
+{
+    font-size: 14px;
+    width: 180px;
+    float: left;
+    margin-right: 40px
+}
+
+.parametroLabel
+{
+    float: left;
+    padding: 0 2px;
+}
+
+.parametroValue
+{
+    width: 100%;
+}
+
+#tabla_pagos
+{
+    float: left;
+    margin-top: 30px;
+}
+
+#resumen
+{
+    border: 1px solid #15186D;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.dataTables_wrapper
+{
+    border: 1px solid #15186D !important;
+}
