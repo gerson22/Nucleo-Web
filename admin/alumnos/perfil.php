@@ -188,6 +188,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         <li><a href="#tabs-8">Calificaciones</a></li>
                         <li><a href="#tabs-9">Papeleria</a></li>
                         <li><a href="#tabs-10">Nutrición</a></li>
+                        <li><a href="#tabs-11">Cuentas</a></li>
                     </ul>
                     <div id="tabs-1">
                         <table id="tabla_clases">
@@ -480,6 +481,37 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     </div>
                     <div id="tabs-10">
 
+                    </div>
+                    <div id="tabs-11">
+                        <table id="tabla_cuentas">
+                            <thead>
+                                <tr>
+                                    <th>Concepto</th>
+                                    <th>Total</th>
+                                    <th>Pagado</th>
+                                    <th>Adeudo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                $cuentas = $alumno->getCuentasOtras($ciclo['id_ciclo_escolar']);
+                                if(is_array($cuentas))
+                                {
+                                    foreach($cuentas as $cuenta)
+                                    {
+                                        echo "
+                                            <tr>
+                                                <td>".$cuenta['concepto']."</td>
+                                                <td>$".$cuenta['monto']."</td>
+                                                <td>$".$cuenta['pagado']."</td>
+                                                <td>$".$cuenta['deuda']."</td>
+                                            </tr>
+                                        ";
+                                    }
+                                }
+                            ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -1215,6 +1247,21 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     aoData.push({ "name": "id_ciclo", "value": id_ciclo });
                     aoData.push({ "name": "id_persona", "value": id_persona });
                 }
+            });
+
+            $("#tabla_cuentas").dataTable({
+                "bPaginate":   false,
+                "oLanguage": {
+                    "sLengthMenu": "Mostrar _MENU_ cuentas por página",
+                    "sZeroRecords": "No se encontraron cuentas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ cuentas",
+                    "sInfoEmpty": "Mostrando 0 a 0 de 0 cuentas",
+                    "sInfoFiltered": "(Encontrados de _MAX_ cuentas)"
+                },
+                "aoColumns": [
+                    {"sWidth":"55%"},{"sWidth":"15%"},{"sWidth":"15%"},
+                    {"sWidth":"15%"}
+                ]
             });
         }
 
