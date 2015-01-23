@@ -623,11 +623,13 @@ class Alumno extends Persona
     # Métodos estáticos
     static function getLista()
     {
-        return Database::select("SELECT persona.*, grado.grado, grupo.grupo, area FROM persona
+        return Database::select("SELECT persona.*, grado.grado, grupo.grupo, area, colonia.nombre as Colonia FROM persona
             JOIN alumno_grupo ON alumno_grupo.id_alumno = persona.id_persona
             JOIN grupo ON grupo.id_grupo = alumno_grupo.id_grupo
             JOIN grado ON grado.id_grado = grupo.id_grado
             JOIN area ON area.id_area = grado.id_area
+            JOIN persona_direccion ON persona_direccion.id_persona = persona.id_persona
+            JOIN colonia ON colonia.id_colonia = persona_direccion.id_colonia
             WHERE tipo_persona = 1");
     }
 

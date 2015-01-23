@@ -12,7 +12,7 @@ $alumnos = Alumno::getLista();
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="../../librerias/jquery.dataTables.min.js" ></script>
+        <script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" ></script>
         <script>
             $(document).ready(function ()
             {
@@ -22,14 +22,17 @@ $alumnos = Alumno::getLista();
             function declararDataTable()
             {
                 var DT = $('#tabla_alumnos').dataTable({
-                    "oLanguage": {
-                        "sLengthMenu": "Mostrar _MENU_ alumnos por página",
-                        "sZeroRecords": "No existen alumnos",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ alumnos",
-                        "sInfoEmpty": "Mostrando 0 a 0 de 0 alumnos",
-                        "sInfoFiltered": "(Encontrados de _MAX_ alumnos)"
+                    "columnDefs": [
+                        { "visible": false, "targets": [ 8 ] }
+                    ],
+                    "language": {
+                        "lengthMenu": "Mostrar _MENU_ alumnos por página",
+                        "zeroRecords": "No existen alumnos",
+                        "info": "Mostrando _START_ a _END_ de _TOTAL_ alumnos",
+                        "infoEmpty": "Mostrando 0 a 0 de 0 alumnos",
+                        "infoFiltered": "(Encontrados de _MAX_ alumnos)"
                     },
-                    "iDisplayLength": 25
+                    "displayLength": 25
                 });
 
                 DT.fnSort( [ [1,'asc']  ]);
@@ -54,6 +57,7 @@ $alumnos = Alumno::getLista();
                                 <th>Grado</th>
                                 <th>Grupo</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,6 +80,7 @@ $alumnos = Alumno::getLista();
                                                     <img src='/media/iconos/icon_profile.png' alt='P' />
                                                 </a>
                                             </td>
+                                            <td>".$alumno['Colonia']."</td>
                                         </tr>
                                     ";
                                 }
