@@ -1141,105 +1141,105 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         function declararDataTables()
         {
             $('#tabla_clases').dataTable({
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ clases por página",
-                    "sZeroRecords": "El alumno no se encuentra inscrito en ninguna clase",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ clases",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 clases",
-                    "sInfoFiltered": "(Encontrados de _MAX_ clases)"
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ clases por página",
+                    "zeroRecords": "El alumno no se encuentra inscrito en ninguna clase",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ clases",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 clases",
+                    "infoFiltered": "(Encontrados de _MAX_ clases)"
                 },
-                "bFilter": false,
-                "bLengthChange": false,
-                "bPaginate": false,
-                "bInfo": false
+                "filter": false,
+                "lengthChange": false,
+                "paginate": false,
+                "info": false
             });
 
             $("#tabla_tutores").dataTable({
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ tutores por página",
-                    "sZeroRecords": "El alumno no se cuenta con ningún tutor registrado",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ tutores",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 tutores",
-                    "sInfoFiltered": "(Encontrados de _MAX_ tutores)"
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ tutores por página",
+                    "zeroRecords": "El alumno no se cuenta con ningún tutor registrado",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ tutores",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 tutores",
+                    "infoFiltered": "(Encontrados de _MAX_ tutores)"
                 },
-                "bFilter": false,
-                "bLengthChange": false,
-                "bPaginate": false,
-                "bInfo": false
+                "filter": false,
+                "lengthChange": false,
+                "paginate": false,
+                "info": false
             });
 
             $('#tabla_emails').dataTable({
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ correos por página",
-                    "sZeroRecords": "El alumno no cuenta con ningún correo registrado",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ correos",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 correos",
-                    "sInfoFiltered": "(Encontrados de _MAX_ correos)"
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ correos por página",
+                    "zeroRecords": "El alumno no cuenta con ningún correo registrado",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ correos",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 correos",
+                    "infoFiltered": "(Encontrados de _MAX_ correos)"
                 },
-                "bFilter": false,
-                "bLengthChange": false,
-                "bPaginate": false,
-                "bInfo": false
+                "filter": false,
+                "lengthChange": false,
+                "paginate": false,
+                "info": false
             });
 
             $('#tabla_telefonos').dataTable({
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ telefonos por página",
-                    "sZeroRecords": "El alumno no cuenta con ningún telefono registrado",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ telefonos",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 telefonos",
-                    "sInfoFiltered": "(Encontrados de _MAX_ telefonos)"
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ telefonos por página",
+                    "zeroRecords": "El alumno no cuenta con ningún telefono registrado",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ telefonos",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 telefonos",
+                    "infoFiltered": "(Encontrados de _MAX_ telefonos)"
                 },
-                "bFilter": false,
-                "bLengthChange": false,
-                "bPaginate": false,
-                "bInfo": false
+                "filter": false,
+                "lengthChange": false,
+                "paginate": false,
+                "info": false
             });
 
             $('#tabla_pagos').dataTable({
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ pagos por página",
-                    "sZeroRecords": "El alumno no cuenta con ningún pago registrado",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ pagos",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 pagos",
-                    "sInfoFiltered": "(Encontrados de _MAX_ pagos)"
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ pagos por página",
+                    "zroRecords": "El alumno no cuenta con ningún pago registrado",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ pagos",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 pagos",
+                    "infoFiltered": "(Encontrados de _MAX_ pagos)"
                 },
-                "bFilter": false,
-                "bLengthChange": false,
-                "bPaginate": false,
-                "bInfo": false
+                "filter": false,
+                "lengthChange": false,
+                "paginate": false,
+                "info": false
             });
 
             $("#tabla_becas").dataTable({
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ becas por página",
-                    "sZeroRecords": "El alumno no cuenta con ninguna beca registrada",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ becas",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 becas",
-                    "sInfoFiltered": "(Encontrados de _MAX_ becas)"
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ becas por página",
+                    "zeroRecords": "El alumno no cuenta con ninguna beca registrada",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ becas",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 becas",
+                    "infoFiltered": "(Encontrados de _MAX_ becas)"
                 },
-                "bFilter": false,
-                "bLengthChange": false,
-                "bPaginate": false,
-                "bInfo": false
+                "filter": false,
+                "lengthChange": false,
+                "paginate": false,
+                "info": false
             });
 
             $("#tabla_calificaciones").dataTable({
-                "bPaginate":   false,
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ materias por página",
-                    "sZeroRecords": "No se encontraron materias",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ materias",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 materias",
-                    "sInfoFiltered": "(Encontrados de _MAX_ materias)"
+                "paginate":   false,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ materias por página",
+                    "zeroRecords": "No se encontraron materias",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ materias",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 materias",
+                    "infoFiltered": "(Encontrados de _MAX_ materias)"
                 },
-                "aoColumns": [
-                    {"sWidth":"40%"},{"sWidth":"10%"},{"sWidth":"10%"},
-                    {"sWidth":"10%"},{"sWidth":"10%"},{"sWidth":"10%"},
-                    {"sWidth":"10%"}
+                "columns": [
+                    {"width":"40%"},{"width":"10%"},{"width":"10%"},
+                    {"width":"10%"},{"width":"10%"},{"width":"10%"},
+                    {"width":"10%"}
                 ],
-                "bProcessing": true,
-                "sAjaxSource": '/includes/acciones/alumnos/get_calificaciones_ciclo.php',
+                "processing": true,
+                "ajaxSource": '/includes/acciones/alumnos/get_calificaciones_ciclo.php',
                 "fnServerParams": function (aoData)
                 {
                     var id_ciclo = $("#ciclo_escolarVal").val();
@@ -1250,17 +1250,17 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
             });
 
             $("#tabla_cuentas").dataTable({
-                "bPaginate":   false,
-                "oLanguage": {
-                    "sLengthMenu": "Mostrar _MENU_ cuentas por página",
-                    "sZeroRecords": "No se encontraron cuentas",
-                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ cuentas",
-                    "sInfoEmpty": "Mostrando 0 a 0 de 0 cuentas",
-                    "sInfoFiltered": "(Encontrados de _MAX_ cuentas)"
+                "paginate":   false,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ cuentas por página",
+                    "zeroRecords": "No se encontraron cuentas",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ cuentas",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 cuentas",
+                    "infoFiltered": "(Encontrados de _MAX_ cuentas)"
                 },
-                "aoColumns": [
-                    {"sWidth":"55%"},{"sWidth":"15%"},{"sWidth":"15%"},
-                    {"sWidth":"15%"}
+                "columns": [
+                    {"width":"55%"},{"width":"15%"},{"width":"15%"},
+                    {"width":"15%"}
                 ]
             });
         }
