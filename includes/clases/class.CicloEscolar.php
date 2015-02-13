@@ -290,7 +290,8 @@ class CicloEscolar
 
     static function insert($fecha_inicioVal, $fecha_finVal)
     {
-        return Database::insert("INSERT INTO ciclo_escolar SET fecha_inicio = '$fecha_inicioVal', fecha_fin = '$fecha_finVal'");
+        $query = "INSERT INTO ciclo_escolar SET fecha_inicio = '$fecha_inicioVal', fecha_fin = '$fecha_finVal'";
+        return Database::insert($query);
     }
 
     static function iniciarNuevo()
