@@ -54,3 +54,4 @@ if(is_array($materias))
     $json[] = $promedios;
     echo json_encode(array("aaData" => $json));
 }
+else echo json_encode(array("aaData" => ""));

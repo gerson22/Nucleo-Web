@@ -412,7 +412,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     </div>
                     <div id="tabs-8">
                         <label>Ciclo escolar</label>
-                        <select id="ciclo_escolarVal" onchange="$('#tabla_calificaciones').fnReloadAjax()">
+                        <select id="ciclo_escolarVal" onchange="reloadCalis()">
                             <?php
                                 $ciclos = CicloEscolar::getLista();
                                 if(is_array($ciclos))
@@ -814,13 +814,14 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
-        <script src="../../librerias/fnAjaxReload.js" ></script>
+        <script src="/librerias/fnAjaxReload.js" ></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="/librerias/jquery.form.js"></script>
         <script>
         var id_alumno = <?php echo $id_alumno; ?>;
         var id_ciclo = <?php echo $ciclo['id_ciclo_escolar']; ?>;
         var id_tipo_tutor;
+        var tablaCalificaciones;
 
         /** Document ready */
         $("#prompt_modificar_direccion").draggable({ handle: "#prompt_modificar_direccion_handle" });
@@ -858,6 +859,11 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                 }
             });
         });
+
+        function reloadCalis()
+        {
+            tablaCalificaciones.fnReloadAjax();
+        }
 
         function asignarFoto(img)
         {
@@ -1138,8 +1144,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
         }
 
-        function declararDataTables()
-        {
+        function declararDataTables() {
             $('#tabla_clases').dataTable({
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ clases por página",
@@ -1224,8 +1229,11 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                 "info": false
             });
 
-            $("#tabla_calificaciones").dataTable({
-                "paginate":   false,
+
+
+            tablaCalificaciones = $("#tabla_calificaciones").dataTable({
+                "sAjaxSource": '/includes/acciones/alumnos/get_calificaciones_ciclo.php',
+                "paginate": false,
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ materias por página",
                     "zeroRecords": "No se encontraron materias",
@@ -1234,23 +1242,21 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     "infoFiltered": "(Encontrados de _MAX_ materias)"
                 },
                 "columns": [
-                    {"width":"40%"},{"width":"10%"},{"width":"10%"},
-                    {"width":"10%"},{"width":"10%"},{"width":"10%"},
-                    {"width":"10%"}
+                    {"width": "40%"}, {"width": "10%"}, {"width": "10%"},
+                    {"width": "10%"}, {"width": "10%"}, {"width": "10%"},
+                    {"width": "10%"}
                 ],
                 "processing": true,
-                "ajaxSource": '/includes/acciones/alumnos/get_calificaciones_ciclo.php',
-                "fnServerParams": function (aoData)
-                {
+                "fnServerParams": function (aoData) {
                     var id_ciclo = $("#ciclo_escolarVal").val();
                     var id_persona = <?php echo $alumno->id_persona; ?>;
-                    aoData.push({ "name": "id_ciclo", "value": id_ciclo });
-                    aoData.push({ "name": "id_persona", "value": id_persona });
+                    aoData.push({"name": "id_ciclo", "value": id_ciclo});
+                    aoData.push({"name": "id_persona", "value": id_persona});
                 }
             });
 
             $("#tabla_cuentas").dataTable({
-                "paginate":   false,
+                "paginate": false,
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ cuentas por página",
                     "zeroRecords": "No se encontraron cuentas",
@@ -1259,8 +1265,8 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     "infoFiltered": "(Encontrados de _MAX_ cuentas)"
                 },
                 "columns": [
-                    {"width":"55%"},{"width":"15%"},{"width":"15%"},
-                    {"width":"15%"}
+                    {"width": "55%"}, {"width": "15%"}, {"width": "15%"},
+                    {"width": "15%"}
                 ]
             });
         }
