@@ -5,8 +5,19 @@
     <title>Recibo de pago</title>
 </head>
 <body>
-<div id="respuesta">
-
+<div id="recibo">
+    Recibo: <div id="reciboVal"></div>
+    Fecha: <div id="fechaVal"></div>
+    Recibí De: <div id="recibiDeVal"></div>
+    CURP: <div id="CURP_pagoVal"></div>
+    Domicilio <div id="direccionVal"></div>
+    Ciudad: <div id="ciudadVal"></div>
+    La cantidad de: <div id="cantidadLetrasVal"></div>
+    Por concepto de: <div id="conceptoVal"></div>
+    Método de pago: <div id="formaPagoVal"></div>
+    No. de cuenta: <div id="cuentaVal"></div>
+    Alumno: <div id="alumnoVal"></div>
+    CURP Alumno: <div id="CURP_alumnoVal"></div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script>
@@ -17,7 +28,18 @@
         crossDomain: true
     }).done(function(data)
     {
-        $("#respuesta").append(data.id_pago);
+        $("#reciboVal").html(data.recibo);
+        $("#fechaVal").html(data.fecha);
+        $("#recibiDeVal").html(data.persona);
+        $("#CURP_pagoVal").html(data.CURP_persona);
+        $("#direccionVal").html(data.direccion);
+        $("#ciudadVal").html(data.ciudad);
+        $("#cantidadLetrasVal").html(data.cantidadLetras);
+        $("#conceptoVal").html(data.concepto);
+        $("#formaPagoVal").html(data.forma_pago);
+        $("#cuentaVal").html(data.id_cuenta);
+        $("#alumnoVal").html(data.alumno);
+        $("#CURP_alumnoVal").html(data.CURP_alumno);
     }).fail(function( jqXHR, textStatus, errorThrown )
     {
 
