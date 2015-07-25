@@ -13,7 +13,7 @@
     </head>
     <body>
         
-        <form id='forma_login' action="includes/login.php" method="post">
+        <form id='forma_Log' action="includes/login.php" method="post">
             <img src="media/logos/meze.png" alt="Colegio Meze" style="width: 100px; margin: 30px 200px 0;" />
             <?php if(isset($error)) echo "<div id='error_msg' >Datos erroneos. Porfavor intente de nuevo.</div>"; ?>
             <p>
@@ -27,6 +27,7 @@
             <p>
                 <input id="boton_aceptar" type="submit" value="Aceptar" />
             </p>
+			<input type="button" name="boton">
         </form>
 
     </body>
