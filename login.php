@@ -17,7 +17,7 @@
             <img src="media/logos/meze.png" alt="Colegio Meze" style="width: 100px; margin: 30px 200px 0;" />
             <?php if(isset($error)) echo "<div id='error_msg' >Datos erroneos. Porfavor intente de nuevo.</div>"; ?>
             <p>
-                <label for="matriculaVal">Matrícula</label>
+                <label for="matriculaVal222">Matrícula</label>
                 <input class="input" type="text" name="matriculaVal" id="matriculaVal"/>
             </p>
             <p>
