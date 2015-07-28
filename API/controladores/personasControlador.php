@@ -15,6 +15,20 @@ class personasControlador
             case "GET":
                 switch($verbo)
                 {
+                    case "login":
+                        $usuario = PersonaModelo::getUsuarioPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+                        $respuesta = (array)$usuario;
+
+                        $respuesta['peso'] = $usuario->getPesoActual();
+                        $respuesta['talla'] = $usuario->getTallaActual();
+                        $respuesta['IMC'] = $usuario->getIMCActual();
+                        $respuesta['estado'] = $usuario->getStatus();
+                        $respuesta['beca'] = "10";
+                        $respuesta['nivel'] = "X";
+                        $respuesta['grupo'] = "X";
+
+                        return $respuesta;
+                        break;
                     default:
                         return 404;
                         break;
