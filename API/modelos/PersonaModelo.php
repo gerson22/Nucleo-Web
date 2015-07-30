@@ -71,11 +71,11 @@ class PersonaModelo
         return APIDatabase::update($query);
     }
 
-    public static function getUsuarioPorCredenciales($matricula, $password)
+    public static function getPersonaPorCredenciales($matricula, $password)
     {
-        $query = "SELECT * FROM persona WHERE matricula = '$matricula' AND password = '$password' AND tipo_persona = 3 LIMIT 1";
+        $query = "SELECT * FROM persona WHERE matricula = '$matricula' AND password = '$password' LIMIT 1";
         $res = APIDatabase::select($query);
-        $usuario = new PersonaModelo($res[0]['id_persona']);
-        return $usuario;
+        $persona = new PersonaModelo($res[0]['id_persona']);
+        return $persona;
     }
 }

@@ -13,21 +13,9 @@ class personasControlador
         switch($metodo)
         {
             case "GET":
-                switch($verbo)
-                {
+                switch ($verbo) {
                     case "login":
-                        $usuario = PersonaModelo::getUsuarioPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-                        $respuesta = (array)$usuario;
-
-                        $respuesta['peso'] = $usuario->getPesoActual();
-                        $respuesta['talla'] = $usuario->getTallaActual();
-                        $respuesta['IMC'] = $usuario->getIMCActual();
-                        $respuesta['estado'] = $usuario->getStatus();
-                        $respuesta['beca'] = "10";
-                        $respuesta['nivel'] = "X";
-                        $respuesta['grupo'] = "X";
-
-                        return $respuesta;
+                        return $this->personaLogin();
                         break;
                     default:
                         return 404;
@@ -61,5 +49,12 @@ class personasControlador
             return 500;
         }
         return 401;
+    }
+
+    public function personaLogin()
+    {
+        $persona = PersonaModelo::getPersonaPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+        if($persona->id_persona != null) return $persona;
+        else return 401;
     }
 }
