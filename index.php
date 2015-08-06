@@ -17,7 +17,12 @@ $usuario = new Persona($_SESSION['id_persona']);
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/estilo/bootstrap.min.css">
         <link rel="stylesheet" href="/estilo/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="/estilo/index.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="plugins/assets/css/animations.css">
+		<link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.3.0/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="plugins/assets/css/animationxtra.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     </head>
     <body>
         <div id="wrapper">
@@ -38,3 +43,5 @@ $usuario = new Persona($_SESSION['id_persona']);
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </body>
 </html>
+<script src="js/jquery-2.1.3.js" type="text/javascript"></script>
+<script src="js/bootstrap.js" type="text/javascript"></script>

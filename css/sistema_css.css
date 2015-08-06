@@ -1,0 +1,305 @@
+body{
+    padding-top: 50px;
+}
+
+.sub-header{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.navbar-fixed-top{
+    border: 0;
+}
+.dropdown > .dropdown-toggle:focus
+{
+	background: transparent; !important
+}
+.navbar-inverse
+{
+	background: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cedbe9+0,aac5de+17,6199c7+50,3a84c3+51,419ad6+59,4bb8f0+71,3a8bc2+84,26558b+100;Blue+Gloss */
+background: rgb(206,219,233); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(206,219,233,1) 0%, rgba(170,197,222,1) 17%, rgba(97,153,199,1) 50%, rgba(58,132,195,1) 51%, rgba(65,154,214,1) 59%, rgba(75,184,240,1) 71%, rgba(58,139,194,1) 84%, rgba(38,85,139,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(206,219,233,1)), color-stop(17%,rgba(170,197,222,1)), color-stop(50%,rgba(97,153,199,1)), color-stop(51%,rgba(58,132,195,1)), color-stop(59%,rgba(65,154,214,1)), color-stop(71%,rgba(75,184,240,1)), color-stop(84%,rgba(58,139,194,1)), color-stop(100%,rgba(38,85,139,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(206,219,233,1) 0%,rgba(170,197,222,1) 17%,rgba(97,153,199,1) 50%,rgba(58,132,195,1) 51%,rgba(65,154,214,1) 59%,rgba(75,184,240,1) 71%,rgba(58,139,194,1) 84%,rgba(38,85,139,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(206,219,233,1) 0%,rgba(170,197,222,1) 17%,rgba(97,153,199,1) 50%,rgba(58,132,195,1) 51%,rgba(65,154,214,1) 59%,rgba(75,184,240,1) 71%,rgba(58,139,194,1) 84%,rgba(38,85,139,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(206,219,233,1) 0%,rgba(170,197,222,1) 17%,rgba(97,153,199,1) 50%,rgba(58,132,195,1) 51%,rgba(65,154,214,1) 59%,rgba(75,184,240,1) 71%,rgba(58,139,194,1) 84%,rgba(38,85,139,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(206,219,233,1) 0%,rgba(170,197,222,1) 17%,rgba(97,153,199,1) 50%,rgba(58,132,195,1) 51%,rgba(65,154,214,1) 59%,rgba(75,184,240,1) 71%,rgba(58,139,194,1) 84%,rgba(38,85,139,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', endColorstr='#26558b',GradientType=0 ); /* IE6-9 */
+
+ !important
+}
+
+.sidebar{
+    display: none;
+}
+
+@media(min-width: 768px){
+    .sidebar{
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ebf1f6+0,abd3ee+50,89c3eb+51,d5ebfb+100;Blue+Gloss+%234 */
+		background: #ebf1f6; /* Old browsers */
+		background: -moz-linear-gradient(-45deg,  #ebf1f6 0%, #abd3ee 50%, #89c3eb 51%, #d5ebfb 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(51%,#89c3eb), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(-45deg,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(-45deg,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(-45deg,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* IE10+ */
+		background: linear-gradient(135deg,  #ebf1f6 0%,#abd3ee 50%,#89c3eb 51%,#d5ebfb 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		border-right: 1px  #eee;
+    }
+	.sidebar > li > .op
+	{
+		color: #fff;
+	}
+}
+
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 20px;
+    margin-left:  -20px;
+}
+
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus{
+    color: #fff;
+    background-color: #428bca;
+}
+
+.main {
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    .media {
+        padding-right: 40px;
+        padding-left: 30px;
+    }
+}
+
+.media .page-header {
+    margin-top: 0;
+}
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+#logo{
+    margin-left: 50px;
+    width: 70px;
+    margin-top: 5px;
+}
+
+#bar{
+    margin-top: 10px;
+    margin-left: -15px;
+    margin-bottom: -11px;
+}
+
+.seleccion{
+    background-color: lavender;
+	color: #000;
+}  
+.seleccion:focus{
+    background-color: lavender;
+}  
+#buscar
+{
+	border-radius: 10px;
+}
+.table > thead > tr
+{
+	background-color: cadetblue;
+	color: #fff;
+}
+.table
+{
+	margin: 20px;
+	box-shadow: 4px 4px 20px #5f5f5f;
+}
+#tabla_alumnos > tbody > tr > td:hover
+{
+	background: #f2f2f2;
+}
+.ico
+{
+	background: rgba(0,145,190,.8);
+	color: #fff;
+	padding: 15px;
+	border-radius: 50%;
+	font-size: 15px;
+	
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+}
+.letter3
+{
+	font-family: "TW Cen MT";
+	font-size: 18px;
+	color: #000;
+}
+marquee
+{
+	font-family: "TW Cen MT";
+	font-size: 18px;
+	
+}
+.letter3:hover
+{
+	margin-left: 30px;
+	border-bottom-left-radius: 20px;
+	-webkit-transition: .5s;
+}
+.letter1:hover
+{
+	margin-left: 30px;
+	-webkit-transition: .5s;
+	border-bottom-left-radius: 20px;
+}
+.letter2:hover
+{
+	margin-left: 30px;
+	-webkit-transition: .5s;
+	border-bottom-left-radius: 20px;
+}
+.letter22:hover
+{
+	margin-left: 30px;
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+	font-size: 18px;
+	border-bottom-left-radius: 20px;
+}
+.letter22:hover .ico
+{
+	font-size: 18px;
+	background: transparent;
+	border-style: solid;
+	border-color:aqua;
+	color: aqua;
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+}
+.btn_orig
+{
+	padding: 20px;
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+	margin: 10px;
+	font-family: "Tahoma";
+
+}
+.jumbotron
+{
+	border-bottom: 13px;
+	border-style: double;
+}
+.btn_orig:hover
+{
+	
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+	border-style: double;
+	color: cadetblue;
+	border-width: 3px;
+	border-color: cyan;
+	background: transparent;
+}
+.btn_orig:focus
+{
+	
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+	border-style: double;
+	color: cadetblue;
+	border-width: 3px;
+	border-color: cyan;
+	background: transparent;
+	text-transform: uppercase;
+}
+#menus
+{
+	
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+}
+.letter22
+{
+	margin-left: 2px;
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-ms-transition: .5s;
+	color: #000;
+}
+.subMen
+{
+	background-color: aquamarine;
+	color: #000;
+}
+.subMen:focus
+{
+	background-color: aquamarine;
+	color: #000;
+}
+.subMen:active
+{
+	background-color: aquamarine;
+	color: #000;
+}
+#submenu1 > li
+{
+	background: #000;
+	color: #fff;
+}
+
+.letter2
+{
+	font-family: "TW Cen MT";
+	font-size: 22px;
+	color: #000;
+}
+.letter1
+{
+	font-family: "TW Cen MT";
+	font-size: 26px;
+	color: #000;
+	cursor: pointer;
+}

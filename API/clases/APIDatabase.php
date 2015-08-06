@@ -15,9 +15,9 @@ class APIDatabase
         if($result)
         {
             $rows = self::resultToArray($result);
-            $result->free();
+            ->free();
             $mysqli->close();
-            return $rows;
+            return $rows
         }
         return null;
     }
