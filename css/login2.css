@@ -1,0 +1,84 @@
+.comboxlog
+{
+	background: rgba(255,255,255,.7);
+	font-family: "Tahoma";
+	border-width: 5px;
+	border-bottom-style: groove;
+	border-bottom-right-radius: 20px;
+	border-top-left-radius: 20px;
+	border-color: #000;
+	margin-top: 130px;
+	display: block;
+}
+.button
+{
+	transition: 1s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-webkit-transition: .5s;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background: rgba(0,0,200,.8);
+}
+.button:hover
+{
+	transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-webkit-transition: .5s;
+	background: rgba(255,255,255,.7);
+	color: blue;
+}
+.button2:hover
+{
+	transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	-webkit-transition: .5s;
+	background: rgba(255,255,255,.7);
+	color: #000;
+}
+.circulo
+{
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	background-color: red;
+	border-style: none;
+	transition: 2s;
+	-moz-transition: 2s;
+	-o-transition: 2s;
+	
+}
+
+.circulo:hover
+{
+	border-color: blue;
+	transform: rotate("180deg");
+	margin-left: 250px;
+	transition: 1s;
+	-moz-transition: 1s;
+	-o-transition: 1s;
+}
+
+.lineado 
+{
+	transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	background: #000;
+	padding: 1px;
+}
+.lineado:hover
+{
+	transition: .5s;
+	-moz-transition: .5s;
+	-o-transition: .5s;
+	padding: 1px;
+	padding-right: 300px;
+}
+
+img
+{
+	width: 100px;
+}
