@@ -30,6 +30,12 @@ class pagosControlador
                         # API/personas/asistencia || {id_persona}
                         return $this->registrarAsistencia($_POST['id_persona']);
                         break;
+                    case "recibo":
+                        if($argumentos[0] == "layout")
+                        {
+                            print_r($_POST);
+                        }
+                        break;
                     default:
                         return 404;
                         break;

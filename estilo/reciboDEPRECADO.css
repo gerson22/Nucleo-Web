@@ -1,0 +1,112 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+#recibo_header
+{
+    overflow: auto;
+}
+
+#div_recibo
+{
+    width: 960px;
+    margin: auto;
+    font-family: tahoma, helvetica, arial;
+}
+
+#fecha_folio
+{
+    float: right;
+}
+
+#recibo_texto_header
+{
+    float: left;
+    overflow: auto;
+    text-align: center;
+    width: 650px;
+    padding-top: 15px;
+}
+
+h1, h2, h3, h4, h5
+{
+    margin: 0px;
+}
+
+#fecha_folio
+{
+    border: 1px solid #868686;
+    border-radius: 5px;
+    float: right;
+    margin-top: 25px;
+    overflow: auto;
+    text-align: center;
+    width: 150px;
+}
+
+.fecha_folio_header
+{
+    background-color: #ccc;
+    height: 22px;
+}
+
+.fecha_folio_valor
+{
+    height: 30px;
+    padding-top: 5px;
+}
+
+#main_content
+{
+    border: 1px solid #999999;
+    border-radius: 5px;
+    margin: 30px 0 0;
+    padding: 5px;
+}
+
+.renglon
+{
+    overflow: auto;
+}
+
+.renglon_left
+{
+    float: left;
+    width: 250px;
+}
+
+.renglon_right
+{
+    float: right;
+    width: 690px;
+}
+
+#div_montos
+{
+    border: 1px solid #999999;
+    border-radius: 5px;
+    float: right;
+    margin: 20px 0 0;
+    width: 170px;
+    padding: 5px;
+}
+
+.montos_row
+{
+    overflow: auto;
+}
+
+.montos_left
+{
+    float: left;
+    width: 80px;
+}
+
+.montos_right
+{
+    float: right;
+    width: 80px;
+    text-align: right;
+}

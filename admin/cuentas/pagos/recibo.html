@@ -1,49 +1,204 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title>Recibo de pago</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/estilo/general.css" type="text/css">
+    <link rel="stylesheet" href="/estilo/recibo.css" type="text/css">
 </head>
 <body>
-<div id="recibo">
-    Recibo: <div id="reciboVal"></div>
-    Fecha: <div id="fechaVal"></div>
-    Recibí De: <div id="recibiDeVal"></div>
-    CURP: <div id="CURP_pagoVal"></div>
-    Domicilio <div id="direccionVal"></div>
-    Ciudad: <div id="ciudadVal"></div>
-    La cantidad de: <div id="cantidadLetrasVal"></div>
-    Por concepto de: <div id="conceptoVal"></div>
-    Método de pago: <div id="formaPagoVal"></div>
-    No. de cuenta: <div id="cuentaVal"></div>
-    Alumno: <div id="alumnoVal"></div>
-    CURP Alumno: <div id="CURP_alumnoVal"></div>
-</div>
+    <div class="col-md-12" id="top_panel">
+        <button onclick="guardarCambios()">Guardar</button>
+    </div>
+    <div id="left_panel" class="col-md-3">
+        <div class="nud_wrapper">
+            <label>Recibo</label>
+            <input type="number" class="nud" data-elemento="recibo_wrapper" data-property="margin-top" onkeyup="mover(this)" id="I1A" />
+            <input type="number" class="nud" data-elemento="recibo_wrapper" data-property="margin-left" onkeyup="mover(this)" id="I1B" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Recibí de</label>
+            <input type="number" class="nud" data-elemento="recibiDeVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="recibiDeVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Domicilio</label>
+            <input type="number" class="nud" data-elemento="direccionVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="direccionVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Cantidad de</label>
+            <input type="number" class="nud" data-elemento="cantidadLetrasVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="cantidadLetrasVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Concepto</label>
+            <input type="number" class="nud" data-elemento="conceptoVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="conceptoVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Forma de pago</label>
+            <input type="number" class="nud" data-elemento="formaPagoVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="formaPagoVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Cuenta</label>
+            <input type="number" class="nud" data-elemento="cuentaVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="cuentaVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Alumno</label>
+            <input type="number" class="nud" data-elemento="alumnoVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="alumnoVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>CURP Alumno</label>
+            <input type="number" class="nud" data-elemento="CURP_alumnoVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="CURP_alumnoVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+    </div>
+
+    <div id="recibo_wrapper" class="col-md-6">
+        <div class="col-md-12">
+            <div id="reciboVal"></div>
+        </div>
+        <div class="col-md-12">
+            <div id="fechaVal"></div>
+        </div>
+        <div class="col-md-8">
+            <div id="recibiDeVal"></div>
+        </div>
+        <div class="col-md-4">
+            <div id="CURP_pagoVal"></div>
+        </div>
+        <div class="col-md-8">
+            <div id="direccionVal"></div>
+        </div>
+        <div class="col-md-4">
+            <div id="ciudadVal"></div>
+        </div>
+        <div class="col-md-12">
+            <div id="cantidadLetrasVal"></div>
+        </div>
+        <div class="col-md-12">
+            <div id="conceptoVal"></div>
+        </div>
+        <div class="col-md-12">
+            <div id="conceptoVal"></div>
+        </div>
+
+        <!-- Segunda sección -->
+
+        <div class="col-md-10">
+            <div class="col-md-12">
+                <div id="formaPagoVal"></div>
+            </div>
+            <div class="col-md-12">
+                <div id="cuentaVal"></div>
+            </div>
+            <div class="col-md-12">
+                <div id="alumnoVal"></div>
+            </div>
+            <div class="col-md-12">
+                <div id="CURP_alumnoVal"></div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="col-md-12">
+                <div id="importeVal"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="right_panel" class="col-md-3">
+        <div class="nud_wrapper">
+            <label>Recibo</label>
+            <input type="number" class="nud" data-elemento="reciboVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="reciboVal" data-property="margin-right" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Fecha</label>
+            <input type="number" class="nud" data-elemento="fechaVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="fechaVal" data-property="margin-right" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>CURP</label>
+            <input type="number" class="nud" data-elemento="CURP_pagoVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="CURP_pagoVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Ciudad</label>
+            <input type="number" class="nud" data-elemento="ciudadVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="ciudadVal" data-property="margin-left" onkeyup="mover(this)" />
+        </div>
+        <div class="nud_wrapper">
+            <label>Importe</label>
+            <input type="number" class="nud" data-elemento="importeVal" data-property="margin-top" onkeyup="mover(this)" />
+            <input type="number" class="nud" data-elemento="importeVal" data-property="margin-right" onkeyup="mover(this)" />
+        </div>
+    </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script>
-    $.ajax({
-        type: "GET",
-        url: "/API/pagos/2",
-        //headers: { "Authorization": "Basic " + btoa( + ":" + ) },
-        crossDomain: true
-    }).done(function(data)
+    cargarDatosGenerales();
+
+    $(".nud").on('keyup mouseup', function()
     {
-        $("#reciboVal").html(data.recibo);
-        $("#fechaVal").html(data.fecha);
-        $("#recibiDeVal").html(data.persona);
-        $("#CURP_pagoVal").html(data.CURP_persona);
-        $("#direccionVal").html(data.direccion);
-        $("#ciudadVal").html(data.ciudad);
-        $("#cantidadLetrasVal").html(data.cantidadLetras);
-        $("#conceptoVal").html(data.concepto);
-        $("#formaPagoVal").html(data.forma_pago);
-        $("#cuentaVal").html(data.id_cuenta);
-        $("#alumnoVal").html(data.alumno);
-        $("#CURP_alumnoVal").html(data.CURP_alumno);
-    }).fail(function( jqXHR, textStatus, errorThrown )
+        mover(this);
+    });
+
+    function mover(caller)
+    {
+        $("#" + caller.dataset.elemento).css(caller.dataset.property, caller.valueAsNumber);
+    }
+
+    function guardarCambios()
+    {
+        var data = construirString();
+        $.ajax({
+            type: "POST",
+            url: "/API/pagos/recibo/layout",
+            data: "I1A=",
+            //headers: { "Authorization": "Basic " + btoa( + ":" + ) },
+            crossDomain: true
+        }).done(function (data) {
+            console.dir(data);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+
+        });
+    }
+
+    function construirString()
     {
 
-    });
+    }
+
+    function cargarDatosGenerales()
+    {
+        $.ajax({
+            type: "GET",
+            url: "/API/pagos/2",
+            //headers: { "Authorization": "Basic " + btoa( + ":" + ) },
+            crossDomain: true
+        }).done(function (data) {
+            $("#reciboVal").html(data.recibo);
+            $("#fechaVal").html(data.fecha);
+            $("#recibiDeVal").html("xxxxxxxx xxxxxxxxxxxxxx" /*data.persona*/);
+            $("#CURP_pagoVal").html(000000000 /*data.CURP_persona*/);
+            $("#direccionVal").html(data.direccion);
+            $("#ciudadVal").html(data.ciudad);
+            $("#cantidadLetrasVal").html("nnnnnnnnnnnnnnn nnnnnnnnnn n nnnnnnnn" /*data.cantidadLetras*/);
+            $("#conceptoVal").html(data.concepto);
+            $("#formaPagoVal").html(data.forma_pago);
+            $("#cuentaVal").html(data.id_cuenta);
+            $("#alumnoVal").html(data.alumno);
+            $("#CURP_alumnoVal").html(data.CURP_alumno);
+            $("#importeVal").html("$1000");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+
+        });
+    }
+    
 </script>
 </body>
 </html>
