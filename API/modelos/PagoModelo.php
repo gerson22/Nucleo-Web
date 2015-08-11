@@ -33,4 +33,30 @@ class PagoModelo
             WHERE cuentas_pago.id_pago = '.$pagoID.' LIMIT 1';
         return APIDatabase::select($query);
     }
+
+    public static function setReciboLayout($layout)
+    {  
+        if(is_array($layout))
+        {
+            $query = "UPDATE cuentas_recibo_layout SET ";
+            foreach($layout as $key => $value)
+            {
+                $query .= $key." = ".$value.", ";
+            }
+            $query = substr($query, 0, -2);
+            $query .= " WHERE I1A >= 0";
+            echo $query;
+            return APIDatabase::update($query);
+        }
+        else
+        {
+            return 500;
+        }   
+    }
+
+    public static function getReciboLayout()
+    {
+        $query = "SELECT * FROM cuentas_recibo_layout";
+        return APIDatabase::select($query)[0];
+    }
 }

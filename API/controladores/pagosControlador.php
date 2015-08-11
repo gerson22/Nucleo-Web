@@ -18,6 +18,11 @@ class pagosControlador
                     case "":
                         return PagoModelo::getPago($argumentos[0])[0];
                         break;
+                    case "recibo":
+                        if($argumentos[0] == "layout")
+                        {
+                            return $this->getLayout();
+                        }
                     default:
                         return 404;
                         break;
@@ -33,7 +38,7 @@ class pagosControlador
                     case "recibo":
                         if($argumentos[0] == "layout")
                         {
-                            print_r($_POST);
+                            $this->setLayout();
                         }
                         break;
                     default:
@@ -47,14 +52,13 @@ class pagosControlador
         return 404;
     }
 
-    /** Autorización: Administrador */
-    protected function registrarAsistencia($id_persona)
+    protected function getLayout()
     {
-        if(Acceso::tipoUsuario() == "Administrador")
-        {
-            if(PersonaModelo::registrarAsistencia($id_persona)) return ['Success'];
-            return 500;
-        }
-        return 401;
+        return PagoModelo::getReciboLayout();
+    }
+
+    protected function setLayout()
+    {
+        return PagoModelo::setReciboLayout($_POST);
     }
 }
