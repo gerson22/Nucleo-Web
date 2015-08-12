@@ -38,7 +38,7 @@ class pagosControlador
                     case "recibo":
                         if($argumentos[0] == "layout")
                         {
-                            $this->setLayout();
+                            return $this->setLayout();
                         }
                         break;
                     default:

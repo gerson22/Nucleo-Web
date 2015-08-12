@@ -45,8 +45,7 @@ class PagoModelo
             }
             $query = substr($query, 0, -2);
             $query .= " WHERE I1A >= 0";
-            echo $query;
-            return APIDatabase::update($query);
+            if(APIDatabase::update($query)) return 200; else return 500;
         }
         else
         {
