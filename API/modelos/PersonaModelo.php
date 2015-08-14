@@ -33,7 +33,7 @@ class PersonaModelo
         $this->tipo_persona         = $persona['tipo_persona'];
         $this->fecha_alta           = $persona['fecha_alta'];
         $this->fecha_baja           = $persona['fecha_baja'];
-        $this->foto                 = $persona['foto'];
+        $this->foto                 = "http://plataforma.colegiomeze.com/media/fotos/".$persona['foto'];
         $this->sexo                 = $persona['sexo'];
     }
 
