@@ -11,6 +11,11 @@ $tipos_tutor = Tutor::getTipos();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Re-inscribir alumno</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
         <link rel="stylesheet" href="../../estilo/buscadorAjax.css" />
@@ -134,29 +139,27 @@ $tipos_tutor = Tutor::getTipos();
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
+           	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        		<div id="area_trabajo">
                     <h3>Reinscribir alumno</h3>
 
-                    <button onclick="toggleBuscador();">Buscar</button>
+                    <button onclick="toggleBuscador();" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                     <br />
 
                     <input type="hidden" id="id_alumno_val" />
 
                     <div class="form_row_3">
                         <label>Nombres</label>
-                        <input class="form_input" type="text" id="nombres_val" readonly />
+                        <input class="form_input form-control" type="text" id="nombres_val" readonly />
                     </div>
                     <div class="form_row_3">
                         <label>Apellido paterno</label>
-                        <input class="form_input" type="text" id="paterno_val" readonly />
+                        <input class="form_input form-control" type="text" id="paterno_val" readonly />
                     </div>
                     <div class="form_row_3">
                         <label>Apellido materno</label>
-                        <input class="form_input" type="text" id="materno_val" readonly />
+                        <input class="form_input form-control" type="text" id="materno_val" readonly />
                     </div>
 
                     <div id="div_nuevo_grupo">
@@ -177,7 +180,7 @@ $tipos_tutor = Tutor::getTipos();
                                 <!-- AJAX -->
                             </select>
                         </div>
-                        <div class="form_row_4">
+                        <div class="">
                             <label for="grupoVal" class="form_label">Grupo</label>
                             <select id="grupoVal" required="" name="grupoVal" class="form_input">
                                 <!-- AJAX -->
@@ -185,20 +188,20 @@ $tipos_tutor = Tutor::getTipos();
                         </div>
 
                         <br />
-                        <button id="boton_reinscribir" onclick="reinscribir();">Reinscribir</button>
+                        <button id="boton_reinscribir" onclick="reinscribir();" class="btn btn-primary">Reinscribir</button>
                     </div>
 
-                    <div id="buscador_alumnos" class="buscadorAjax">
+                    <div id="buscador_alumnos" class="buscadorAjax" style="height:350px; box-shadow: 2px 2px 10px #5f5f5f;">
                         <div class="buscadorAjax_barra">
                             <img src='../../media/iconos/icon_close.gif' alt="Cerrar" onclick="$(this).parent().parent().fadeOut()" />
                         </div>
                         <div class="buscadorAjax_top">
                             <label class="buscadorAjax_top_label">Parametro: </label>
-                            <input class="buscadorAjax_top_input" type="text" id="parametroVal" />
-                            <input class="buscadorAjax_top_boton" type="button" onclick="buscarAlumno()" value="Buscar" />
+                            <input class="buscadorAjax_top_input form-control" type="text" id="parametroVal" />
+                            <input class="buscadorAjax_top_boton btn btn-primary" style="margin-top:5px;" type="button" onclick="buscarAlumno()" value="Buscar" />
                         </div>
-                        <div class="buscadorAjax_contenedor_tabla">
-                            <table id="buscador_alumnos_tabla" class="buscadorAjax_tabla">
+                        <div class="buscadorAjax_contenedor_tabla table-responsive" >
+                            <table id="buscador_alumnos_tabla" class="buscadorAjax_tabla table">
                                 <!-- Buscador AJAX -->
                             </table>
                         </div>
@@ -207,6 +210,5 @@ $tipos_tutor = Tutor::getTipos();
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

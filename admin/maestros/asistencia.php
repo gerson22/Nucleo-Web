@@ -17,13 +17,16 @@ include_once("../../includes/clases/class_lib.php");
     <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
     <link rel="stylesheet" href="../../estilo/jquery-ui.min.css" />
     <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
 </head>
 <body>
-<div id="wrapper">
     <?php include("../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
+    <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+            <div id="area_trabajo">
 
             <h1>Asistencias</h1>
 
@@ -34,7 +37,7 @@ include_once("../../includes/clases/class_lib.php");
             </div>
 
 
-            <table id="tabla_asistencias" >
+            <table id="tabla_asistencias" class="table">
                 <thead>
                 <tr>
                     <th>Docente</th>

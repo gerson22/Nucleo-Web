@@ -9,6 +9,11 @@ $becas = $ciclo_actual->getBecas();
     <head>
         <meta charset="utf-8" />
         <title>Becas</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <style>
@@ -38,9 +43,9 @@ $becas = $ciclo_actual->getBecas();
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
+          	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        		<div id="area_trabajo">
 
                 <h1>Becas</h1>
                 
@@ -48,7 +53,8 @@ $becas = $ciclo_actual->getBecas();
                     Total de alumnos becados en este ciclo escolar: <?php echo $ciclo_actual->getCountBecas(); ?>
                 </div>
 
-                <table id="tabla_becas" >
+                <div class="table-responsive">
+					<table id="tabla_becas" class="table" >
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -88,9 +94,10 @@ $becas = $ciclo_actual->getBecas();
                         }
                         ?>
                     </tbody>
-                </table>
+                </table>	
+				</div>
 
-                <a href="nueva.php" class="link_estilizado" >Agregar beca</a>
+                <a href="nueva.php" class="link_estilizado btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Agregar beca</a>
 
             </div>
         </div>

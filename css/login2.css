@@ -80,5 +80,33 @@
 
 img
 {
-	width: 100px;
+	margin-top: 10px;
+	width: 100px; 
+}
+
+@media(max-width: 568px)
+{
+    img
+	{
+		width: 50px;
+	}
+	.comboxlog
+	{
+		background: rgba(255,255,255,.5);
+		font-family: "Tahoma";
+		border-width: 5px;
+		border-bottom-style: groove;
+		border-bottom-right-radius: 20px;
+		border-top-left-radius: 20px;
+		border-color: #000;
+		margin-top: 130px;
+		display: block;
+		font-size: 30px;
+		text-align: center;
+	}
+	input
+	{
+		height: 50px;
+	}
+	
 }

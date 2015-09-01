@@ -12,6 +12,11 @@ $materias = Materia::getLista();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Nuevo ciclo escolar</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas_mini.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -143,31 +148,31 @@ $materias = Materia::getLista();
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
+            	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-4" style="margin-top:30px;">
+        			<div id="area_trabajo">
 
-                <h1>Nuevo ciclo escolar</h1>
+					<h1>Nuevo ciclo escolar</h1>
 
-                <form id="form_nuevo_ciclo" >
+					<form id="form_nuevo_ciclo" >
 
-                    <div style="width: 100%; overflow: auto">
-                        <div class="form_row_3">
-                            <input type="hidden" id="fecha_inicioVal" name="fecha_inicioVal" />
-                            <label class="form_label">Fecha de inicio</label>
-                            <input type="text" name="fecha_inicio" readonly="" class="form_input" id="fecha_inicio" >
-                        </div>
+						<div style="width: 100%; overflow: auto">
+							<div class="form_row_3">
+								<input type="hidden" id="fecha_inicioVal" name="fecha_inicioVal" />
+								<label class="form_label">Fecha de inicio</label>
+								<input type="text" name="fecha_inicio" readonly="" class="form_input form-control" id="fecha_inicio" >
+							</div>
 
-                        <div class="form_row_3">
-                            <input type="hidden" id="fecha_finVal" name="fecha_finVal" />
-                            <label class="form_label">Fecha de cierre</label>
-                            <input type="text" name="fecha_fin" readonly="" class="form_input" id="fecha_fin" >
-                        </div>
-                    </div>
+							<div class="form_row_3">
+								<input type="hidden" id="fecha_finVal" name="fecha_finVal" />
+								<label class="form_label">Fecha de cierre</label>
+								<input type="text" name="fecha_fin" readonly="" class="form_input form-control" id="fecha_fin" >
+							</div>
+						</div>
 
-                </form>
+					</form>
 
-                <input type="button" value="Aceptar" class="form_submit" id="boton_aceptar" onclick="insertarCiclo()" >
+					<input type="button" value="Aceptar" class="btn btn-primary" id="boton_aceptar" onclick="insertarCiclo()" >
 
             </div>
         </div>

@@ -7,21 +7,6 @@
  */
 
 ?>
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-	<link rel="stylesheet" type="text/css" href="plugins/assets/css/animations.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/creative.css" type="text/css">
-
-    <!---Create by Gerson Isaias---->
-
-</head>
 
 <body id="page-top">
 
@@ -51,7 +36,7 @@
                         <a class="page-scroll" href="#sistema">Sistema</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#">Salir</a>
+                        <a class="page-scroll" href="/includes/logout.php">Salir</a>
                     </li>
                 </ul>
             </div>
@@ -72,10 +57,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-12 col-xs-12 box-center">
-					<img class="img-responsive img-circle imgUser" src="img/user.png">
+					<img class="img-responsive img-circle imgUser" src="/media/fotos/<?php echo $usuario->foto; ?>g">
 				</div>
 				<div class="col-lg-8 col-sm-12 col-xs-12 text-center">
-					<h1>Nombre del Usuario</h1>
+					<h1><?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?></h1>
 					<p>Informacion acerca del usuario que describa al individuo</p>
 				</div>
             </div>
@@ -285,18 +270,14 @@
                 <img class="img-responsive col-lg-4 col-sm-12 col-md-4 col-xs-12 logo" src="img/logo.png">
                 <div class="col-lg-8 col-sm-12">
 					<p>Colegio Ma. Esther Zuno de Echeverria</p>
-					<p>Direccion</p>
-					<p>Numero</p>
+					<p>Adolfo López Mateos #1030 Col. Zaragoza C.P. 27297</p>
+					<p>Tel. 792-93-93 Torreón, Coah.</p>
 				</div>
             </div>
         </div>
     </aside>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+</body>
+<script src="js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
@@ -305,13 +286,3 @@
 
     <!-- JavaScript Plugin-->
     <script src="js/creative.js"></script>
-	<!---- Other Effects --->
-	<script src="plugins/assets/js/backbone.js" type="text/javascript"></script>
-	<script src="plugins/assets/js/appear.min.js" type="text/javascript"></script>
-	<script src="plugins/assets/js/animations.js" type="text/javascript"></script>
-
-	
-
-</body>
-
-</html>

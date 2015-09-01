@@ -17,17 +17,19 @@ $ciclos = CicloEscolar::getLista();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Materias</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../../estilo/general.css" />
         <link rel="stylesheet" href="../../../estilo/jquery.dataTables.css" />
         <link rel="stylesheet" href="../../../estilo/formas_mini.css" />
     </head>
     <body>
-    <div id="wrapper">
-        <?php include("../../../includes/header.php"); ?>
-        <div id="content">
-
-            <div id="inner_content">
-
+        <?php include("../../../includes/headerConfig.php"); ?>
+        <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
                 <h1>Descuentos</h1>
 
                 <div class="form_row_2">
@@ -42,7 +44,7 @@ $ciclos = CicloEscolar::getLista();
                     </select>
                 </div>
 
-                <table id="tabla_descuentos" >
+                <table id="tabla_descuentos" class="table" >
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -61,8 +63,6 @@ $ciclos = CicloEscolar::getLista();
             </div>
 
         </div>
-
-    </div>
     </body>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>

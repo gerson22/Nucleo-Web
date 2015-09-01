@@ -5,14 +5,21 @@ $alumnos = Alumno::getLista();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
     <head>
         <meta charset="utf-8" />
-        <title>Sistema Integral Meze - Alumnos</title>
+        <title>Sistema Integral Meze - Maestros</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.8/css/dataTables.bootstrap.min.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" ></script>
+        <script src="../../librerias/jquery.dataTables.min.js" ></script>
         <script>
             $(document).ready(function ()
             {
@@ -32,7 +39,7 @@ $alumnos = Alumno::getLista();
                         "infoEmpty": "Mostrando 0 a 0 de 0 alumnos",
                         "infoFiltered": "(Encontrados de _MAX_ alumnos)"
                     },
-                    "displayLength": 25
+                    "displayLength": 10
                 });
 
                 DT.fnSort( [ [1,'asc']  ]);
@@ -40,13 +47,12 @@ $alumnos = Alumno::getLista();
         </script>
     </head>
     <body>
-        <div id="wrapper">
-            <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-
-                    <table id="tabla_alumnos" >
+        <?php include("../../includes/header.php"); ?>
+		<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
+				 <h3>Alumnos</h3>
+                 <div class="table-responsive">
+					 <table id="tabla_alumnos" class="table  col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
                         <thead>
                             <tr>
                                 <th>Matrícula</th>
@@ -57,7 +63,7 @@ $alumnos = Alumno::getLista();
                                 <th>Grado</th>
                                 <th>Grupo</th>
                                 <th></th>
-                                <th></th>
+                                <th>Colonia</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,11 +94,9 @@ $alumnos = Alumno::getLista();
                         ?>
                         </tbody>
                     </table>
-                </div>
-
-                <a href="inscribir.php" class="link_estilizado" >Inscribir alumno</a>
-
-            </div>
-        </div>
+				</div>
+                <a href="inscribir.php" class="btn btn-primary btn-orig" ><i class="fa fa-user-plus"></i> Inscribir alumno</a> 
+			</div>
+		</div>
     </body>
 </html>

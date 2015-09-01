@@ -8,6 +8,11 @@ include_once("../../../includes/clases/class_lib.php");
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Lista de pagos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../../estilo/general.css" />
         <link rel="stylesheet" href="../../../estilo/buscadorAjax.css" />
         <link rel="stylesheet" href="../../../estilo/jquery.dataTables.css" />
@@ -74,12 +79,9 @@ include_once("../../../includes/clases/class_lib.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
-            <?php include("../../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-
+            <?php include("../../../includes/headerConfig.php"); ?>
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
                     <div class="select_wrapper">
                         <label>Ciclo Escolar</label>
                         <select id="ciclo_escolarVal" onchange="tabla_pagos.fnReloadAjax();">
@@ -114,7 +116,7 @@ include_once("../../../includes/clases/class_lib.php");
                         </select>
                     </div>
 
-                    <table id="tabla_pagos">
+                    <table id="tabla_pagos" class="table">
                         <thead>
                             <tr>
                                 <th>Alumno</th>

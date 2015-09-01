@@ -23,6 +23,11 @@ $escolaridad = $maestro->getEscolaridad();
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
         <link rel="stylesheet" href="../../estilo/fixed_form.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <style>
             #prompt_email, #prompt_telefono
             {
@@ -271,14 +276,13 @@ $escolaridad = $maestro->getEscolaridad();
         </script>
     </head>
     <body>
-        <div id="wrapper">
-            <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <input type="hidden" id='param_password' value="<?php echo $maestro->password; ?>" />
+		<?php include("../../includes/header.php"); ?>
+		<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+            <div id="area_trabajo">
+				<input type="hidden" id='param_password' value="<?php echo $maestro->password; ?>" />
                 <input type="hidden" id="id_maestroVal" value="<?php echo $maestro->id_persona; ?>" />
                 <input type="hidden" id="matriculaVal" value="<?php echo $maestro->matricula; ?>" />
-
+				
                 <div id="wrapper_top" >
                     <div id="profile_picture">
 
@@ -388,7 +392,7 @@ $escolaridad = $maestro->getEscolaridad();
                         <!-- simple file uploading form -->
                         <form id="form_imagen" action="/includes/ajaxupload.php" method="post" enctype="multipart/form-data">
                             <input id="uploadImage" type="file" accept="image/*" name="image" value="Seleccionar foto"/>
-                            <input id="button" type="submit" value="Subir">
+                            <input id="button" type="submit" value="Subir" class="btn btn-warning" style="margin-top:10px;">
                         </form>
                     </div>
 
@@ -402,8 +406,8 @@ $escolaridad = $maestro->getEscolaridad();
                         <li><a href="#tabs-4">Dirección</a></li>
                         <li><a href="#tabs-5">Escolaridad</a></li>
                     </ul>
-                    <div id="tabs-1">
-                        <table id="tabla_clases">
+                    <div id="tabs-1" class="table-responsive">
+                        <table id="tabla_clases" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>Grado</th>
@@ -430,8 +434,8 @@ $escolaridad = $maestro->getEscolaridad();
                             </tbody>
                         </table>
                     </div>
-                    <div id="tabs-2">
-                        <table id="tabla_emails">
+                    <div id="tabs-2" class="table-responsive">
+                        <table id="tabla_emails" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>Tipo de correo electrónico</th>
@@ -463,8 +467,8 @@ $escolaridad = $maestro->getEscolaridad();
                         </table>
                         <img src="../../media/iconos/icon_add.png" alt="Nuevo" style="float: right;" onclick="toggleEmail();" />
                     </div>
-                    <div id="tabs-3">
-                        <table id="tabla_telefonos">
+                    <div id="tabs-3" class="table-responsive">
+                        <table id="tabla_telefonos" class="table table-hover">
                             <thead>
                             <tr>
                                 <th>Tipo de teléfono</th>
@@ -500,44 +504,44 @@ $escolaridad = $maestro->getEscolaridad();
                         <?php $direccion = $maestro->getDireccion(); ?>
                         <div class="form_row_4">
                             <label>Calle</label>
-                            <input type="text" value="<?php echo $direccion['calle']; ?>" class="form_input" readonly />
+                            <input type="text" value="<?php echo $direccion['calle']; ?>" class="form-control" readonly />
                         </div>
                         <div class="form_row_4">
                             <label>Número</label>
-                            <input type="text" value="<?php echo $direccion['numero']; ?>" class="form_input" readonly />
+                            <input type="text" value="<?php echo $direccion['numero']; ?>" class="form-control" readonly />
                         </div>
                         <div class="form_row_4">
                             <label>Colonia</label>
-                            <input type="text" value="<?php echo $direccion['colonia']; ?>" class="form_input" readonly />
+                            <input type="text" value="<?php echo $direccion['colonia']; ?>" class="form-control" readonly />
                         </div>
                         <div class="form_row_4">
                             <label>CP</label>
-                            <input type="text" value="<?php echo $direccion['CP']; ?>" class="form_input" />
+                            <input type="text" value="<?php echo $direccion['CP']; ?>" class="form-control" />
                         </div>
                         <img src="/media/iconos/icon_modify.png" style="width: 15px; float: right;" alt="M" onclick="mostrarModificarDireccion()" />
                     </div>
                     <div id="tabs-5">
                         <div class="form_row_3">
                             <label class="form_label">Título</label>
-                            <input type="text" class="form_input" value="<?php echo $escolaridad['titulo']; ?>" readonly />
+                            <input type="text" class="form-control" value="<?php echo $escolaridad['titulo']; ?>" readonly />
                         </div>
                         <div class="form_row_3">
                             <label class="form_label">Egresado de</label>
-                            <input type="text" class="form_input" value="<?php echo $escolaridad['egresadode']; ?>" readonly />
+                            <input type="text" class="form-control" value="<?php echo $escolaridad['egresadode']; ?>" readonly />
                         </div>
                         <div class="form_row_3">
                             <label class="form_label">Año</label>
-                            <input type="text" class="form_input" value="<?php echo $escolaridad['ano']; ?>" readonly />
+                            <input type="text" class="form-control" value="<?php echo $escolaridad['ano']; ?>" readonly />
                         </div>
                         <img src="/media/iconos/icon_modify.png" style="width: 15px; float: right;" alt="M" onclick="mostrarModificarEscolaridad()" />
                     </div>
                 </div>
 
-                <div id="prompt_email">
+                <div id="prompt_email" style="height:230px; width:250px; box-shadow: 2px 2px 10px #5f5f5f;">
                     <label>E-Mail:</label>
-                    <input id="emailVal" type="email" />
+                    <input id="emailVal" type="email" class="form-control"  />
                     <label>Tipo:</label>
-                    <select id="tipo_emailVal" >
+                    <select id="tipo_emailVal" class="form-control" >
                     <?php
                     $tipos_email = Email::getTipos();
                     if(is_array($tipos_email))
@@ -549,15 +553,15 @@ $escolaridad = $maestro->getEscolaridad();
                     }
                     ?>
                     </select>
-                    <input type="button" value="Aceptar" style="float: left; width: 40%; margin: 10px;" onclick="addEmail(this)" />
-                    <input type="button" value="Cancelar" style="float: right; width: 40%; margin: 10px;" onclick="$(this).parent().fadeOut();"/>
+                    <input type="button" value="Aceptar"  class="btn btn-primary btn-small" style="float: left; width: 40%; margin: 10px;" onclick="addEmail(this)" />
+                    <input type="button" value="Cancelar" class="btn btn-danger btn-small" style="float: right; width: 40%; margin: 10px;" onclick="$(this).parent().fadeOut();"/>
                 </div>
 
-                <div id="prompt_telefono">
+                 <div id="prompt_telefono" style="height:230px; width:250px; box-shadow: 2px 2px 10px #5f5f5f;">
                     <label>Teléfono:</label>
-                    <input id="telefonoVal" type="tel" />
+                    <input id="telefonoVal" type="tel" class="form-control"  />
                     <label>Tipo:</label>
-                    <select id="tipo_telefonoVal" >
+                    <select id="tipo_telefonoVal" class="form-control"  >
                     <?php
                     $tipos_telefono = Telefono::getTipos();
                     if(is_array($tipos_telefono))
@@ -569,26 +573,26 @@ $escolaridad = $maestro->getEscolaridad();
                     }
                     ?>
                     </select>
-                    <input type="button" value="Aceptar" style="float: left; width: 40%; margin: 10px;" onclick="addTelefono()" />
-                    <input type="button" value="Cancelar" style="float: right; width: 40%; margin: 10px;" onclick="$(this).parent().fadeOut();"/>
+                    <input type="button" value="Aceptar"  class="btn btn-primary btn-small" style="float: left; width: 40%; margin: 10px;" onclick="addTelefono()" />
+                    <input type="button" value="Cancelar"  class="btn btn-danger btn-small" style="float: right; width: 40%; margin: 10px;" onclick="$(this).parent().fadeOut();"/>
                 </div>
 
-                <div id="prompt_modificar_direccion" class="fixed_form" >
+                <div id="prompt_modificar_direccion" class="fixed_form" style="box-shadow: 2px 2px 10px #5f5f5f;" >
                     <div id="prompt_modificar_direccion_handle" class="fixed_form_handle">
                         <img src="/media/iconos/icon_close.gif" alt="Cerrar" onclick="$(this).parent().parent().fadeOut();" />
                     </div>
                     <div class="fixed_form_content">
                         <div class="fixed_form_row">
                             <label>Calle:</label>
-                            <input id="calleValMdy" type="text" class="fixed_form_value"  />
+                            <input id="calleValMdy" type="text" class="fixed_form_value form-control"  />
                         </div>
                         <div class="fixed_form_row">
                             <label>Número:</label>
-                            <input id="numeroValMdy" type="text" class="fixed_form_value"  />
+                            <input id="numeroValMdy" type="text" class="fixed_form_value form-control"  />
                         </div>
                         <div class="fixed_form_row">
                             <label>Colonia:</label>
-                            <select class="form_input" name="coloniaValMdy" id="coloniaValMdy" required >
+                            <select class="form_input form-control" name="coloniaValMdy" id="coloniaValMdy" required >
                                 <?php
                                 $colonias = Colonia::getColonias();
                                 if(is_array($colonias))
@@ -603,36 +607,36 @@ $escolaridad = $maestro->getEscolaridad();
                         </div>
                         <div class="fixed_form_row">
                             <label>CP:</label>
-                            <input id="CPValMdy" type="text" class="fixed_form_value"  />
+                            <input id="CPValMdy" type="text" class="fixed_form_value form-control"  />
                         </div>
                         <div class="fixed_form_row">
-                            <input type="button" id="boton_update" value="Aceptar" class="fixed_form_button" onclick="updateDireccion(this)" />
+                            <input type="button" id="boton_update" value="Aceptar" class="btn btn-primary btn-block" onclick="updateDireccion(this)" />
                         </div>
                     </div>
                 </div>
 
                 <!-- MODIFICAR ESCOLARIDAD -->
 
-                <div id="prompt_modificar_escolaridad" class="fixed_form" >
+                <div id="prompt_modificar_escolaridad" class="fixed_form" style="box-shadow: 2px 2px 10px #5f5f5f;" >
                     <div id="prompt_modificar_direccion_handle" class="fixed_form_handle">
                         <img src="/media/iconos/icon_close.gif" alt="Cerrar" onclick="$(this).parent().parent().fadeOut();" />
                     </div>
                     <div class="fixed_form_content">
                         <div class="fixed_form_row">
                             <label>Título:</label>
-                            <input id="tituloValMdy" type="text" class="fixed_form_value"  />
+                            <input id="tituloValMdy" type="text" class="fixed_form_value form-control"  />
                         </div>
                         <div class="fixed_form_row">
                             <label>Egresado de:</label>
-                            <input id="egresadoDeValMdy" type="text" class="fixed_form_value"  />
+                            <input id="egresadoDeValMdy" type="text" class="fixed_form_value form-control"  />
                         </div>
                         <div class="fixed_form_row">
                             <label>Año:</label>
-                            <input id="anoValMdy" type="text" class="fixed_form_value"  />
+                            <input id="anoValMdy" type="text" class="fixed_form_value form-control"  />
                         </div>
 
                         <div class="fixed_form_row">
-                            <input type="button" id="boton_update" value="Aceptar" class="fixed_form_button" onclick="updateEscolaridad(this)" />
+                            <input type="button" id="boton_update" value="Aceptar" class="btn btn-primary btn-block" onclick="updateEscolaridad(this)" />
                         </div>
                     </div>
                 </div>
@@ -657,10 +661,10 @@ $escolaridad = $maestro->getEscolaridad();
                 <input type="text" id="nuevoIMCVal" />
             </div>
             <span>NOTA. Puedes dejar los campos vacios y no se hará cambio al valor actual</span>
-            <button type="button" onclick="nuevoRegistroNut()">Aceptar</button>
+            <button type="button" class="btn btn-primary" onclick="nuevoRegistroNut()">Aceptar</button>
         </div>
         <!-- Fin dialogo nutrición -->
-
+		</div>
     </body>
     <script>
         /** Cosas del Ajax image loader */
