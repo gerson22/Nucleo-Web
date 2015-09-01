@@ -15,6 +15,11 @@ if(is_null($clase->id_clase)){ header('Location: /index.php'); exit; }
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Clase</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../js/jquery.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/index.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
@@ -44,10 +49,9 @@ if(is_null($clase->id_clase)){ header('Location: /index.php'); exit; }
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../includes/header.php"); ?>
-            <div id="content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                <div id="area_trabajo">
                 <table id="tabla_alumnos">
                     <thead>
                         <tr>
