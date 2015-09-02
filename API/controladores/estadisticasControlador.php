@@ -17,9 +17,14 @@ class estadisticasControlador
                 {
                     case "alumnos":
                         $json = array();
-                        $json['distribucion'] =     EstadisticaModelo::getAlumnosDistribucionArea()[0];
-                        $json['inscritos'] =        EstadisticaModelo::getAlumnosInscritosCiclo()[0];
-                        $json['inscripciones'] =    EstadisticaModelo::getAlumnosInscripcionesCiclo()[0];
+                        $json['distribucion']   = EstadisticaModelo::getAlumnosDistribucionArea()[0];
+                        $json['inscritos']      = EstadisticaModelo::getAlumnosInscritosCiclo()[0];
+                        $json['inscripciones']  = EstadisticaModelo::getAlumnosInscripcionesCiclo()[0];
+                        return $json;
+                        break;
+                    case "docentes":
+                        $json = array();
+                        $json['distribucion']   = EstadisticaModelo::getDocentesDistribucionArea()[0];
                         return $json;
                         break;
                     case "recibo":

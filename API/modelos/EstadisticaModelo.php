@@ -45,6 +45,47 @@ class EstadisticaModelo
         return APIDatabase::select($query);
     }
 
+    public static function getDocentesDistribucionArea()
+    {
+        $query = "SELECT * FROM
+            (SELECT COUNT(A1.docentes) AS A1
+            FROM
+            (SELECT COUNT(*) AS docentes FROM persona
+            LEFT JOIN clase ON clase.id_maestro = persona.id_persona
+            LEFT JOIN grupo ON grupo.id_grupo = clase.id_grupo
+            LEFT JOIN grado ON grado.id_grado = grupo.id_grado
+            WHERE tipo_persona = 2 AND id_area = 1
+            GROUP BY id_persona) AS A1) A1
+            JOIN 
+            (SELECT COUNT(A2.docentes) AS A2
+            FROM
+            (SELECT COUNT(*) AS docentes FROM persona
+            LEFT JOIN clase ON clase.id_maestro = persona.id_persona
+            LEFT JOIN grupo ON grupo.id_grupo = clase.id_grupo
+            LEFT JOIN grado ON grado.id_grado = grupo.id_grado
+            WHERE tipo_persona = 2 AND id_area = 2 
+            GROUP BY id_persona) AS A2) A2
+            JOIN 
+            (SELECT COUNT(A3.docentes) AS A3
+            FROM
+            (SELECT COUNT(*) AS docentes FROM persona
+            LEFT JOIN clase ON clase.id_maestro = persona.id_persona
+            LEFT JOIN grupo ON grupo.id_grupo = clase.id_grupo
+            LEFT JOIN grado ON grado.id_grado = grupo.id_grado
+            WHERE tipo_persona = 2 AND id_area = 3
+            GROUP BY id_persona) AS A3) A3
+            JOIN 
+            (SELECT COUNT(A4.docentes) AS A4
+            FROM
+            (SELECT COUNT(*) AS docentes FROM persona
+            LEFT JOIN clase ON clase.id_maestro = persona.id_persona
+            LEFT JOIN grupo ON grupo.id_grupo = clase.id_grupo
+            LEFT JOIN grado ON grado.id_grado = grupo.id_grado
+            WHERE tipo_persona = 2 AND id_area = 4 
+            GROUP BY id_persona) AS A4) A4";
+        return APIDatabase::select($query);
+    }
+
     public static function getAlumnosInscritosCiclo()
     {
         $ciclos = CicloEscolarModelo::getLista();
@@ -56,6 +97,7 @@ class EstadisticaModelo
             {
                 $ciclo_escolar = new CicloEscolarModelo($ciclo['id_ciclo_escolar']);
                 array_push($json, array("ciclo" => $ciclo['ciclo_escolar'], "alumnos" => $ciclo_escolar->getCountAlumnosInscritos()));
+                array_push($json, array("ciclo" => "2020", "alumnos" => $ciclo_escolar->getCountAlumnosInscritos()));
             }
             return $json;
         }

@@ -54,6 +54,9 @@ class personasControlador
     public function personaLogin()
     {
         $persona = PersonaModelo::getPersonaPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+
+        echo $persona->foto;
+
         if($persona->id_persona != null) return $persona;
         else return 401;
     }

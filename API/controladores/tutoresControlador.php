@@ -15,6 +15,9 @@ class tutoresControlador
             case "GET":
                 return $this->getTutores();
                 break;
+            case "POST":
+                return $this->addTutor();
+                break;
             default:
                 break;
         }
@@ -24,5 +27,10 @@ class tutoresControlador
     public function getTutores()
     {
         return TutorModelo::getLista();
+    }
+
+    public function addTutor()
+    {
+        return TutorModelo::addTutor($_POST['id_alumno'], $_POST['tipo'], $_POST['nombre'], $_POST['telefono'], $_POST['celular'], $_POST['email']);
     }
 }
