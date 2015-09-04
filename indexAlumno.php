@@ -1,4 +1,3 @@
-
 <body id="page-top">
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -24,7 +23,7 @@
                         <a class="page-scroll" href="#noticias">Noticias</a>
                     </li>
 					<li>
-                        <a class="page-scroll" href="/maestros/grupos.php">Grupos</a>
+                        <a class="page-scroll" href="/calificaciones.php">Calificaciones</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="/includes/logout.php">Salir</a>
@@ -52,7 +51,7 @@
 				</div>
 				<div class="col-lg-8 col-sm-12 col-xs-12 text-center">
 					<h1><?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?></h1>
-					<p>Bienvenido al sistema del Colegio Meze aqui podras encontrar tus grupos calificarlos, tomar la asistencia y conocer un poco de los ultimos acontecimientos del colegio!!</p>
+					<p>Bienvenido al sistema del Colegio Meze aqui podras encontrar tus calificaciones y conocer un poco de los ultimos acontecimientos del colegio!!</p>
 				</div>
             </div>
         </div>

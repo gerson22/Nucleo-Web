@@ -15,6 +15,11 @@ include_once("../../../includes/clases/class_lib.php");
 <head>
     <meta charset="utf-8" />
     <title>Sistema Integral Meze - Niveles</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../../../js/jquery.js" type="text/javascript"></script>
+	<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+	<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+	<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../../estilo/general.css" />
     <link rel="stylesheet" href="../../../estilo/jquery.dataTables.css" />
     <link rel="stylesheet" href="../../../estilo/jQueryUI.css" />
@@ -27,16 +32,15 @@ include_once("../../../includes/clases/class_lib.php");
 </head>
 <body>
 <div id="wrapper">
-    <?php include("../../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
+    <?php include("../../../includes/headerConfig.php"); ?>
+     <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
 
             <h2>Niveles</h2>
 
-            <button onclick="nuevo()" >Nuevo</button>
+            <button onclick="nuevo()" class="btn btn-primary" >Nuevo</button>
 
-            <table id="tabla_niveles" >
+            <table id="tabla_niveles" class="table" >
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -54,10 +58,9 @@ include_once("../../../includes/clases/class_lib.php");
         </div>
 
     </div>
-</div>
 
 <!-- MODAL -->
-<div id="modal_nuevo_nivel" title="Nuevo nivel">
+<div id="modal_nuevo_nivel" title="Nuevo nivel" style="box-shadow: 2px 2px 5px #5f5f5f;">
     <form action="" onsubmit="return false;">
         <div class="form-group">
             <label for="nombreVal">Nivel</label>
@@ -79,7 +82,7 @@ include_once("../../../includes/clases/class_lib.php");
 <!-- /MODAL -->
 
 <!-- MODAL MODIFICAR -->
-<div id="modal_modificar_nivel" title="Modificar nivel">
+<div id="modal_modificar_nivel" title="Modificar nivel" style="box-shadow: 2px 2px 5px #5f5f5f;">
     <form action="" onsubmit="return false;">
         <div class="form-group">
             <label for="nombreModVal">Nivel</label>

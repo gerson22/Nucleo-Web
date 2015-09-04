@@ -23,6 +23,11 @@ $id_subtipo = $beca['id_subtipo'];
 <head>
     <meta charset="utf-8" />
     <title>Sistema Integral Meze - Nueva Beca</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../../js/jquery.js" type="text/javascript"></script>
+	<script src="../../js/bootstrap.js" type="text/javascript"></script>
+	<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+	<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../estilo/general.css" />
     <link rel="stylesheet" href="../../estilo/formas.css" />
     <link rel="stylesheet" href="../../estilo/buscadorAjax.css" />
@@ -141,11 +146,9 @@ $id_subtipo = $beca['id_subtipo'];
     </script>
 </head>
 <body>
-<div id="wrapper">
     <?php include("../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
+   	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
             <h2>Modificar beca</h2>
             <form id="forma_nueva_beca" action="../../includes/acciones/alumnos/modificar_beca.php" method="post" onsubmit='return confirm("¿Los datos están correctos?");' >
                 <div class="form_row_2">
@@ -221,12 +224,11 @@ $id_subtipo = $beca['id_subtipo'];
                 }
                 ?>
                 <div class="form_row">
-                    <input id="boton_aceptar" class="form_submit" type="submit" value="Aceptar" />
+                    <input id="boton_aceptar" class="form_submit btn btn-primary " type="submit" value="Aceptar" />
                 </div>
             </form>
 
         </div>
     </div>
-</div>
 </body>
 </html>

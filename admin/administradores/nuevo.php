@@ -10,6 +10,11 @@ include_once("../../includes/validar_admin.php");
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Nuevo administrador</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -116,11 +121,9 @@ include_once("../../includes/validar_admin.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
 
                     <h3>Nuevo administrador</h3>
 
@@ -172,7 +175,6 @@ include_once("../../includes/validar_admin.php");
                     
                 </div>
             </div>
-        </div>
     </body>
     <script>
         function toggle_seleccion(caller)

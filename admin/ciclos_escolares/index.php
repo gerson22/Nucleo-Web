@@ -12,6 +12,11 @@ $ciclos_escolares = CicloEscolar::getLista();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Ciclos escolares</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -39,17 +44,16 @@ $ciclos_escolares = CicloEscolar::getLista();
         </script>
     </head>
     <body>
-        <div id="wrapper">
-            <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
+        <?php include("../../includes/header.php"); ?>
+			<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+        		<div id="area_trabajo">
                 
                     <h2>Ciclos escolares</h2>
 
-                    <button onclick="location.href='nuevo.php'" >Nuevo</button>
+                    <button onclick="location.href='nuevo.php'" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</button>
 
-                    <table id="tabla_ciclos_escolares" >
+                    <div class="table-responsive">
+						<table id="tabla_ciclos_escolares" class="table" >
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -77,10 +81,10 @@ $ciclos_escolares = CicloEscolar::getLista();
                         ?>
                         </tbody>
                     </table>
+					</div>
 
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

@@ -17,6 +17,11 @@ include_once("../../includes/validar_admin.php");
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Vender uniforme</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas_mini.css" />
         <link rel="stylesheet" href="../../estilo/buscadorAjax.css" />
@@ -133,37 +138,35 @@ include_once("../../includes/validar_admin.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-                <div id="inner_content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
                     <section>
 
                         <div class="form_row_2" >
                             <label class="form_label">Uniforme</label>
-                            <input type="text" class="form_input" placeholder="Código" id="uniformeVal" />
+                            <input type="text" class="form_input form-control" placeholder="Código" id="uniformeVal" />
                         </div>
 
                         <div class="form_row_2">
                             <label class="form_label">Cantidad</label>
-                            <input type="number" class="form_input_half" id="cantidadVal" />
+                            <input type="number" class="form_input_half form-control" id="cantidadVal" />
                         </div>
 
                         <div class="form_row_2" >
                             <label class="form_label">Alumno</label>
-                            <input type="text" id="alumnoVal" class="form_input" placeholder="Doble click" ondblclick="$('#buscador_alumnos').fadeIn();" />
+                            <input type="text" id="alumnoVal" class="form_input form-control" placeholder="Doble click" ondblclick="$('#buscador_alumnos').fadeIn();" />
                         </div>
 
                         <div class="form_row_2">
                             <label class="form_label">Precio</label>
-                            <input type="number" class="form_input_half" id="precioVal" />
+                            <input type="number" class="form_input_half form-control" id="precioVal" />
                         </div>
 
                         <div class="form_row_3" >
                             <input type="hidden" id="id_alumnoVal" class="form_label" />
                             <label class="form_label">Area</label>
-                            <select type="text" id="areaVal" class="form_select" >
+                            <select type="text" id="areaVal" class="form_select form-control" >
                                 <option value="1" >Kinder</option>
                                 <option value="2" >Primaria</option>
                                 <option value="3" >Secundaria</option>
@@ -175,14 +178,14 @@ include_once("../../includes/validar_admin.php");
                         <hr style="border-bottom: medium none; color: #CCCCCC; float: left; height: 1px; width: 100%;" />
 
                         <div class="form_row">
-                            <input id="boton_final_aceptar" class="form_submit" type="button" onclick="pagoClick()" style="margin: auto 45%;" value="Aceptar" >
+                            <input id="boton_final_aceptar" class="form_submit btn btn-primary" type="button" onclick="pagoClick()" style="margin: auto 45%;" value="Aceptar" >
                         </div>
 
                     </section>
 
                 </div>
 
-                <div class="buscadorAjax" id="buscador_alumnos" >
+                <div class="buscadorAjax" id="buscador_alumnos" style="box-shadow: 2px 2px 5px #5f5f5f;" >
                     <div class="buscadorAjax_barra">
                         <img onclick="$(this).parent(0).parent(0).fadeOut()" alt="Cerrar" src="../../../media/iconos/icon_close.gif">
                     </div>
@@ -192,13 +195,12 @@ include_once("../../includes/validar_admin.php");
                         <input type="button" value="Buscar" onclick="buscarAlumno()" class="buscadorAjax_top_boton">
                     </div>
                     <div class="buscadorAjax_contenedor_tabla">
-                        <table class="buscadorAjax_tabla" id="buscador_alumnos_tabla">
+                        <table class="buscadorAjax_tabla table" id="buscador_alumnos_tabla">
                             <!-- Buscador AJAX -->
                         </table>
                     </div>
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

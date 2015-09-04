@@ -19,6 +19,11 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Perfil de alumno</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/perfil_alumno.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
@@ -27,10 +32,9 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
+           	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        		<div id="area_trabajo">
                 <div id="profile_picture">
 
                     <div id="profile_picture_inner">
@@ -172,7 +176,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     <!-- simple file uploading form -->
                     <form id="form_imagen" action="/includes/ajaxuploadAlumnos.php" method="post" enctype="multipart/form-data">
                         <input id="uploadImage" type="file" accept="image/*" name="image" value="Seleccionar foto"/>
-                        <input id="button" type="submit" value="Subir">
+                        <input id="button" type="submit" value="Subir" class="btn btn-warning">
                     </form>
                 </div>
 
@@ -190,8 +194,8 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         <li><a href="#tabs-10">Nutrición</a></li>
                         <li><a href="#tabs-11">Cuentas</a></li>
                     </ul>
-                    <div id="tabs-1">
-                        <table id="tabla_clases">
+                    <div id="tabs-1" class="table-responsive ">
+                        <table id="tabla_clases" class="table">
                             <thead>
                                 <tr>
                                     <th>Grado</th>
@@ -218,8 +222,8 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             </tbody>
                         </table>
                     </div>
-                    <div id="tabs-2">
-                        <table id="tabla_tutores">
+                    <div id="tabs-2" class="table-responsive">
+                        <table id="tabla_tutores" class="table">
                             <thead>
                             <tr>
                                 <th>Tipo</th>
@@ -261,8 +265,8 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         </table>
                         <img src="../../media/iconos/icon_add.png" alt="Nuevo" style="float: right;" onclick="toggleTutor();" />
                     </div>
-                    <div id="tabs-3">
-                        <table id="tabla_emails">
+                    <div id="tabs-3" class="table-responsive">
+                        <table id="tabla_emails" class="table">
                             <thead>
                                 <tr>
                                     <th>Tipo de correo electrónico</th>
@@ -294,8 +298,8 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         </table>
                         <img src="../../media/iconos/icon_add.png" alt="Nuevo" style="float: right;" onclick="toggleEmail();" />
                     </div>
-                    <div id="tabs-4">
-                        <table id="tabla_telefonos">
+                    <div id="tabs-4" class="table-responsive">
+                        <table id="tabla_telefonos" class="table">
                             <thead>
                                 <tr>
                                     <th>Tipo de teléfono</th>
@@ -327,8 +331,8 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         </table>
                         <img src="../../media/iconos/icon_add.png" alt="Nuevo" style="float: right;" onclick="toggleTelefono();" />
                     </div>
-                    <div id="tabs-5">
-                        <table id="tabla_pagos">
+                    <div id="tabs-5" class="table-responsive">
+                        <table id="tabla_pagos" class="table">
                             <thead>
                             <tr>
                                 <th>Fecha</th>
@@ -363,22 +367,22 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                         <div style="width: 90%; margin: 10px 0;">
                             <?php $direccion = $alumno->getDireccion(); ?>
                             <label class="form_label" for="calleVal">Calle</label>
-                            <input type="text" class="form_input" id="calleVal" value="<?php echo $direccion['calle']; ?>" readonly />
+                            <input type="text" class="form_input form-control" id="calleVal" value="<?php echo $direccion['calle']; ?>" readonly />
                             <label class="form_label" for="numeroVal">Número</label>
-                            <input type="text" class="form_input" id="numeroVal" value="<?php echo $direccion['numero']; ?>" readonly />
+                            <input type="text" class="form_input form-control" id="numeroVal" value="<?php echo $direccion['numero']; ?>" readonly />
                             <label class="form_label" for="coloniaVal">Colonia</label>
-                            <input type="text" class="form_input" id="coloniaVal" value="<?php echo $direccion['colonia']; ?>" readonly />
+                            <input type="text" class="form_input form-control" id="coloniaVal" value="<?php echo $direccion['colonia']; ?>" readonly />
                             <label class="form_label" for="CPVal">CP</label>
-                            <input type="text" class="form_input" id="CPVal" value="<?php echo $direccion['CP']; ?>" readonly />
+                            <input type="text" class="form_input form-control" id="CPVal" value="<?php echo $direccion['CP']; ?>" readonly />
                             <img src="/media/iconos/icon_modify.png" width="15" ALT="M" onclick="mostrarMdyDireccion()" />
                         </div>
                         <label>Club</label>
-                        <input type="text" class="form_input" value="<?php echo $alumno->getClubDeportivo(); ?>" readonly />
+                        <input type="text" class="form_input form-control" value="<?php echo $alumno->getClubDeportivo(); ?>" readonly />
                         <label>CURP</label>
-                        <input type="text" class="form_input" value="<?php echo $alumno->getCURP(); ?>" readonly />
+                        <input type="text" class="form_input form-control" value="<?php echo $alumno->getCURP(); ?>" readonly />
                     </div>
-                    <div id="tabs-7">
-                        <table id="tabla_becas">
+                    <div id="tabs-7" class="table-responsive"> 
+                        <table id="tabla_becas" class="table">
                             <thead>
                             <tr>
                                 <th>Ciclo escolar</th>
@@ -410,7 +414,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             </tbody>
                         </table>
                     </div>
-                    <div id="tabs-8">
+                    <div id="tabs-8" class="table-responsive">
                         <label>Ciclo escolar</label>
                         <select id="ciclo_escolarVal" onchange="reloadCalis()">
                             <?php
@@ -424,7 +428,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                                 }
                             ?>
                         </select>
-                        <table id="tabla_calificaciones">
+                        <table id="tabla_calificaciones" class="table">
                             <thead>
                                 <tr>
                                     <th>Materia</th>
@@ -442,8 +446,8 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             </tbody>
                         </table>
                     </div>
-                    <div id="tabs-9">
-                        <table>
+                    <div id="tabs-9" class="table-responsive">
+                        <table class="table">
                             <thead>
                             <tr>
                                 <th>Documento</th>
@@ -477,13 +481,13 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             ?>
                             </tbody>
                         </table>
-                        <input type="button" value="Actualizar" onclick="updatePapeleria(this)" />
+                        <input type="button" class="btn btn-primary" value="Actualizar" onclick="updatePapeleria(this)" />
                     </div>
                     <div id="tabs-10">
 
                     </div>
-                    <div id="tabs-11">
-                        <table id="tabla_cuentas">
+                    <div id="tabs-11" class="table-responsive">
+                        <table id="tabla_cuentas" class="table">
                             <thead>
                                 <tr>
                                     <th>Concepto</th>
@@ -518,7 +522,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                 <div id="div_boton_cuentas">
                     <div id="wrapper_select">
                         <label>Ciclo escolar</label>
-                        <select id="ciclo_escolarCuentasVal" >
+                        <select id="ciclo_escolarCuentasVal" class="form-control" >
                             <?php
                             $ciclos = CicloEscolar::getLista();
                             if(is_array($ciclos))
@@ -530,8 +534,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                             }
                             ?>
                         </select>
-                    </div>
-                    <button onclick="perfilCuentas();" style="margin: 15px 0 0;" >Perfil de cuentas</button>
+                    <button onclick="perfilCuentas();" class="btn btn-primary" style="margin-top:5px; width:250px;" >Perfil de cuentas</button>
                 </div>
 
                 <div id="prompt_email" class="fixed_form" >

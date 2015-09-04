@@ -14,6 +14,11 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
 <head>
     <meta charset="utf-8" />
     <title>Sistema Integral Meze - Estadísticas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../../js/jquery.js" type="text/javascript"></script>
+	<script src="../../js/bootstrap.js" type="text/javascript"></script>
+	<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+	<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../estilo/general.css" />
     <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
     <style>
@@ -286,25 +291,23 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
     </script>
 </head>
 <body>
-<div id="wrapper">
     <?php include("../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
-
+    <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3" style="margin-top:20px;">
+            <div id="area_trabajo">
+			<br><br>
             <h3>Estadísticas</h3>
 
             <ul id="charts_options" >
-                <li onclick="selectedDiv(1, this);" >Alumnos</li>
-                <li onclick="selectedDiv(2, this);" >Maestros</li>
-                <li onclick="selectedDiv(3, this);" >Clubs</li>
-                <li onclick="selectedDiv(4, this);" >Colonias</li>
+				<button type="button" class="btn btn-primary" onclick="selectedDiv(1, this);" ><i class="fa fa-child"></i> Alumnos</button>
+				<button type="button" class="btn btn-default" onclick="selectedDiv(2, this);" ><i class="fa fa-users"></i> Maestros</button>
+				<button type="button" class="btn btn-info" onclick="selectedDiv(3, this);" ><i class="fa fa-cubes"></i> Clubs</button>
+				<button type="button" class="btn btn-default" onclick="selectedDiv(4, this);" ><i class="fa fa-street-view"></i> Colonias</button>
             </ul>
 
-            <div class="charts_div" id="charts_alumnos">
+            <div class="charts_div" id="charts_alumnos" class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3">
                 <div class="chart_inner_div">
                     <div class="chart_inner_div_title">Distribución por area</div>
-                    <canvas id="canvas_alumnos_pie" width="480" height="400"></canvas>
+                    <canvas id="canvas_alumnos_pie" width="400" height="400"></canvas>
                 </div>
                 <div class="chart_inner_div" style="margin: 125px 0;">
                     <div class="data_row">
@@ -347,14 +350,14 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 </div>
             </div>
 
-            <div class="charts_div" id="charts_maestros">
+            <div class="charts_div" id="charts_maestros" class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3">
                 <div class="chart_inner_div">
                     <div class="chart_inner_div_title">Maestros</div>
                     <canvas id="canvas_maestros_bar" width="480" height="400"></canvas>
                 </div>
             </div>
 
-            <div class="charts_div" id="charts_clubs">
+            <div class="charts_div" id="charts_clubs" class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3">
                 <div class="chart_inner_div">
                     <div class="chart_inner_div_title">Clubs</div>
                     <canvas id="canvas_clubs_pie" width="480" height="400"></canvas>
@@ -370,7 +373,7 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
                 <!--------------->
             </div>
 
-            <div class="charts_div" id="charts_colonias">
+            <div class="charts_div" id="charts_colonias" class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3">
                 <div class="chart_inner_div">
                     <div class="chart_inner_div_title">Colonias</div>
                     <canvas id="canvas_colonias_pie" width="480" height="400"></canvas>
@@ -380,6 +383,5 @@ $count_alumnos = $ciclo_actual->getCountAlumnosInscritos();
         </div>
 
     </div>
-</div>
 </body>
 </html>

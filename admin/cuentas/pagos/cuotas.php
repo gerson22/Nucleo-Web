@@ -13,6 +13,11 @@ include_once("../../../includes/clases/class_lib.php");
 <head>
     <meta charset="utf-8" />
     <title>Sistema Integral Meze - Cuotas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../../../js/jquery.js" type="text/javascript"></script>
+	<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+	<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+	<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../../estilo/general.css" />
     <link rel="stylesheet" href="../../../estilo/formas_mini.css" />
     <link rel="stylesheet" href="../../../estilo/buscadorAjax.css" />
@@ -128,12 +133,9 @@ include_once("../../../includes/clases/class_lib.php");
     </script>
 </head>
 <body>
-<div id="wrapper">
-    <?php include("../../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
-
+    <?php include("../../../includes/headerConfig.php"); ?>
+	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
             <div class="form_row_2">
                 <label for="alumnoVal" class="form_label">Alumno</label>
                 <input type="text" class="form_input" id="alumnoVal" ondblclick="$('#buscador_alumnos').fadeIn();" >
@@ -168,13 +170,13 @@ include_once("../../../includes/clases/class_lib.php");
                 <div id="monto_a_pagar" style="float: left; margin-left: 4px;"></div>
             </div>
 
-            <input type="button" class="form_submit" value="Aceptar" id="boton_pagar" onclick="pagar();"  />
+            <input type="button" class="form_submit btn btn-primary" value="Aceptar" id="boton_pagar" onclick="pagar();"  />
 
         </div>
 
     </div>
 
-    <div id="buscador_alumnos" class="buscadorAjax">
+    <div id="buscador_alumnos" class="buscadorAjax" style="box-shadow: 2px 2px 5px #5f5f5f; ">
         <div class="buscadorAjax_barra">
             <img src='/media/iconos/icon_close.gif' alt="Cerrar" onclick="$(this).parent().parent().fadeOut()" />
         </div>

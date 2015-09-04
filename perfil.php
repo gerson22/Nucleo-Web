@@ -23,6 +23,11 @@ switch($_SESSION['tipo_persona'])
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Mi Perfil</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="estilo/general.css" />
         <link rel="stylesheet" href="estilo/perfil.css" />
         <style>
@@ -114,10 +119,9 @@ switch($_SESSION['tipo_persona'])
         </script>
     </head>
     <body>
-        <div id="wrapper">
-            <?php include("includes/header.php"); ?>
-            <div id="content">
-                <div id="inner_content">
+          <?php include("includes/header.php"); ?>
+			<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        		<div id="area_trabajo">
                     <h2>Perfil de <?php echo $persona->getTipoPersona(); ?></h2>
                     <div class="perfil_div_2">
                         <div class="perfil_label">Nombre(s)</div>
@@ -150,11 +154,10 @@ switch($_SESSION['tipo_persona'])
                             ';
                         }
                     ?>
-                    <input type="button" class="perfil_boton" onclick="mostrarPassDiv()" value="Cambiar contraseña" />
-                </div>
+                    <input type="button" class="perfil_boton btn btn-primary  " style="width:230px;" onclick="mostrarPassDiv()" value="Cambiar contraseña" />
 
                 <!-- Fixed div -->
-                <div id="password_div">
+                <div id="password_div" style="box-shadow: 1px 2px 5px #5f5f5f;">
                     <div id="password_div_bar">
                         <img src="/media/iconos/icon_close.gif" alt="cerrar" onclick="$(this).parent().parent().fadeOut();" />
                     </div>
@@ -167,7 +170,7 @@ switch($_SESSION['tipo_persona'])
                         <input type="password" id="password2Val" />
                     </div>
                     <div class="password_div_row">
-                        <input id="boton_aceptar_cambio" type="button" onclick="cambiarPassword();" value="Aceptar" />
+                        <input id="boton_aceptar_cambio" type="button" onclick="cambiarPassword();" value="Aceptar" class="btn btn-primary btn-block" />
                     </div>
                 </div>
                 <!-- /Fixed div-->

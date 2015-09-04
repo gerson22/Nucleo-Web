@@ -8,6 +8,11 @@ $maestros = $ciclo_actual->getMaestros();
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <title>Sistema Integral Meze - Maestros activos en el ciclo escolar</title>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
@@ -29,23 +34,21 @@ $maestros = $ciclo_actual->getMaestros();
                         "sInfoEmpty": "Mostrando 0 a 0 de 0 maestros",
                         "sInfoFiltered": "(Encontrados de _MAX_ maestros)"
                     },
-                    "iDisplayLength": 25
+                    "iDisplayLength": 10
                 }); 
             }
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
+           <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+            <div id="area_trabajo">
                 
                     <h1>Maestros activos en el ciclo escolar</h1>
 
-                    <button onclick="location.href='nuevo.php'" >Nuevo</button>
+                    <button onclick="location.href='nuevo.php'" class="btn btn-primary" >Nuevo</button>
 
-                    <table id="tabla_maestros" >
+                    <table id="tabla_maestros" class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -82,8 +85,6 @@ $maestros = $ciclo_actual->getMaestros();
                         </tbody>
                     </table>
                 </div>
-
             </div>
-        </div>
     </body>
 </html>

@@ -76,7 +76,7 @@ div#header a#link_logout
 #content
 {
     position: relative;
-    margin: auto;
+    margin-top: 15px;
     overflow: auto;
     width: 1000px;
 }
@@ -157,14 +157,16 @@ button
 {
     width: 100px;
     height: 40px;
-    border: 1px solid #152975;
+    border: 1px groove #152975;
     color: #152975;
+	border-radius: 10px;
 }
 
 button:hover
 {
     background-color: #152975;
     color: #e6e6e6;
+	transition: ;
 }
 
 div#footer

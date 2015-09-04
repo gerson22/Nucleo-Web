@@ -58,6 +58,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', end
 	{
 		color: #fff;
 	}
+	.chart_responsive
+	{
+		width: 200;
+		height: 200;
+	}
 }
 
 .nav-sidebar {
@@ -130,6 +135,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', end
 {
 	border-radius: 10px;
 }
+
 .table > thead > tr
 {
 	background-color: cadetblue;
@@ -137,19 +143,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', end
 }
 .table
 {
-	margin: 20px;
-	box-shadow: 4px 4px 20px #5f5f5f;
+	margin: 10px;
 }
-#tabla_alumnos > tbody > tr > td:hover
-{
-	background: #f2f2f2;
-}
+
 .ico
 {
 	background: rgba(0,145,190,.8);
 	color: #fff;
 	padding: 15px;
-	border-radius: 50%;
+	border-radius: 100%;
 	font-size: 15px;
 	
 	-webkit-transition: .5s;
@@ -160,7 +162,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', end
 .letter3
 {
 	font-family: "TW Cen MT";
-	font-size: 18px;
+	font-size: 15px;
 	color: #000;
 }
 marquee
@@ -169,10 +171,11 @@ marquee
 	font-size: 18px;
 	
 }
+
 .letter3:hover
 {
 	margin-left: 30px;
-	border-bottom-left-radius: 20px;
+	border-bottom-left-radius: 5px;
 	-webkit-transition: .5s;
 }
 .letter1:hover
@@ -199,7 +202,7 @@ marquee
 }
 .letter22:hover .ico
 {
-	font-size: 18px;
+	
 	background: transparent;
 	border-style: solid;
 	border-color:aqua;
@@ -209,49 +212,13 @@ marquee
 	-o-transition: .5s;
 	-ms-transition: .5s;
 }
-.btn_orig
-{
-	padding: 20px;
-	-webkit-transition: .5s;
-	-moz-transition: .5s;
-	-o-transition: .5s;
-	-ms-transition: .5s;
-	margin: 10px;
-	font-family: "Tahoma";
 
-}
 .jumbotron
 {
 	border-bottom: 13px;
 	border-style: double;
 }
-.btn_orig:hover
-{
-	
-	-webkit-transition: .5s;
-	-moz-transition: .5s;
-	-o-transition: .5s;
-	-ms-transition: .5s;
-	border-style: double;
-	color: cadetblue;
-	border-width: 3px;
-	border-color: cyan;
-	background: transparent;
-}
-.btn_orig:focus
-{
-	
-	-webkit-transition: .5s;
-	-moz-transition: .5s;
-	-o-transition: .5s;
-	-ms-transition: .5s;
-	border-style: double;
-	color: cadetblue;
-	border-width: 3px;
-	border-color: cyan;
-	background: transparent;
-	text-transform: uppercase;
-}
+
 #menus
 {
 	

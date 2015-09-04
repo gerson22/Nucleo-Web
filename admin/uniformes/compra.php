@@ -17,6 +17,11 @@ include_once("../../includes/validar_admin.php");
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Vender uniforme</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas_mini.css" />
         <link rel="stylesheet" href="../../estilo/buscadorAjax.css" />
@@ -95,11 +100,9 @@ include_once("../../includes/validar_admin.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-                <div id="inner_content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
                     <section>
 
                         <div class="form_row_2" >
@@ -120,7 +123,7 @@ include_once("../../includes/validar_admin.php");
                         <hr style="border-bottom: medium none; color: #CCCCCC; float: left; height: 1px; width: 100%;" />
 
                         <div class="form_row">
-                            <input id="boton_final_aceptar" class="form_submit" type="button" onclick="compraClick()" style="margin: auto 45%;" value="Aceptar" >
+                            <input id="boton_final_aceptar" class="form_submit btn btn-primary" type="button" onclick="compraClick()" style="margin: auto 45%;" value="Aceptar" >
                         </div>
 
                     </section>
@@ -128,6 +131,5 @@ include_once("../../includes/validar_admin.php");
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

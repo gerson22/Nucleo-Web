@@ -17,21 +17,23 @@ include_once("../../../includes/validar_acceso.php");
 <head>
     <meta charset="utf-8" />
     <title>Sistema Integral Meze - Configuración: Papeleria</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../../../js/jquery.js" type="text/javascript"></script>
+	<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+	<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+	<script src="../../../plugins/assets/js/animations.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../../estilo/general.css" />
     <link rel="stylesheet" href="../../../estilo/jquery.dataTables.css" />
 </head>
 <body>
-<div id="wrapper">
-    <?php include("../../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
-
+    <?php include("../../../includes/headerConfig.php"); ?>
+    <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
             <h2>Papeleria</h2>
 
-            <button onclick="nuevaPapeleriaClicked()" >Nueva</button>
+            <button onclick="nuevaPapeleriaClicked()" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Nueva</button>
 
-            <table id="tabla_papeleria" >
+            <table id="tabla_papeleria" class="table" >
                 <thead>
                 <tr>
                     <th>Documento</th>
@@ -44,7 +46,6 @@ include_once("../../../includes/validar_acceso.php");
         </div>
 
     </div>
-</div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="../../../librerias/jquery.dataTables.min.js" ></script>
 <script src="../../../librerias/fnAjaxReload.js" ></script>

@@ -9,6 +9,11 @@ $maestro = new Maestro($_SESSION['id_persona']);
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Planeación</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <style>
@@ -48,13 +53,10 @@ $maestro = new Maestro($_SESSION['id_persona']);
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-
-                    <table id="tabla_planeaciones">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
+                    <table id="tabla_planeaciones" class="table">
                         <thead>
                             <tr>
                                 <th>Grado</th>
@@ -71,6 +73,5 @@ $maestro = new Maestro($_SESSION['id_persona']);
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

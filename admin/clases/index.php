@@ -9,6 +9,11 @@
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Clases</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <style>
@@ -67,25 +72,22 @@
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-                <?php include("../../includes/menu_left.php"); ?>
+				<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        			<div id="area_trabajo">
 
-                <div id="inner_content">
-                
                     <h2>Clases</h2>
 
-                    <button onclick="location.href='nueva.php'" disabled="disabled">Nueva</button>
+                    <button onclick="location.href='nueva.php'" class="btn btn-primary" disabled="disabled">Nueva</button>
                     
                     <div id="div_select_ciclo">
                         <label for="select_filtro">Selecciona un filtro</label>
-                        <select id="select_filtro" name="select_filtro">
+                        <select id="select_filtro" name="select_filtro" class="form-control">
                             <option value="1">Materia</option>
                         </select>
                     </div>
 
-                    <table id="tabla_clases" >
+                    <table id="tabla_clases" class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -102,6 +104,5 @@
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

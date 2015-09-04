@@ -8,6 +8,11 @@ include_once("../../../includes/clases/class_lib.php");
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Nuevo Pago</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../../estilo/general.css" />
         <link rel="stylesheet" href="../../../estilo/formas_mini.css" />
         <link rel="stylesheet" href="../../../estilo/buscadorAjax.css" />
@@ -380,12 +385,9 @@ include_once("../../../includes/clases/class_lib.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
-            <?php include("../../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-
+            <?php include("../../../includes/headerConfig.php"); ?>
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        		<div id="area_trabajo">
                     <form id="forma_nuevo_pago" action="../../../includes/acciones/cuentas/pagos/nuevo.php" method="post" >
                         <input type="hidden" id="id_alumnoVal" name="id_alumnoVal" />
                         <div class="form_row_2">
@@ -481,9 +483,9 @@ include_once("../../../includes/clases/class_lib.php");
                         </div>
                     </form>
 
-                    <div id="div_pagos">
+                    <div id="div_pagos" class="table-responsive">
 
-                        <table id="tabla_pagos">
+                        <table id="tabla_pagos" class="table">
                             <thead>
                             <tr>
                                <th colspan="3">Pagos a realizar</th>
@@ -498,8 +500,8 @@ include_once("../../../includes/clases/class_lib.php");
                                 <!-- Dinámico -->
                             </tbody>
                         </table>
-                        <input type="button" class="form_submit" value="Nuevo pago" onclick="mostrarNuevoPago();"/>
-                        <input type="button" class="form_submit" value="Eliminar" onclick="clearPagos();"/>
+                        <input type="button" class="form_submit btn btn-success" value="Nuevo pago" onclick="mostrarNuevoPago();"/>
+                        <input type="button" class="form_submit btn btn-danger" value="Eliminar" onclick="clearPagos();"/>
                     </div>
 
                     <div id="div_summary">
@@ -515,7 +517,7 @@ include_once("../../../includes/clases/class_lib.php");
                     </div>
 
                     <div class="form_row">
-                        <input id="boton_final_aceptar" type="button" class="form_submit" value="Aceptar" style="margin: auto 45%;" onclick="agregarPago()" " />
+                        <input id="boton_final_aceptar" type="button" class="form_submit btn btn-primary" value="Aceptar" style="margin: auto 45%;" onclick="agregarPago()" />
                     </div>
 
                 </div>
@@ -571,6 +573,5 @@ include_once("../../../includes/clases/class_lib.php");
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

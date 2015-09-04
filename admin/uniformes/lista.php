@@ -17,6 +17,11 @@ include_once("../../includes/validar_admin.php");
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Lista de uniformes</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <style>
@@ -198,12 +203,11 @@ include_once("../../includes/validar_admin.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-                <div id="inner_content">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo" class="table-responsive">
 
-                    <table id="tabla_uniformes">
+                    <table id="tabla_uniformes" class="table">
                         <thead>
                             <tr>
                                 <th>Descripción</th>
@@ -244,6 +248,5 @@ include_once("../../includes/validar_admin.php");
 
                 </div>
             </div>
-        </div>
     </body>
 </html>

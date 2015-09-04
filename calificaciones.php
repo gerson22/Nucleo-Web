@@ -13,16 +13,19 @@ $materias = $alumno->getMateriasCursando();
     <head>
         <meta charset="utf-8" />
         <title>Calificaciones</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="/js/jquery.js" type="text/javascript"></script>
+		<script src="/js/bootstrap.js" type="text/javascript"></script>
+		<script src="/plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="/plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="estilo/general.css" />
         <link rel="stylesheet" href="estilo/calificaciones.css" />
     </head>
     <body>
         
-        <div id="wrapper">
             <?php include("includes/header.php"); ?>
-
-            <div id="content">
-
+			<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                <div id="area_trabajo">
                 <div id="datos_alumno">
                     <div class="dato_alumno">
                         <div class="label">Nombre(s)</div>
@@ -46,7 +49,7 @@ $materias = $alumno->getMateriasCursando();
                     </div>
                 </div>
 
-                <table id="tabla_calificaciones">
+                <table id="tabla_calificaciones" class="table">
                     <thead>
                         <tr>
                             <th style="width: 250px;">Asignatura</th>

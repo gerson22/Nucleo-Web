@@ -17,21 +17,23 @@ include_once("../../../includes/validar_acceso.php");
 <head>
     <meta charset="utf-8" />
     <title>Sistema Integral Meze - Configuración: Ocupaciones</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../../../js/jquery.js" type="text/javascript"></script>
+	<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+	<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+	<script src="../../../plugins/assets/js/animations.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../../estilo/general.css" />
     <link rel="stylesheet" href="../../../estilo/jquery.dataTables.css" />
 </head>
 <body>
-<div id="wrapper">
-    <?php include("../../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
-
+    <?php include("../../../includes/headerConfig.php"); ?>
+    	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
             <h2>Ocupaciones</h2>
 
-            <button onclick="nuevaOcupacionClicked()" >Nueva</button>
+            <button onclick="nuevaOcupacionClicked()" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Nueva</button>
 
-            <table id="tabla_ocupaciones" >
+            <table id="tabla_ocupaciones" class="table" >
                 <thead>
                 <tr>
                     <th>Ocupación</th>
