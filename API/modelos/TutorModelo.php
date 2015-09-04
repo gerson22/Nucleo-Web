@@ -36,7 +36,6 @@ class TutorModelo
     {
         $query = "INSERT INTO persona_tutor SET id_alumno = $id_alumno, id_tipo_tutor = $tipo, nombre = '$nombre', telefonos = '$telefono', celular = '$celular'";
         $id_tutor = APIDatabase::insert($query);
-        echo "id_tutor: ".$id_tutor;
         $tutor = new self($id_tutor);
         return $tutor;
     }
