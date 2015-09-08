@@ -57,11 +57,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-12 col-xs-12 box-center">
-					<img class="img-responsive img-circle imgUser" src="/media/fotos/<?php echo $usuario->foto; ?>g">
+					<img class="img-responsive img-circle imgUser" src="/media/fotos/<?php echo $usuario->foto; ?>">
 				</div>
 				<div class="col-lg-8 col-sm-12 col-xs-12 text-center">
-					<h1><?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?></h1>
-					<p>Informacion acerca del usuario que describa al individuo</p>
+					<p><h2><?php if($usuario->sexo != "F"){ echo "Bienvenido "; } else { echo "Bienvenida "; } echo  "<b>".$usuario->nombres." ".$usuario->apellido_paterno." ".$usuario->apellido_materno."</b>"; ?> al "Sistema Integral Meze",  aqui podras administrar las secciones que te correspondan de esta plataforma!</h2> </p>
 				</div>
             </div>
         </div>
