@@ -15,10 +15,12 @@
     float: left;
 }
 
-.label
+div > label
 {
-    width: 40%;
+	margin-right: 3px;
     float: left;
+	font-family: "Arial";
+	font-style: oblique;
 }
 
 .value

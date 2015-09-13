@@ -1,3 +1,8 @@
+<?php
+include_once("includes/clases/class_lib.php");
+session_start();
+$usuario = new Persona($_SESSION['id_persona']);
+?>
 <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="../../../css/sistema_css.css">
 		<link rel="stylesheet" type="text/css" href="../../../plugins/assets/css/animations.css">
@@ -14,15 +19,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<img id="logo" src="../../../media/imagenes/logo.png" height="48" style="margin-bottom:0px; margin-top:15px;">
+					<img id="logo" src="../../media/logos/mezeblanco.png" height="58" style="margin-bottom:0px; margin-top:15px;">
 				</div>
 				<div id="barra" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<img src="" id="usuario" class="center-block img-circle" max-width:30px;>
-						</li>
+						
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle letter2" data-toggle="dropdown" role="button" aria-expanded="false"><img src="../../../img/user.png" height="48">&nbsp;<?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?><span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle letter2" data-toggle="dropdown" role="button" aria-expanded="false"><img src="/media/fotos/<?php echo $usuario->foto; ?>" height="48" width="48" class="img-circle">&nbsp;<?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?><span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li id="logout"><a href="/includes/logout.php"><span class="glyphicon glyphicon-off ico"></span> Salir</a></li>
 							</ul>

@@ -15,21 +15,17 @@
 		<link rel="stylesheet" type="text/css" href="plugins/assets/css/animations.min.css">
     </head>
     <body>
-        <br>
         <form  class="col-lg-4 col-md-6 col-md-offset-3 col-lg-offset-4 col-sm-10 col-sm-offset-1 col-xs-12  comboxlog animate-in" data-anim-type="fade-in-left" action="includes/login.php" method="post" id="forma_Log">
             <img src="img/logo.png" alt="Colegio Meze"   class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4  animate-in" data-anim-type="fade-in-down">
-            <p>
-                <label class="col-md-12 col-sm-12 col-xs-12">Matrícula</label>
-                <input class="form-control animate-in" data-anim-type="fade-in-left" type="text" name="matriculaVal" placeholder="Matricula">
-            </p>
-            <p>
-                <label class="col-md-12 col-sm-12 col-xs-12">Contraseña</label>
-                <input class="form-control animate-in" data-anim-type="fade-in-up" type="password" name="passwordVal" placeholder="Contraseña">
-            </p>
-			<?php if(isset($error)) echo "<div id='error_msg' >Datos erroneos. Porfavor intente de nuevo.</div>"; ?><br>
-            <p>
+           <?php if(isset($error)) echo "<div id='error_msg' >Datos erroneos. Porfavor intente de nuevo.</div>"; ?><br>
+                <label class="col-md-12 col-sm-12 col-xs-12">Matrícula</label><br>
+                <input class="form-control animate-in" data-anim-type="fade-in-left" type="text" name="matriculaVal" placeholder="Matricula"><br>
+           
+                <label class="col-md-12 col-sm-12 col-xs-12">Contraseña</label><br>
+                <input class="form-control animate-in" data-anim-type="fade-in-up" type="password" name="passwordVal" placeholder="Contraseña"><br>
+         
                 <input  type="submit" value="Aceptar" class="btn btn-info btn-lg button col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-2 col-xs-8 animate-in" data-anim-type="fade-in-down" ><br><br><br>
-            </p>
+         
         </form>
 
    </body>
