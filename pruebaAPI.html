@@ -11,12 +11,12 @@
     function probar()
     {
         $.ajax({
-            type: "POST",
-            url: "API/personas/asistencia",
-            data: "id_persona=" + 10,
+            type: "GET",
+            url: "API/personas/login",
             beforeSend: function (xhr)
             {
-                xhr.setRequestHeader ("Authorization", "Basic " + btoa("ADM13001:shadow"));
+                //xhr.setRequestHeader ("Authorization", "Basic " + btoa("ADM13001:shadow"));
+                xhr.setRequestHeader ("Authorization", "Basic " + btoa("A0120140001:7uccufcl"));
             },
             success: function (data)
             {
