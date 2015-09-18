@@ -23,8 +23,7 @@ class tareasControlador
                 {
                     return TareaModelo::getLista();
                 }
-                echo "402";
-                return 403;
+                return 401;
             case "POST":
                 return $this->asignarTarea();
                 break;
