@@ -9,7 +9,7 @@ class TareaModelo
 
     public static function getLista()
     {
-        $query = 'SELECT * FROM persona_tutor';
+        $query = 'SELECT * FROM tarea';
         return APIDatabase::select($query);
     }
 

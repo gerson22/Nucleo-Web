@@ -14,12 +14,12 @@ class tareasControlador
         {
             case "GET":
                 $persona = PersonaModelo::getPersonaPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-                if($persona->tipo_persona = 1)
+                if($persona->tipo_persona == 1)
                 {
                     $alumno = new AlumnoModelo($persona->id_persona);
                     return $alumno->getTareas();
                 }
-                else if($persona->tipo_persona = 3)
+                else if($persona->tipo_persona == 3)
                 {
                     return TareaModelo::getLista();
                 }
