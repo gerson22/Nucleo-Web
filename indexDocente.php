@@ -100,7 +100,7 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <img class="img-responsive col-lg-4 col-sm-12 col-md-4 col-xs-12 logo" src="img/logo.png">
+                <img class="img-responsive col-lg-4 col-sm-12 col-md-4 col-xs-12 logo" src="media/logos/mezeblanco.png">
                 <div class="col-lg-8 col-sm-12">
 					<p>Colegio Ma. Esther Zuno de Echeverria</p>
 					<p>Adolfo López Mateos #1030 Col. Zaragoza C.P. 27297</p>

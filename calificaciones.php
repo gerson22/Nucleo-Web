@@ -28,24 +28,24 @@ $materias = $alumno->getMateriasCursando();
                 <div id="area_trabajo">
                 <div id="datos_alumno">
                     <div class="dato_alumno">
-                        <div class="label">Nombre(s)</div>
-                        <div class="value"><?php echo $_SESSION['nombres']; ?></div>
+                        <label>Nombre(s): </label>
+                        <div class="value"><?php echo " ".$_SESSION['nombres']; ?></div>
                     </div>
                     <div class="dato_alumno">
-                        <div class="label">Apellido paterno</div>
-                        <div class="value"><?php echo $_SESSION['apellido_paterno']; ?></div>
+                        <label>Apellido paterno: </label>
+                        <div class="value"><?php echo " ".$_SESSION['apellido_paterno']; ?></div>
                     </div>
                     <div class="dato_alumno">
-                        <div class="label">Apellido materno</div>
-                        <div class="value"><?php echo $_SESSION['apellido_materno']; ?></div>
+                        <label>Apellido materno: </label>
+                        <div class="value"><?php echo " ".$_SESSION['apellido_materno']; ?></div>
                     </div>
                     <div class="dato_alumno">
-                        <div class="label">Grado</div>
-                        <div class="value"><?php echo $_SESSION['grado']; ?></div>
+                        <label>Grado: </label>
+                        <div class="value"><?php echo " ".$_SESSION['grado']; ?></div>
                     </div>
                     <div class="dato_alumno">
-                        <div class="label">Grupo</div>
-                        <div class="value"><?php echo $_SESSION['grupo']; ?></div>
+                        <label>Grupo: </label>
+                        <div class="value"><?php echo " ".$_SESSION['grupo']; ?></div>
                     </div>
                 </div>
 

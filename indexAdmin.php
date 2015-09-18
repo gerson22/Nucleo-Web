@@ -1,12 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Yozki
- * Date: 1/6/15
- * Time: 6:41 PM
- */
 
-?>
 
 <body id="page-top">
 
@@ -201,7 +193,7 @@
                 </div>
 				<div class="col-lg-4 col-sm-6 animate-in" data-anim-type="fade-in-up-large">
                     <a href="admin/configuracion/colonias/index.php" class="portfolio-box">
-                        <img src="img/portfolio/7.JPG" class="img-responsive" alt="">
+                        <img src="img/portfolio/7.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -266,7 +258,7 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <img class="img-responsive col-lg-4 col-sm-12 col-md-4 col-xs-12 logo" src="img/logo.png">
+                <img class="img-responsive col-lg-4 col-sm-12 col-md-4 col-xs-12 logo" src="img/logo%20mediano.png">
                 <div class="col-lg-8 col-sm-12">
 					<p>Colegio Ma. Esther Zuno de Echeverria</p>
 					<p>Adolfo López Mateos #1030 Col. Zaragoza C.P. 27297</p>
