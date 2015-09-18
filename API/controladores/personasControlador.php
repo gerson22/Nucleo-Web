@@ -13,8 +13,10 @@ class personasControlador
         switch($metodo)
         {
             case "GET":
-                switch($verbo)
-                {
+                switch ($verbo) {
+                    case "login":
+                        return $this->personaLogin();
+                        break;
                     default:
                         return 404;
                         break;
@@ -47,5 +49,13 @@ class personasControlador
             return 500;
         }
         return 401;
+    }
+
+    public function personaLogin()
+    {
+        $persona = PersonaModelo::getPersonaPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+
+        if($persona->id_persona != null) return $persona;
+        else return 401;
     }
 }

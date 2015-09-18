@@ -6,9 +6,9 @@
  * Time: 6:36 PM
  */
 
-include_once("clases/MyAPI.php");
-include_once("clases/APIDatabase.php");
-include_once("clases/Acceso.php");
+include_once("classes/MyAPI.php");
+include_once("classes/APIDatabase.php");
+include_once("classes/Acceso.php");
 
 /** AUTOLOADER de clases */
 spl_autoload_register('apiAutoload');

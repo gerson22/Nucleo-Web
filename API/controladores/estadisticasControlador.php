@@ -6,7 +6,7 @@
  * Time: 08:32 PM
  */
 
-class pagosControlador
+class estadisticasControlador
 {
     public function procesar($metodo, $verbo, $argumentos)
     {
@@ -15,8 +15,17 @@ class pagosControlador
             case "GET":
                 switch($verbo)
                 {
-                    case "":
-                        return PagoModelo::getPago($argumentos[0])[0];
+                    case "alumnos":
+                        $json = array();
+                        $json['distribucion']   = EstadisticaModelo::getAlumnosDistribucionArea()[0];
+                        $json['inscritos']      = EstadisticaModelo::getAlumnosInscritosCiclo()[0];
+                        $json['inscripciones']  = EstadisticaModelo::getAlumnosInscripcionesCiclo()[0];
+                        return $json;
+                        break;
+                    case "docentes":
+                        $json = array();
+                        $json['distribucion']   = EstadisticaModelo::getDocentesDistribucionArea()[0];
+                        return $json;
                         break;
                     case "recibo":
                         if($argumentos[0] == "layout")
@@ -50,15 +59,5 @@ class pagosControlador
                 break;
         }
         return 404;
-    }
-
-    protected function getLayout()
-    {
-        return PagoModelo::getReciboLayout();
-    }
-
-    protected function setLayout()
-    {
-        return PagoModelo::setReciboLayout($_POST);
     }
 }
