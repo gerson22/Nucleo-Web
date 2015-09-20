@@ -37,11 +37,9 @@ $concepto = new Concepto($id_concepto);
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" >
+        			<div id="area_trabajo">
                 
                     <form action="../../../includes/acciones/cuentas/conceptos/update.php" method="post" id="forma_nuevo_concepto" >
                         <div class="form_row_2">
@@ -61,6 +59,5 @@ $concepto = new Concepto($id_concepto);
                 </div>
 
             </div>
-        </div>
     </body>
 </html>
