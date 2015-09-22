@@ -1,5 +1,5 @@
 <?php
-include_once("includes/clases/class_lib.php");
+include_once("../../includes/clases/class_lib.php");
 session_start();
 $usuario = new Persona($_SESSION['id_persona']);
 ?>

@@ -140,7 +140,7 @@ $tipos_tutor = Tutor::getTipos();
     </head>
     <body>
             <?php include("../../includes/header.php"); ?>
-           	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+           	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         		<div id="area_trabajo">
                     <h3>Reinscribir alumno</h3>
 

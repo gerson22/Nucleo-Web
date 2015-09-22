@@ -33,12 +33,9 @@ include_once("../../../includes/clases/class_lib.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-                
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" >
+        			<div id="area_trabajo">
                     <form action="../../../includes/acciones/cuentas/conceptos/insert.php" method="post" id="forma_nuevo_concepto" >
                         <div class="form_row_2">
                             <label class="form_label">Concepto</label>
@@ -56,6 +53,5 @@ include_once("../../../includes/clases/class_lib.php");
                 </div>
 
             </div>
-        </div>
     </body>
 </html>

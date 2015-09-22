@@ -80,7 +80,7 @@ include_once("../../../includes/clases/class_lib.php");
     </head>
     <body>
             <?php include("../../../includes/headerConfig.php"); ?>
-            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" >
         	<div id="area_trabajo">
                     <div class="select_wrapper">
                         <label>Ciclo Escolar</label>
