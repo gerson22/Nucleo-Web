@@ -10,6 +10,11 @@ $areas = Area::getLista();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Nuevo grado</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas.css" />
         <style>
@@ -142,12 +147,9 @@ $areas = Area::getLista();
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
                     <h3>Nuevo grado</h3>
                     <form id="forma_nuevo_grado" >
                         <div class="form_row_2">
@@ -179,11 +181,10 @@ $areas = Area::getLista();
                     </div>
 
                     <div class="form_row">
-                        <input id="boton_aceptar" class="form_submit" type="button" value="Aceptar" onclick="insertGrado();" />
+                        <input id="boton_aceptar" class="form_submit btn btn-primary" type="button" value="Aceptar" onclick="insertGrado();" />
                     </div>
 
                 </div>
             </div>
-        </div>
     </body>
 </html>

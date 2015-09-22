@@ -19,6 +19,11 @@ $alumnos = $grupo->getAlumnos();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Asistencia</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../js/jquery.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../estilo/general.css" />
         <style>
             #tabla_asistencia
@@ -58,12 +63,11 @@ $alumnos = $grupo->getAlumnos();
         </script>
     </head>
     <body>
-    <div id="wrapper">
         <?php include("../includes/header.php"); ?>
-        <div id="content">
-            <div id="inner_content">
+        <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                <div id="area_trabajo">
 
-                <table id="tabla_asistencia" >
+                <table id="tabla_asistencia" class="table" >
                     <thead>
                         <tr>
                             <th>Alumno</th>
@@ -88,10 +92,9 @@ $alumnos = $grupo->getAlumnos();
                     </tbody>
                 </table>
 
-                <button id="boton_aceptar" style="margin: 0px 40%;" onclick="clickAceptarAsistencias();">Aceptar</button>
+                <button id="boton_aceptar" style="margin: 0px 40%;" class="btn btn-primary" onclick="clickAceptarAsistencias();"><span class="glyphicon glyphicon-ok"></span>Aceptar</button>
 
             </div>
         </div>
-    </div>
     </body>
 </html>

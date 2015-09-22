@@ -19,6 +19,11 @@ $admin = new Administrador($id_administrador);
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Nuevo administrador</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -114,56 +119,52 @@ $admin = new Administrador($id_administrador);
         </script>
     </head>
     <body>
-    <div id="wrapper">
         <?php include("../../includes/header.php"); ?>
-        <div id="content">
+			<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:40px;">
+        		<div id="area_trabajo">
+					<h3>Perfil de administrador</h3>
 
-            <div id="inner_content">
+					<form id="forma_nuevo_administrador" >
+						<ul>
+							<li><a href="#tab1-datos">Datos</a></li>
+							<li><a href="#tab2-permisos">Permisos</a></li>
+						</ul>
+						<div id="tab1-datos" >
+							<div class="form_row_2">
+								<label class="form_label" for="apellido_paternoVal">Apellido paterno</label>
+								<input type="text" value="<?php echo $admin->apellido_paterno; ?>" class="form_input" />
+							</div>
+							<div class="form_row_2">
+								<label class="form_label" for="apellido_maternoVal">Apellido materno</label>
+								<input class="form_input" type="text" value="<?php echo $admin->apellido_materno; ?>" id="apellido_maternoVal" required />
+							</div>
+							<div class="form_row">
+								<label class="form_label" for="nombresVal">Nombres</label>
+								<input class="form_input" type="text" value="<?php echo $admin->nombres; ?>" id="nombresVal" required />
+							</div>
+							<button onclick="mostrarContrasena()" type="button" class="btn btn-warning">Contraseña</button>
+						</div>
+						<div id="tab2-permisos" >
+							<?php include_once("include_permisos.php"); ?>
+						</div>
+					</form>
+					<?php
+					if(isset($error))
+					{
+						switch($error)
+						{
+							case 1: echo "<div class='error'>Faltaron datos de llenar.</div>"; break;
+							case 2: echo "<div class='error'>Error de base de datos.</div>"; break;
+							default: break;
+						}
+					}
+					?>
+					<div class="form_row">
+						<input id="boton_aceptar" class="form_submit btn btn-primary" type="button" value="Aceptar" onclick="cambiarPermisos();" />
+					</div>
 
-                <h3>Perfil de administrador</h3>
-
-                <form id="forma_nuevo_administrador" >
-                    <ul>
-                        <li><a href="#tab1-datos">Datos</a></li>
-                        <li><a href="#tab2-permisos">Permisos</a></li>
-                    </ul>
-                    <div id="tab1-datos" >
-                        <div class="form_row_2">
-                            <label class="form_label" for="apellido_paternoVal">Apellido paterno</label>
-                            <input type="text" value="<?php echo $admin->apellido_paterno; ?>" class="form_input" />
-                        </div>
-                        <div class="form_row_2">
-                            <label class="form_label" for="apellido_maternoVal">Apellido materno</label>
-                            <input class="form_input" type="text" value="<?php echo $admin->apellido_materno; ?>" id="apellido_maternoVal" required />
-                        </div>
-                        <div class="form_row">
-                            <label class="form_label" for="nombresVal">Nombres</label>
-                            <input class="form_input" type="text" value="<?php echo $admin->nombres; ?>" id="nombresVal" required />
-                        </div>
-                        <button onclick="mostrarContrasena()" type="button">Contraseña</button>
-                    </div>
-                    <div id="tab2-permisos" >
-                        <?php include_once("include_permisos.php"); ?>
-                    </div>
-                </form>
-                <?php
-                if(isset($error))
-                {
-                    switch($error)
-                    {
-                        case 1: echo "<div class='error'>Faltaron datos de llenar.</div>"; break;
-                        case 2: echo "<div class='error'>Error de base de datos.</div>"; break;
-                        default: break;
-                    }
-                }
-                ?>
-                <div class="form_row">
-                    <input id="boton_aceptar" class="form_submit" type="button" value="Aceptar" onclick="cambiarPermisos();" />
-                </div>
-
-            </div>
-        </div>
-    </div>
+				</div>
+        	</div>
     </body>
     <script>
         function toggle_seleccion(caller)

@@ -13,6 +13,11 @@ $ocupaciones = Tutor::getOcupaciones();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Inscribir alumno</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -259,11 +264,9 @@ $ocupaciones = Tutor::getOcupaciones();
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        		<div id="area_trabajo">
                     <h3>Inscribir alumno</h3>
 
                     <form id="forma_nuevo_alumno">
@@ -277,28 +280,28 @@ $ocupaciones = Tutor::getOcupaciones();
                         <div id="tab-datos_alumno" class="aTab" >
                             <div class="form_row_3">
                                 <label class="form_label" for="nombresVal">Nombres</label>
-                                <input class="form_input" type="text" name="nombresVal" id="nombresVal" required />
+                                <input class="form_input form-control" type="text" name="nombresVal" id="nombresVal" required />
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="apellido_paternoVal">Apellido paterno</label>
-                                <input type="text" name="apellido_paternoVal" id="apellido_paternoVal" class="form_input" />
+                                <input type="text" name="apellido_paternoVal" id="apellido_paternoVal" class="form_input form-control" />
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="apellido_maternoVal">Apellido materno</label>
-                                <input class="form_input" type="text" name="apellido_maternoVal" id="apellido_maternoVal" />
+                                <input class="form_input form-control" type="text" name="apellido_maternoVal" id="apellido_maternoVal" />
                             </div>
 
                             <div class="form_row_4">
                                 <label class="form_label" for="calleVal">Calle</label>
-                                <input type="text" class="form_input" name="calleVal" id="calleVal" />
+                                <input type="text" class="form_input form-control" name="calleVal" id="calleVal" />
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="numeroVal">Número</label>
-                                <input type="text" class="form_input" name="numeroVal" id="numeroVal" />
+                                <input type="text" class="form_input form-control" name="numeroVal" id="numeroVal" />
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="coloniaVal">Colonia</label>
-                                <select class="form_input" name="coloniaVal" id="coloniaVal">
+                                <select class="form_input form-control" name="coloniaVal" id="coloniaVal">
                                     <?php
                                     $colonias = Colonia::getColonias();
                                     if(is_array($colonias))
@@ -313,16 +316,16 @@ $ocupaciones = Tutor::getOcupaciones();
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="CPVal">C.P</label>
-                                <input type="text" class="form_input" name="CPVal" id="CPVal" />
+                                <input type="text" class="form_input form-control" name="CPVal" id="CPVal" />
                             </div>
 
                             <div class="form_row_3">
                                 <label class="form_label" for="curpVal">CURP</label>
-                                <input class="form_input" type="text" name="curpVal" id="curpVal" />
+                                <input class="form_input form-control" type="text" name="curpVal" id="curpVal" />
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="sexoVal">Sexo</label>
-                                <select id="sexoVal" name="sexoVal" class="form_input" >
+                                <select id="sexoVal" name="sexoVal" class="form_input form-control" >
                                     <option value="M">M</option>
                                     <option value="F">F</option>
                                     <option value="N/A">N/A</option>
@@ -334,7 +337,7 @@ $ocupaciones = Tutor::getOcupaciones();
 
                             <div class="form_row_4">
                                 <label class="form_label" for="cicloVal">Ciclo escolar</label>
-                                <select class="form_input" name="cicloVal" id="cicloVal" required onchange="loadGrupos();" >
+                                <select class="form_input form-control" name="cicloVal" id="cicloVal" required onchange="loadGrupos();" >
                                     <?php
                                     $ciclos_proximos = CicloEscolar::getListaProximos();
                                     if(is_array($ciclos_proximos))
@@ -349,7 +352,7 @@ $ocupaciones = Tutor::getOcupaciones();
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="areaVal">Area</label>
-                                <select class="form_input" name="areaVal" id="areaVal" required onchange="loadGrados();" >
+                                <select class="form_input form-control" name="areaVal" id="areaVal" required onchange="loadGrados();" >
                                     <option></option>
                                     <?php
                                     $areas = Area::getLista();
@@ -362,13 +365,13 @@ $ocupaciones = Tutor::getOcupaciones();
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="gradoVal">Grado</label>
-                                <select class="form_input" name="gradoVal" id="gradoVal" required onchange="loadGrupos();" >
+                                <select class="form_input form-control" name="gradoVal" id="gradoVal" required onchange="loadGrupos();" >
                                     <!-- AJAX -->
                                 </select>
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="grupoVal">Grupo</label>
-                                <select class="form_input" name="grupoVal" required id="grupoVal" >
+                                <select class="form_input form-control" name="grupoVal" required id="grupoVal" >
                                     <!-- AJAX -->
                                 </select>
                             </div>
@@ -389,7 +392,7 @@ $ocupaciones = Tutor::getOcupaciones();
                         <div id="tab-otra_informacion" class="aTab">
                             <div class="form_row_3">
                                 <label class="form_label" for="clubVal">Club</label>
-                                <select class="form_input" name="clubVal" id="clubVal">
+                                <select class="form_input form-control" name="clubVal" id="clubVal">
                                     <option></option>
                                     <?php
                                     $clubs = Club::getClubs();
@@ -407,7 +410,7 @@ $ocupaciones = Tutor::getOcupaciones();
                         <div id="tab-beca" class="aTab">
                             <div class="form_row_3">
                                 <label class="form_label" for="becaTipoVal">Tipo</label>
-                                <select class="form_input" name="becaTipoVal" id="becaTipoVal" onchange="cargarSubtipos();">
+                                <select class="form_input form-control" name="becaTipoVal" id="becaTipoVal" onchange="cargarSubtipos();">
                                     <?php
                                     $tipos_beca = Beca::getTipos();
                                     if(is_array($tipos_beca))
@@ -422,16 +425,16 @@ $ocupaciones = Tutor::getOcupaciones();
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="becaSubtipoVal">Subtipo</label>
-                                <select class="form_input" name="becaSubtipoVal" id="becaSubtipoVal" >
+                                <select class="form_input form-control" name="becaSubtipoVal" id="becaSubtipoVal" >
                                     <!-- AJAX -->
                                 </select>
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="becaPorcentaje">Porcentaje de beca</label>
-                                <input type="text" class="form_input" name="becaPorcentaje" id="becaPorcentaje" />
+                                <input type="text" class="form_input form-control" name="becaPorcentaje" id="becaPorcentaje" />
                             </div>
                         </div>
-                        <table id="tab-papeleria" class="aTab">
+                        <table id="tab-papeleria" class="aTab table">
                             <thead>
                                 <tr>
                                     <th>Documento</th>
@@ -463,10 +466,9 @@ $ocupaciones = Tutor::getOcupaciones();
                         </table>
                     </form>
 
-                    <button style="margin: 20px 0px;" onclick="enviarFormulario();" id="boton_aceptar" >Aceptar</button>
+                    <button style="margin: 20px 0px;" onclick="enviarFormulario();" id="boton_aceptar" class="btn btn-primary " ><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
                     
                 </div>
             </div>
-        </div>
     </body>
 </html>

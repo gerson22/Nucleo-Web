@@ -2,17 +2,17 @@ $(document).on("ready",btn_click);
 
 function btn_click()
 {
-	$(".btn-info").hover(function(){
-		$(".btn-info").val("Ingresar");
-	},$(".btn-info").mouseleave(function(){
-		$(".btn-info").val("Entrar");
+	$(".btn-primary").hover(function(){
+		$(".btn-primary").val("Ingresar");
+	},$(".btn-primary").mouseleave(function(){
+		$(".btn-primary").val("Entrar");
 	}));
-	$(".btn-info").click(function(){
-		$(".btn-info").addClass("circulo");
-		$(".btn-info").removeClass("button");
-		$(".btn-info").addClass("button2");
-		$(".btn-info").val("Ok");
-	}),	$(".btn-info").hover(function(){
-		$(".btn-info").val("OK");
+	$(".btn-primary").click(function(){
+		$(".btn-primary").addClass("circulo");
+		$(".btn-primary").removeClass("button");
+		$(".btn-primary").addClass("button2");
+		$(".btn-primary").val("Ok");
+	}),	$(".btn-primary").hover(function(){
+		$(".btn-primary").val("OK");
 	},1000);
 }

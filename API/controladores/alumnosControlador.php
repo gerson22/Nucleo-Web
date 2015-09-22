@@ -16,6 +16,8 @@ class alumnosControlador
                     case "login":
                         return $this->alumnoLogin();
                         break;
+                    case "tareas":
+                        return $this->getTareas();
                     default:
                         return 404;
                         break;
@@ -59,5 +61,9 @@ class alumnosControlador
         $respuesta['grupo']     = "X";*/
 
         return $respuesta;
+    }
+    public function getTareas()
+    {
+        return AlumnoModelo::getTareas();
     }
 }

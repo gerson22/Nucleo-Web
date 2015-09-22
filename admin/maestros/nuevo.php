@@ -9,6 +9,11 @@ extract($_GET);
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Nuevo maestro</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas.css" />
         <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
@@ -167,36 +172,33 @@ extract($_GET);
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-
-                    <h3>Nuevo maestro</h3>
+			<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+            <div id="area_trabajo">
+           	<h3>Nuevo maestro</h3>
 
                     <form id="forma_nuevo_maestro" >
                         <ul>
-                            <li><a href="#tab-datos_principales">Datos</a></li>
-                            <li><a href="#tab-datos_escolaridad">Escolaridad</a></li>
-                            <li><a href="#tab-telefonos">Teléfonos</a></li>
+                            <li><a href="#tab-datos_principales" class="btn btn-default">Datos</a></li>
+                            <li><a href="#tab-datos_escolaridad" class="btn btn-default">Escolaridad</a></li>
+                            <li><a href="#tab-telefonos" class="btn btn-default">Teléfonos</a></li>
                         </ul>
-                        <div id="tab-datos_principales">
+                        <div id="tab-datos_principales" class="form-group">
                             <div class="form_row_2">
                                 <label class="form_label" for="apellido_paternoVal">Apellido paterno</label>
-                                <input type="text" name="apellido_paternoVal" id="apellido_paternoVal" class="form_input" />
+                                <input type="text" name="apellido_paternoVal" id="apellido_paternoVal" class="form-control" />
                             </div>
                             <div class="form_row_2">
                                 <label class="form_label" for="apellido_maternoVal">Apellido materno</label>
-                                <input class="form_input" type="text" name="apellido_maternoVal" id="apellido_maternoVal" />
+                                <input class="form-control" type="text" name="apellido_maternoVal" id="apellido_maternoVal" />
                             </div>
                             <div class="form_row_2">
                                 <label class="form_label" for="nombresVal">Nombres</label>
-                                <input class="form_input" type="text" name="nombresVal" id="nombresVal" required />
+                                <input class="form-control" type="text" name="nombresVal" id="nombresVal" required />
                             </div>
                             <div class="form_row_2">
                                 <label class="form_label" for="sexoVal">Sexo</label>
-                                <select id="sexoVal" name="sexoVal" class="form_input" >
+                                <select id="sexoVal" name="sexoVal" class="form-control" >
                                     <option value="M">M</option>
                                     <option value="F">F</option>
                                     <option value="N/A">N/A</option>
@@ -206,15 +208,15 @@ extract($_GET);
                             <!-- Dirección -->
                             <div class="form_row_4">
                                 <label class="form_label" for="calleVal">Calle</label>
-                                <input class="form_input" type="text" name="calleVal" id="calleVal" />
+                                <input class="form-control" type="text" name="calleVal" id="calleVal" />
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="numeroVal">Número</label>
-                                <input class="form_input" type="text" name="numeroVal" id="numeroVal" />
+                                <input class="form-control" type="text" name="numeroVal" id="numeroVal" />
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="coloniaVal">Colonia</label>
-                                <select class="form_input" name="coloniaVal" id="coloniaVal" required >
+                                <select class="form-control" name="coloniaVal" id="coloniaVal" required >
                                     <?php
                                     $colonias = Colonia::getColonias();
                                     foreach($colonias as $colonia)
@@ -226,21 +228,21 @@ extract($_GET);
                             </div>
                             <div class="form_row_4">
                                 <label class="form_label" for="CPVal">CP</label>
-                                <input class="form_input" type="text" name="CPVal" id="CPVal" />
+                                <input class="form-control" type="text" name="CPVal" id="CPVal" />
                             </div>
                         </div>
                         <div id="tab-datos_escolaridad">
                             <div class="form_row_3">
                                 <label class="form_label" for="tituloVal">Título</label>
-                                <input class="form_input" type="text" name="tituloVal" id="tituloVal" />
+                                <input class="form-control" type="text" name="tituloVal" id="tituloVal" />
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="egresadoDeVal">Egresado de</label>
-                                <input class="form_input" type="text" name="egresadoDeVal" id="egresadoDeVal" />
+                                <input class="form-control" type="text" name="egresadoDeVal" id="egresadoDeVal" />
                             </div>
                             <div class="form_row_3">
                                 <label class="form_label" for="anoVal">Año</label>
-                                <input class="form_input" type="text" name="anoVal" id="anoVal" />
+                                <input class="form-control" type="text" name="anoVal" id="anoVal" />
                             </div>
                         </div>
                         <div id="tab-telefonos">
@@ -255,12 +257,11 @@ extract($_GET);
                     </form>
 
                     <div class="form_row">
-                        <input id="boton_aceptar" class="form_submit" type="button" value="Aceptar" onclick="submitClicked()" />
+                        <input id="boton_aceptar" class="btn btn-primary btn-small" type="button" value="Aceptar" onclick="submitClicked()" />
                     </div>
-
 
                 </div>
             </div>
-        </div>
+        
     </body>
 </html>

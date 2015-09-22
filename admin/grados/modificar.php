@@ -17,6 +17,11 @@ $ciclo_actual = CicloEscolar::getActual();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Nuevo grado</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas.css" />
         <link rel="stylesheet" href="../../estilo/grado.css" />
@@ -25,66 +30,64 @@ $ciclo_actual = CicloEscolar::getActual();
         <link rel="stylesheet" href="../../estilo/jquery-ui.min.css" />
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
+					<div class="datos_perfil" >
+						<div class="datos_perfil_seccion">
+							<div class="datos_perfil_dato">
+								<input type="hidden" id="id_gradoVal" value="<?php echo $grado->id_grado; ?>" />
+								<div class="perfil_dato_label">Grado</div>
+								<div class="perfil_dato_value" id="gradoVal"><?php echo $grado->grado; ?></div>
+								<img src="/media/iconos/icon_modify.png"
+									 style="width: 15px; margin-left: 10px"
+									 onclick="modificarClicked()" />
+							</div>
+							<div class="datos_perfil_dato">
+								<div class="perfil_dato_label">Area</div>
+								<div class="perfil_dato_value"><?php echo $grado->getArea(); ?></div>
+							</div>
+						</div>
 
-                <div class="datos_perfil" >
-                    <div class="datos_perfil_seccion">
-                        <div class="datos_perfil_dato">
-                            <input type="hidden" id="id_gradoVal" value="<?php echo $grado->id_grado; ?>" />
-                            <div class="perfil_dato_label">Grado</div>
-                            <div class="perfil_dato_value" id="gradoVal"><?php echo $grado->grado; ?></div>
-                            <img src="/media/iconos/icon_modify.png"
-                                 style="width: 15px; margin-left: 10px"
-                                 onclick="modificarClicked()" />
-                        </div>
-                        <div class="datos_perfil_dato">
-                            <div class="perfil_dato_label">Area</div>
-                            <div class="perfil_dato_value"><?php echo $grado->getArea(); ?></div>
-                        </div>
-                    </div>
+					</div>
 
-                </div>
+					<div id="div_asignaturas">
+						<h3>Materias</h3>
+						<label>Ciclo escolar:</label>
+						<select id="cicloVal" onchange="nuevoCicloSeleccionado()">
+							<?php
+								$ciclos = CicloEscolar::getLista();
+								if(is_array($ciclos))
+								{
+									foreach($ciclos as $ciclo)
+									{
+										echo "<option value='".$ciclo['id_ciclo_escolar']."'>".$ciclo['ciclo_escolar']."</option>";
+									}
+								}
+							?>
+						</select>
 
-                <div id="div_asignaturas">
-                    <h3>Materias</h3>
-                    <label>Ciclo escolar:</label>
-                    <select id="cicloVal" onchange="nuevoCicloSeleccionado()">
-                        <?php
-                            $ciclos = CicloEscolar::getLista();
-                            if(is_array($ciclos))
-                            {
-                                foreach($ciclos as $ciclo)
-                                {
-                                    echo "<option value='".$ciclo['id_ciclo_escolar']."'>".$ciclo['ciclo_escolar']."</option>";
-                                }
-                            }
-                        ?>
-                    </select>
+						<!-- Botón para nueva materia -->
+						<button type="button" style="display: block; margin-top: 30px;" class="btn btn-primary" onclick="nuevaMateria()"><span class="glyphicon glyphicon-plus"></span> Nueva</button>
 
-                    <!-- Botón para nueva materia -->
-                    <button type="button" style="display: block; margin-top: 30px;" onclick="nuevaMateria()">Nueva</button>
-
-                    <table id="tabla_materias">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Materia</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- AJAX. Cargar según el grado y el ciclo escolar -->
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div>
+						<table id="tabla_materias" class="table">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Materia</th>
+									<th>Eliminar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- AJAX. Cargar según el grado y el ciclo escolar -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+        	</div>
 
         <!-- Modal form para asignar una nueva materia -->
-        <div id="formNuevaMateria" title="Asignar nueva materia" >
+        <div id="formNuevaMateria" title="Asignar nueva materia" style="box-shadow: 2px 2px 5px #5f5f5f;" >
             <label style="display: block;" >Materias disponibles para grados de <?php echo $grado->getArea(); ?>:</label>
             <select id="nuevaMateriaVal">
                 <?php

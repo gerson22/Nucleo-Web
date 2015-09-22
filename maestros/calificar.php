@@ -17,6 +17,11 @@ $alumnos = $grupo->getAlumnos();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Calificar</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../js/jquery.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../estilo/general.css" />
         <link rel="stylesheet" href="../estilo/calificar.css" />
         <link rel="stylesheet" href="../estilo/formas_extensas.css" />
@@ -29,10 +34,9 @@ $alumnos = $grupo->getAlumnos();
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../includes/header.php"); ?>
-            <div id="content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                <div id="area_trabajo">
                 <h4><?php echo "Calificaciones de ".$grupo->getGrado()." ".$grupo->grupo." de ".$area->area; ?></h4>
 
                 <div class="form_row_3">
@@ -47,9 +51,9 @@ $alumnos = $grupo->getAlumnos();
                     </select>
                 </div>
 
-                <div id="div_calificaciones" >
+                <div id="div_calificaciones" class="table-responsive" >
 
-                    <table id="tabla_calificaciones">
+                    <table id="tabla_calificaciones" class="table">
                         <thead>
                             <tr>
                                 <th>Alumno</th>
@@ -98,7 +102,7 @@ $alumnos = $grupo->getAlumnos();
 
                 </div>
 
-                <button id="boton_aceptar" onclick="aceptarClicked()" >Aceptar</button>
+                <button id="boton_aceptar" onclick="aceptarClicked()" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
 
             </div>
         </div>

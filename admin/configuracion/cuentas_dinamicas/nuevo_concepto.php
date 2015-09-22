@@ -18,22 +18,24 @@ $areas = Area::getLista();
 <head>
     <meta charset="utf-8" />
     <title>Sistema Integral Meze - Configuración: Clubs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../../../js/jquery.js" type="text/javascript"></script>
+	<script src="../../../js/bootstrap.js" type="text/javascript"></script>
+	<script src="../../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+	<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../../estilo/general.css" />
     <link rel="stylesheet" href="../../../estilo/jquery.dataTables.css" />
     <link rel="stylesheet" href="../../../estilo/cuentas_dinamicas.css" />
 </head>
 <body>
-<div id="wrapper">
-    <?php include("../../../includes/header.php"); ?>
-    <div id="content">
-
-        <div id="inner_content">
-
+    <?php include("../../../includes/headerConfig.php"); ?>
+    	<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        	<div id="area_trabajo">
             <h2>Nuevo concepto de cuentas dinámicas</h2>
 
             <div class="form_row_3">
                 <label class="form_label" for="nuevo_conceptoVal">Concepto</label>
-                <input id="nuevo_conceptoVal" class="form_input" type="text" />
+                <input id="nuevo_conceptoVal" class="form_input form-control" type="text" />
             </div>
 
             <!-- 5 Areas -->
@@ -48,7 +50,7 @@ $areas = Area::getLista();
                             <div class='area_row'>
                                 <input type='checkbox' class='area_check' data-idarea='".$area['id_area']."' />
                                 <label>".$area['area']."</label>
-                                <input type='text' class='area_monto' />
+                                <input type='text' class='area_monto form-control' />
                             </div>
                         ";
                     }
@@ -57,12 +59,11 @@ $areas = Area::getLista();
             </div>
             <!------------->
 
-            <button onclick="aceptarClicked()">Aceptar</button>
+            <button onclick="aceptarClicked()" class="btn btn-primary">Aceptar</button>
 
         </div>
 
     </div>
-</div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="../../../librerias/jquery.dataTables.min.js" ></script>
 <script src="../../../librerias/fnAjaxReload.js" ></script>

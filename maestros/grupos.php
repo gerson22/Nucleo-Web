@@ -11,16 +11,20 @@ $clases = $maestro->getClases();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Grupos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../js/jquery.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="../../librerias/jquery.dataTables.min.js" ></script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../includes/header.php"); ?>
-            <div id="content">
-                <div id="inner_content">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                 <div id="area_trabajo">
 
                     <div id="div_lista_grupos">
                         <?php
@@ -28,7 +32,7 @@ $clases = $maestro->getClases();
                         {
                             echo "<h3>Lista de grupos con materias a su cargo</h3>";
                             echo "
-                                <table id='tabla_grupos' >
+                                <table id='tabla_grupos' class = 'table' >
                                     <thead>
                                         <tr>
                                             <th>Grupo</th>
@@ -66,7 +70,6 @@ $clases = $maestro->getClases();
 
                 </div>
             </div>
-        </div>
     </body>
     <script>
         function declararDataTable()

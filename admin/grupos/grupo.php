@@ -16,6 +16,11 @@ $clases = $grupo->getClases();
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Perfil de grupo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/jquery.dataTables.css" />
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -127,10 +132,9 @@ $clases = $grupo->getClases();
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                <div id="area_trabajo">
                 <div id="datos_generales">
                     <div class="datos_generales_row">
                         <div class="datos_generales_label">Grupo:</div>
@@ -188,8 +192,8 @@ $clases = $grupo->getClases();
                             </tbody>
                         </table>
                     </div>
-                    <div id="tab-alumnos">
-                        <table id="tabla_alumnos">
+                    <div id="tab-alumnos" class="table-responsive">
+                        <table id="tabla_alumnos" class="table">
                             <thead>
                                 <tr>
                                     <th>ID</th>

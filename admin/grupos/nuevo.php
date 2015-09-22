@@ -8,6 +8,11 @@ include_once("../../includes/clases/class_lib.php");
     <head>
         <meta charset="utf-8" />
         <title>Nuevo grupo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/formas_extensas.css" />
         <style>
@@ -179,10 +184,9 @@ include_once("../../includes/clases/class_lib.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                <div id="area_trabajo">
                 <h3>Nuevo grupo</h3>
 
                 <div class="form_row_3">
@@ -242,8 +246,8 @@ include_once("../../includes/clases/class_lib.php");
                 </div>
 
                 <div class="form_row">
-                    <input type="button" class="form_submit" value="Aceptar" onclick="agregarGrupo()" id="boton_nuevo" />
-                    <input type="button" class="form_submit" value="Copiar docente" onclick="copiarDocentes()" />
+                   <input type="button" class="form_submit btn btn-primary " value="Aceptar" onclick="agregarGrupo()" id="boton_nuevo" />
+                    <input type="button" class="form_submit btn btn-warning" value="Copiar docente" onclick="copiarDocentes()" style="width:210px;" />
                 </div>
 
             </div>

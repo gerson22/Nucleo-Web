@@ -28,4 +28,12 @@ class AlumnoModelo extends PersonaModelo
             $res = Database::select($query);
         return $res[0];
     }
+
+    public function getTareas()
+    {
+        $query = "SELECT * FROM tarea WHERE id_clase IN (SELECT clase.id_clase FROM alumno_grupo 
+            JOIN clase ON clase.id_grupo = alumno_grupo.id_grupo
+            WHERE id_alumno = $this->id_persona)";
+        return APIDatabase::select($query);
+    }
 }

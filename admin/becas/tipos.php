@@ -8,6 +8,11 @@ include_once("../../includes/clases/class_lib.php");
     <head>
         <meta charset="utf-8" />
         <title>Tipos de becas</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/fixed_form.css" />
         <style>
@@ -157,14 +162,13 @@ include_once("../../includes/clases/class_lib.php");
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:30px;">
+        		<div id="area_trabajo">
                 <h1>Tipos de becas</h1>
 
                 <div class="table_wrapper" style="float: left;">
-                    <div class="titulo_tabla">Tipo de beca</div>
+                    <div class="titulo_tabla table">Tipo de beca</div>
                     <table class="tabla" id="tabla_tipos">
                         <!-- AJAX -->
                     </table>
@@ -172,7 +176,7 @@ include_once("../../includes/clases/class_lib.php");
                 </div>
 
                 <div class="table_wrapper" style="float: right;" >
-                    <div class="titulo_tabla" >Subtipos</div>
+                    <div class="titulo_tabla table" >Subtipos</div>
                     <table class="tabla" id="tabla_subtipos">
                         <tr><td>Seleccione un tipo de beca</td></tr>
                         <!-- AJAX -->
@@ -180,8 +184,8 @@ include_once("../../includes/clases/class_lib.php");
                     <img src="/media/iconos/icon_add.png" ALT="nuevo" style="float: right;" onclick="mostrarNuevoSubtipo();" />
                 </div>
 
-                <div id="div_nuevo_tipo" class="fixed_form" >
-                    <div id="div_nuevo_tipo_bar" class="fixed_form_handle" >
+                <div id="div_nuevo_tipo" class="fixed_form" style="box-shadow: 1px 1px 5px #5f5f5f;">
+                    <div id="div_nuevo_tipo_bar" class="fixed_form_handle table" >
                         <img src="/media/iconos/icon_close.gif" alt="X" onclick="$(this).parent().parent().fadeOut();" />
                     </div>
                     <div class="fixed_form_content" >
@@ -199,7 +203,7 @@ include_once("../../includes/clases/class_lib.php");
                     </div>
                 </div>
 
-                <div id="div_nuevo_subtipo" class="fixed_form" >
+                <div id="div_nuevo_subtipo" class="fixed_form" style="box-shadow: 1px 1px 5px #5f5f5f;" >
                     <div id="div_nuevo_subtipo_bar" class="fixed_form_handle" >
                         <img src="/media/iconos/icon_close.gif" alt="X" onclick="$(this).parent().parent().fadeOut();" />
                     </div>

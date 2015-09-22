@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Asignar Tareas</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <label>Clase</label>
+    <select id="id_claseVal">
+        <!-- [GET] API/clases -->
+    </select>
+    <label>Descripción</label>
+    <textarea id="descripcionVal"></textarea>
+    <label>Fecha de entrega</label>
+    <input type="date" id="fecha_entregaVal" />
+    <button onclick="asignarTarea()">Asignar</button>
+</body>
+</html>
+<script src="/js/jquery.js"></script>
+<script>
+    cargarClases();
+
+    function cargarClases()
+    {
+        $.ajax({
+            type: "GET",
+            url: "/API/clases",
+            beforeSend: function (xhr) {
+                //xhr.setRequestHeader ("Authorization", "Basic " + btoa("ADM13001:shadow"));
+                xhr.setRequestHeader("Authorization", "Basic " + btoa("A0120140001:7uccufcl"));
+            },
+            success: function (data) {
+                jQuery.each(data, function () {
+                    $("#id_claseVal").append("<option value='" + this.id_clase + "'>" + this.descripcion + "</option>");
+                });
+            }
+        });
+    }
+
+    function asignarTarea()
+    {
+        var id_clase = $("#id_claseVal").val();
+        var descripcion = $("#descripcionVal").val();
+        var fecha_entrega = $("#fecha_entregaVal").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/API/tareas",
+            beforeSend: function (xhr) {
+                //xhr.setRequestHeader ("Authorization", "Basic " + btoa("ADM13001:shadow"));
+                xhr.setRequestHeader("Authorization", "Basic " + btoa("A0120140001:7uccufcl"));
+            },
+            data: "id_clase=" + id_clase + "&descripcion=" + descripcion + "&fecha_entrega=" + fecha_entrega,
+            success: function (data) {
+                jQuery.each(data, function () {
+                    $("#id_claseVal").append("<option value='" + this.id_clase + "'>" + this.descripcion + "</option>");
+                });
+            }
+        });
+    }
+</script>

@@ -9,6 +9,11 @@ $maestro = new Maestro($_SESSION['id_persona']);
     <head>
         <meta charset="utf-8" />
         <title>Sistema Integral Meze - Planeación</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../js/jquery.js" type="text/javascript"></script>
+		<script src="../../js/bootstrap.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/appear.min.js" type="text/javascript"></script>
+		<script src="../../plugins/assets/js/animations.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../estilo/general.css" />
         <link rel="stylesheet" href="../../estilo/planeacion.css" />
         <link rel="stylesheet" href="../../estilo/fixed_form.css" />
@@ -346,12 +351,9 @@ $maestro = new Maestro($_SESSION['id_persona']);
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
-                
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:20px;">
+                <div id="area_trabajo">
                     <div style="margin: 10px 0; font-size: 18px;" id="titulo_planeacion" >Planeación</div>
                     
                     <div id="opciones_top">
@@ -374,7 +376,7 @@ $maestro = new Maestro($_SESSION['id_persona']);
 
                         <div class="div_select">
                             <label>Materia</label>
-                            <select id="materiaVal" >
+                            <select id="materiaVal" class="form-control" >
                                 <!-- AJAX -->
                             </select>
                         </div>
@@ -426,7 +428,7 @@ $maestro = new Maestro($_SESSION['id_persona']);
 
                         <div id="div_estrategias">
                             <div class="stuck" >Estrategias</div>
-                            <table id="tabla_estrategias">
+                            <table id="tabla_estrategias" class="table">
                                 <thead>
                                 <tr>
                                     <th style="width: 10%;"></th>
@@ -445,7 +447,7 @@ $maestro = new Maestro($_SESSION['id_persona']);
 
                         <div id="div_metodos_evaluacion">
                             <div class="stuck" >Métodos de evaluación</div>
-                            <table id="tabla_metodos_ev">
+                            <table id="tabla_metodos_ev" class="table">
                                 <thead>
                                 <tr>
                                     <th style="width: 10%;"></th>
@@ -459,10 +461,10 @@ $maestro = new Maestro($_SESSION['id_persona']);
                                     <!-- AJAX -->
                                 </tbody>
                             </table>
-                            <button class="boton" onclick="$('#div_nuevo_metodo_ev').fadeIn();" id="bot_nuevo_met">Nuevo método</button>
+                            <button class="boton" onclick="$('#div_nuevo_metodo_ev').fadeIn();" id="bot_nuevo_met"><span class="glyphicon glyphicon-plus"></span> Nuevo método</button>
                         </div>
 
-                        <button class="boton" onclick="guardarCambios();" id="boton_guardar_final" >Guardar</button>
+                        <button class="boton btn btn-success" onclick="guardarCambios();" id="boton_guardar_final" >Guardar</button>
 
                     </div>
 
@@ -476,7 +478,7 @@ $maestro = new Maestro($_SESSION['id_persona']);
                                 <input type="text" class="fixed_form_value" id="nuevoTemaVal" />
                             </div>
                             <div class="fixed_form_row">
-                                <input type="button" value="Aceptar" class="fixed_form_button" onclick="agregarTema();" />
+                                <input type="button" value="Aceptar" class="fixed_form_button btn btn-primary" onclick="agregarTema();" />
                             </div>
                         </div>
                     </div>
@@ -491,7 +493,7 @@ $maestro = new Maestro($_SESSION['id_persona']);
                                 <input type="text" class="fixed_form_value" id="nuevaEstrategiaVal" />
                             </div>
                             <div class="fixed_form_row">
-                                <input type="button" value="Aceptar" class="fixed_form_button" onclick="agregarEstrategia();" />
+                                <input type="button" value="Aceptar" class="fixed_form_button btn-btn-primary" onclick="agregarEstrategia();" />
                             </div>
                         </div>
                     </div>
@@ -506,7 +508,7 @@ $maestro = new Maestro($_SESSION['id_persona']);
                                 <input type="text" class="fixed_form_value" id="nuevoMetodoVal" />
                             </div>
                             <div class="fixed_form_row">
-                                <input type="button" value="Aceptar" class="fixed_form_button" onclick="agregarMetodo();" />
+                                <input type="button" value="Aceptar" class="fixed_form_button btn btn-primary" onclick="agregarMetodo();" />
                             </div>
                         </div>
                     </div>
@@ -514,6 +516,5 @@ $maestro = new Maestro($_SESSION['id_persona']);
                 </div>
 
             </div>
-        </div>
     </body>
 </html>
