@@ -16,6 +16,9 @@
 						<li>
 							<a id="pag_home" class="letter3" href="/maestros/grupos.php"><i class="fa fa-users ico"></i><b> Grupos</b></a>
 						</li> 
+						<li>
+							<a id="pag_home" class="letter3" href="/maestros/asignarTareas.php"><span class="glyphicon glyphicon-list-alt ico"></span> Asignar Tareas</a>
+						</li> 
 						
 					</ul>
 				</div>
