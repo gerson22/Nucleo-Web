@@ -13,6 +13,7 @@ body{
 {
 	background: transparent; !important
 }
+
 .navbar-inverse
 {
 	background: /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cedbe9+0,aac5de+17,6199c7+50,3a84c3+51,419ad6+59,4bb8f0+71,3a8bc2+84,26558b+100;Blue+Gloss */
@@ -269,4 +270,8 @@ marquee
 	font-size: 26px;
 	color: #000;
 	cursor: pointer;
+}
+#principal
+{
+	margin-top: 40px;!important
 }

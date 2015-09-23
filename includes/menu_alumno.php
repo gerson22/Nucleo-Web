@@ -15,6 +15,9 @@
 						<li>
 							<a id="pag_home" class="letter3" href="/calificaciones.php"><span class="glyphicon glyphicon-education ico"></span> Calificaciones</a>
 						</li> 
+						<li>
+							<a id="pag_home" class="letter3" href="/Tareas.php"><span class="glyphicon glyphicon-list-alt ico"></span> Tareas</a>
+						</li> 
 						
 					</ul>
 				</div>

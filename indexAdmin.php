@@ -98,7 +98,7 @@
         </div>
     </section>
 
-    <section class="no-padding" id="sistema">
+    <section class="no-padding " id="sistema">
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6 animate-in" data-anim-type="fade-in-up-large">

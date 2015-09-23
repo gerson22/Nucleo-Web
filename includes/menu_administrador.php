@@ -35,6 +35,7 @@
 								<li><a id="alum_inscritos" class="list-group-item letter3" href="/admin/alumnos/alumnos_inscritos.php">Inscritos</a></li>
 								<li><a id="alum_inscribir" class="list-group-item letter3" href="/admin/alumnos/inscribir.php">Inscribir</a></li>
 								<li><a id="alum_reinscribir" class="list-group-item letter3" href="/admin/alumnos/reinscribir.php">Reinscribir</a></li>
+								<li><a id="alum_reinscribir" class="list-group-item letter3" href="/admin/tareas/asignar.php">Asignar Tareas</a></li>
 							</div>
 						<li>
 							<a href="#Menu4" data-toggle="collapse" data-parent="#MainMenu" class="letter22"><i class="fa fa-users ico"></i> Maestros</a>

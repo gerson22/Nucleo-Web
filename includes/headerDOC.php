@@ -1,16 +1,16 @@
 <?php
-include_once("includes/clases/class_lib.php");
+include_once("../includes/clases/class_lib.php");
 session_start();
 $usuario = new Persona($_SESSION['id_persona']);
 ?>
-<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="../../../css/sistema_css.css">
-		<link rel="stylesheet" type="text/css" href="../../../plugins/assets/css/animations.css">
-		<link rel="stylesheet" type="text/css" href="../../../font-awesome/css/font-awesome.css">
-		<link rel="stylesheet" type="text/css" href="../../../plugins/assets/css/animationxtra.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/sistema_css.css">
+		<link rel="stylesheet" type="text/css" href="/plugins/assets/css/animations.css">
+		<link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="/plugins/assets/css/animationxtra.css">
 <!--Barra del Header --->
 		        <!-- Barra de Navegacion -->
-       <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:20px;">
+       <nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button id="btnResp" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target ="#menus" aria-expanded="false" aria-controls="navbar">
@@ -19,13 +19,13 @@ $usuario = new Persona($_SESSION['id_persona']);
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<img id="logo" src="../../../img/logo%20chico.png" style="width:43px; height:68px; margin-bottom:10px; margin-top:12px;">
+					<img id="logo" src="/img/logo%20chico.png" style="width:43px; height:68px; margin-bottom:10px; margin-top:12px;">
 				</div>
 				<div id="barra" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle letter2" data-toggle="dropdown" role="button" aria-expanded="false" style="color:#f2f2f2;"><img src="../../../media/fotos/<?php echo $usuario->foto; ?>" height="48" width="48" class="img-circle">&nbsp;<?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?><span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle letter2" data-toggle="dropdown" role="button" aria-expanded="false" style="color:#f2f2f2;"><img src="/media/fotos/<?php echo $usuario->foto; ?>" height="48" width="48" class="img-circle">&nbsp;<?php if(isset($_SESSION['nombres'])) echo $_SESSION['nombres'] ; ?><span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li id="logout"><a href="/includes/logout.php"><span class="glyphicon glyphicon-off ico"></span> Salir</a></li>
 							</ul>

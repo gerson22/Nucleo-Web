@@ -35,15 +35,13 @@ $conceptos = Concepto::getLista();
         </script>
     </head>
     <body>
-        <div id="wrapper">
             <?php include("../../../includes/header.php"); ?>
-            <div id="content">
-
-                <div id="inner_content">
+            <div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" >
+        		<div id="area_trabajo">
                 
                     <h1>Conceptos</h1>
 
-                    <table id="tabla_conceptos" >
+                    <table id="tabla_conceptos" class="table" >
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -78,6 +76,5 @@ $conceptos = Concepto::getLista();
                 </div>
 
             </div>
-        </div>
     </body>
 </html>
