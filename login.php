@@ -15,7 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="plugins/assets/css/animations.min.css">
     </head>
     <body>
-        <form  class="col-lg-4 col-md-6 col-md-offset-3 col-lg-offset-4 col-sm-10 col-sm-offset-1 col-xs-12  comboxlog animate-in" data-anim-type="fade-in-left" action="includes/login.php" method="post" id="forma_Log">
+        <form  class="col-lg-4 col-md-5 col-md-offset-5 col-lg-offset-4 col-sm-10 col-sm-offset-1 col-xs-12  comboxlog animate-in" data-anim-type="fade-in-left" action="includes/login.php" method="post" id="forma_Log" style="height:400px;">
             <img src="img/logo.png" alt="Colegio Meze"   class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4  animate-in" data-anim-type="fade-in-down">
            <?php if(isset($error)) echo "<div id='error_msg' >Datos erroneos. Porfavor intente de nuevo.</div>"; ?><br>
                 <label class="col-md-12 col-sm-12 col-xs-12">Matrícula</label><br>
