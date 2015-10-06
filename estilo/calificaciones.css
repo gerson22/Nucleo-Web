@@ -34,8 +34,8 @@ div > label
 {
     background-color: #fff;
     border: 1px solid #CCC;
-    width: 77%;
-    overflow: auto;
+    overflow: hidden;
+	width: 70%;
     margin: 20px auto;
     text-align: center;
 }
@@ -43,6 +43,10 @@ div > label
 #tabla_calificaciones tr
 {
     height: 50px;
+}
+#tabla_calificaciones tr > th
+{
+	padding-left: 50px;
 }
 
 #mensaje_no_calificaciones
