@@ -74,7 +74,7 @@
 			dataType: "JSON",
 			success: function(data){
 				$.each(data,function(index,contenido){
-					//Según si el alumno completo o no la tarea mandara un true o false
+					//Según si el alumno completo o no la tarea mandara un true o false//
 					var content =  Tarea.section(/*El parametro pide true o false*/);
 					$("#tareasContent").append(content);
 					$(content).append(Tarea.title(/*Titulo de tarea*/),Tarea.clase(/*Clase a la que pertence la tarea*/),Tarea.description(/*Descripción de la tarea*/));
