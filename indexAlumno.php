@@ -25,6 +25,9 @@
 					<li>
                         <a class="page-scroll" href="/calificaciones.php">Calificaciones</a>
                     </li>
+					<li>
+                        <a class="page-scroll" href="/Tareas.php">Tareas</a>
+                    </li>
                     <li>
                         <a class="page-scroll" href="/includes/logout.php">Salir</a>
                     </li>
