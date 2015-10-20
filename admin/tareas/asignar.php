@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es_mx">
 	<head>
@@ -11,7 +12,7 @@
 		<?php include("../../includes/header.php"); ?>
 				<div id="principal" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="margin-top:50px;">
 					 <div id="area_trabajo" class="col-md-6">
-						<label>Fecha de entrega</label>
+                        <label>Fecha de entrega</label>
 						<input type="text" id="fecha_entregaVal" class="form-control"  /><br><br>
 						<label class="col-md-offset-6">Clase</label>
 						<select id="id_claseVal" class="form-control col-md-offset-6">
@@ -43,14 +44,11 @@
 
     function cargarClases()
     {
-		var matricula = '<?php echo $usuario->matricula; ?>';
-		var password = '<?php echo $usuario->password; ?>';
         $.ajax({
             type: "GET",
             url: "/API/clases",
             beforeSend: function (xhr) {
-                //xhr.setRequestHeader ("Authorization", "Basic " + btoa("ADM13001:shadow"));
-                xhr.setRequestHeader("Authorization", "Basic " + btoa(matricula+":"+password)); 
+                xhr.setRequestHeader("Authorization", "Basic " + btoa('<?php echo $_SESSION['matricula']; ?>' +":"+ '<?php echo $_SESSION['password'] ?>'));
             },
             success: function (data) {
                 jQuery.each(data, function () {
@@ -70,14 +68,12 @@
             type: "POST",
             url: "/API/tareas",
             beforeSend: function (xhr) {
-                //xhr.setRequestHeader ("Authorization", "Basic " + btoa("ADM13001:shadow"));
-                xhr.setRequestHeader("Authorization", "Basic " + btoa(matricula+":"+password));
+                xhr.setRequestHeader("Authorization", "Basic " + btoa('<?php echo $_SESSION['matricula']; ?>' +":"+ '<?php echo $_SESSION['password'] ?>'));
             },
             data: "id_clase=" + id_clase + "&descripcion=" + descripcion + "&fecha_entrega=" + fecha_entrega,
-            success: function (data) {
-                jQuery.each(data, function () {
-                    $("#id_claseVal").append("<option value='" + this.id_clase + "'>" + this.descripcion + "</option>");
-                });
+            success: function (data)
+            {
+                alert("Tarea asignada.");
             }
         });
     }
