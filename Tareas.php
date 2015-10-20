@@ -63,23 +63,22 @@
 		});
 	});
 	
-	
+	getTareas();
     cargarClases();
 	
-	function getTareas(urls)
+	function getTareas()
 	{
 		$.ajax({
-			url: urls,
-			type:"POST",
+			url: "API/tareas",
+			type:"GET",
 			dataType: "JSON",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Basic " + btoa('<?php echo $_SESSION['matricula']; ?>' +":"+ '<?php echo $_SESSION['password'] ?>'));
+            },
 			success: function(data){
-				$.each(data,function(index,contenido){
-					//Según si el alumno completo o no la tarea mandara un true o false//
-					var content =  Tarea.section(/*El parametro pide true o false*/);
-					$("#tareasContent").append(content);
-					$(content).append(Tarea.title(/*Titulo de tarea*/),Tarea.clase(/*Clase a la que pertence la tarea*/),Tarea.description(/*Descripción de la tarea*/));
-					 
-				});
+                jQuery.each(data, function () {
+                    $("#tareasContent").append("Fecha: " + this.fecha_encargo + ", descripcion: " + this.descripcion);
+                });
 			}
 		});
 	}
