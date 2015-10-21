@@ -13,7 +13,16 @@ class clasesControlador
         switch ($metodo)
         {
             case "GET":
-                return $this->getClases();
+                $persona = PersonaModelo::getPersonaPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+                if($persona->tipo_persona == 1)
+                {
+                    $alumno = new AlumnoModelo($persona->id_persona);
+                    return $alumno->getClases();
+                }
+                else if($persona->tipo_persona == 3)
+                {
+                    return $this->getClases();
+                }
                 break;
             default:
                 break;
