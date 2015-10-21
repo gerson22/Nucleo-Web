@@ -48,4 +48,10 @@ class AlumnoModelo extends PersonaModelo
             WHERE id_alumno = $this->id_persona)";
         return APIDatabase::select($query);
     }
+
+    public function getLista()
+    {
+        $query = "SELECT * FROM persona WHERE tipo_persona = 1";
+        return APIDatabase::select($query);
+    }
 }
