@@ -1249,6 +1249,7 @@ $grado      = $alumno->getGrado($ciclo->id_ciclo_escolar);
                     {"width": "10%"}, {"width": "10%"}, {"width": "10%"},
                     {"width": "10%"}
                 ],
+                "bSort": false,
                 "processing": true,
                 "fnServerParams": function (aoData) {
                     var id_ciclo = $("#ciclo_escolarVal").val();
