@@ -40,7 +40,7 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                
+
             </div>
         </div>
     </header>
@@ -86,7 +86,7 @@
 										<img src="img/carr3.jpg" alt="img3">
 									</div>
 									<div class="item">
-										<img src="img/carr4.jpg" alt="img4" >	
+										<img src="img/carr4.jpg" alt="img4" >
 									</div>
 										<a class="left carousel-control" href="#fullcarousel-example" data-slide="prev"><i class="icon-prev fa fa-angle-left controles img-circle"></i></a>
 										<a class="right carousel-control" href="#fullcarousel-example" data-slide="next"><i class="icon-next fa fa-angle-right controles img-circle"></i></a>
@@ -116,7 +116,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6 animate-in" data-anim-type="fade-in-down-large">
+                <div class="col-lg-4 col-sm-6 animate-in" data-anim-type="fade-in-right-large">
                     <a href="admin/maestros/index.php" class="portfolio-box">
                         <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
@@ -246,6 +246,21 @@
                                 </div>
                                 <div class="project-name">
                                     Kinder,Primaria,Secundaria,Bachillerato,Universidad
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 animate-in" data-anim-type="fade-in-down-large">
+                    <a href="admin/configuracion/niveles/index.php" class="portfolio-box">
+                        <img src="img/portfolio/11.png" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Tareas
+                                </div>
+                                <div class="project-name">
+                                    Asignar tareas de los diferentes niveles educativos
                                 </div>
                             </div>
                         </div>
