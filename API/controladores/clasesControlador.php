@@ -13,7 +13,23 @@ class clasesControlador
         switch ($metodo)
         {
             case "GET":
-                return $this->getClases();
+                $persona = PersonaModelo::getPersonaPorCredenciales($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+                switch($persona->tipo_persona)
+                {
+                    case 1:
+                        $alumno = new AlumnoModelo($persona->id_persona);
+                        return $alumno->getClases();
+                        break;
+                    case 2:
+                        $docente = new DocenteModelo($persona->id_persona);
+                        return $docente->getClases();
+                        break;
+                    case 3:
+                        return $this->getClases();
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
                 break;

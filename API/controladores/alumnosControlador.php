@@ -19,7 +19,7 @@ class alumnosControlador
                     case "tareas":
                         return $this->getTareas();
                     default:
-                        return 404;
+                        return $this->getAlumnos();
                         break;
                 }
                 break;
@@ -62,8 +62,14 @@ class alumnosControlador
 
         return $respuesta;
     }
+
     public function getTareas()
     {
         return AlumnoModelo::getTareas();
+    }
+
+    public function getAlumnos()
+    {
+        return AlumnoModelo::getLista();
     }
 }

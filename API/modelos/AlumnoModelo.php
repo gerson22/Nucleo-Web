@@ -36,4 +36,22 @@ class AlumnoModelo extends PersonaModelo
             WHERE id_alumno = $this->id_persona)";
         return APIDatabase::select($query);
     }
+
+    public function getClases()
+    {
+        $query = "SELECT clase.*, CONCAT(grado.grado, '-', grupo.grupo, ' ', materia.materia) AS descripcion FROM clase
+            JOIN grupo ON clase.id_grupo = grupo.id_grupo
+            JOIN grado ON grupo.id_grado = grado.id_grado
+            JOIN materia ON clase.id_materia = materia.id_materia
+            WHERE clase.id_clase IN (SELECT clase.id_clase FROM alumno_grupo
+            JOIN clase ON clase.id_grupo = alumno_grupo.id_grupo
+            WHERE id_alumno = $this->id_persona)";
+        return APIDatabase::select($query);
+    }
+
+    public function getLista()
+    {
+        $query = "SELECT * FROM persona WHERE tipo_persona = 1";
+        return APIDatabase::select($query);
+    }
 }
